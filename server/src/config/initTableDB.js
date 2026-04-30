@@ -1,8 +1,8 @@
-const pool = require("./db")
+const pool = require("./db");
 
-const ininDB = async() =>{
-    try {
-        await pool.query(`
+const ininDB = async () => {
+  try {
+    await pool.query(`
             CREATE TABLE IF NOT EXISTS users
             (
             id SERIAL PRIMARY KEY,
@@ -13,7 +13,7 @@ const ininDB = async() =>{
             );
             `);
 
-        await pool.query(`
+    await pool.query(`
             CREATE TABLE IF NOT EXISTS companiesdata
             (
             id SERIAL PRIMARY KEY ,
@@ -23,9 +23,9 @@ const ininDB = async() =>{
             location VARCHAR(100),
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
-            `);    
+            `);
 
-            await pool.query(`
+    await pool.query(`
                 CREATE TABLE IF NOT EXISTS jobcreate
                 (
                 id SERIAL PRIMARY KEY ,
@@ -37,12 +37,23 @@ const ininDB = async() =>{
                 company_id INTEGER REFERENCES companiesdata(id) ON DELETE CASCADE,
                 posted_by INTEGER REFERENCES users(id) ON DELETE CASCADE,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                )
-                `)
-            console.log("tables ready");
-    } catch (error) {
-        console.error(error)
-    }
-}
+                );
+                `);
+    await pool.query(`
+               CREATE TABLE  IF NOT EXISTS allApplicants
+(
+    id SERIAL PRIMARY KEY,
+    job_id INTEGER REFERENCES jobcreate(id) ON DELETE CASCADE,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    resume TEXT,
+    status VARCHAR(50) DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+                `);
+    console.log("tables ready");
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 module.exports = ininDB;
