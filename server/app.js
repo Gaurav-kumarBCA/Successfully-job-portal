@@ -8,6 +8,7 @@ const authRoutes = require("./src/routers/auth.route");
 const admin=require("./src/routers/admin/index");
 const recruiter= require("./src/routers/recruiter/index");
 const user=require("./src/routers/users/index");
+const publicJob=require("./src/routers/public.route");
 
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
+app.use("/public/alljob/",publicJob);
 
 app.use("/uploads", express.static("src/uploads"));
 app.use("/recruiter",recruiter)
