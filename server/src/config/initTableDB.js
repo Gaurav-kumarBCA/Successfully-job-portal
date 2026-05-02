@@ -40,16 +40,17 @@ const ininDB = async () => {
                 );
                 `);
     await pool.query(`
-               CREATE TABLE  IF NOT EXISTS allApplicants
-(
-    id SERIAL PRIMARY KEY,
-    job_id INTEGER REFERENCES jobcreate(id) ON DELETE CASCADE,
-    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-    resume TEXT,
-    status VARCHAR(50) DEFAULT 'pending',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+               CREATE TABLE IF NOT EXISTS allapplicants (
+               id SERIAL PRIMARY KEY,
+               job_id INTEGER REFERENCES jobcreate(id) ON DELETE CASCADE,
+               user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+               resume TEXT,
+               cover_letter TEXT,
+               status VARCHAR(50) DEFAULT 'pending',
+               created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+               );
                 `);
+                
     console.log("tables ready");
   } catch (error) {
     console.error(error);

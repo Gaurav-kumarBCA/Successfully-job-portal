@@ -18,9 +18,10 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 
-
+app.use("/uploads", express.static("src/uploads"));
 app.use("/recruiter",recruiter)
 app.use("/admin",admin)
+app.use("/user",user)
 
 app.get("/", (req, res) => {
   res.send("Hello Successful Job Portal");
