@@ -1,9 +1,12 @@
 const { signupServices, loginServices } = require("../../services/user/authService");
-
+const { generatetoken, hasspassword, verifyPassword } = require("../../utility");
+const saltRound=10;
 const signup=async(req,res)=>{
     try {
         const {name ,email ,password} = req.body;
-        const signupUser = await signupServices(name ,email , password);
+        const hashpassword=await hasspassword(password,saltRound);
+        const signupUser = await signupServices({name ,email , password:hashpassword});
+
         res.status(201).json({
             success:true,
             message:"User Signup Successfully"
@@ -20,9 +23,29 @@ const login=async(req,res)=>{
     try {
         const {email , password} = req.body;
         const loginUser = await loginServices(email , password);
+        const isValid=await verifyPassword(password, loginUser.password);
+        if(!isValid){
+            res.json({
+                success:false,
+                message:"Invalid password"
+            });
+        }
+        const {token,refreshToken}=generatetoken({
+            id:loginUser.id,
+            name:loginUser.name,
+            email:loginUser.email,
+            role:loginUser.role
+        })
+        res.cookie("token", token, {
+        httpOnly: true,
+        secure: false,
+        sameSite: "lax"
+    }); 
+
         res.status(201).json({
             success:true,
-            message:"Login successfully"
+            message:"Login successfully",
+            data:{loginUser,token,refreshToken},
         })
     } catch (error) {
         res.status(400).json({

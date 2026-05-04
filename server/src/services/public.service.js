@@ -1,7 +1,13 @@
+const { getAllCompanies } = require("../models/companies");
 const { getAllJob } = require("../models/job");
 
 const publicJobDB=async()=>{
     const data = await getAllJob();
     return data.rows;
 }
-module.exports={publicJobDB};
+
+const fetAllCompaniesDB=async()=>{
+const data = await getAllCompanies();
+return data.rows;
+}
+module.exports={publicJobDB,fetAllCompaniesDB};

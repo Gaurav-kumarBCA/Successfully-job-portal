@@ -1,6 +1,6 @@
 const { findUserByEmail, createUser } = require("../../models/user");
 
-const signupServices=async(name,email,password)=>{
+const signupServices=async({name,email,password})=>{
     if(!name || !email || !password){
         throw new Error("All fields are required");
     }
@@ -19,6 +19,7 @@ const loginServices = async(email ,password)=>{
     if(user.rows.length === 0){
         throw new Error("User not found");
     }
+    return user.rows[0]
 }
 
 module.exports ={signupServices,loginServices}
