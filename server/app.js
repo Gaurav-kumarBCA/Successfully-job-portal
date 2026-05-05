@@ -13,6 +13,7 @@ const cookieParser = require("cookie-parser");
 const authMiddleware = require("./src/middleware/auth.middleware");
 const recruiterMiddleware = require("./src/middleware/recruiter.middleware");
 const adminMiddleware = require("./src/middleware/admin.middleware");
+const usermiddleware=require("./src/middleware/user.middleware")
 const publicrecruiter= require("./src/routers/recruiter/loginrecruiter.router")
 
 
@@ -33,7 +34,7 @@ app.use(authMiddleware)
 app.use("/uploads", express.static("src/uploads"));
 app.use("/recruiter",recruiterMiddleware,recruiter);
 app.use("/admin",adminMiddleware,admin);
-app.use("/user",user)
+app.use("/user",usermiddleware,user)
 
 app.get("/", (req, res) => {
   res.send("Hello Successful Job Portal");

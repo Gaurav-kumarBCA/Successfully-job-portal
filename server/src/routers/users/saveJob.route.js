@@ -1,7 +1,9 @@
 const exprees = require("express");
-const { saveJob } = require("../../controllers/users/save.job.controller");
+const { saveJob, getsavejob, deleteJobById } = require("../../controllers/users/save.job.controller");
 const router = exprees.Router();
 
-router.use("/job",saveJob)
+router.post("/job",saveJob);
+router.get("/job",getsavejob);
+router.delete("/job/:id",deleteJobById)
 
 module.exports= router;

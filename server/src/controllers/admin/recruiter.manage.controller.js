@@ -4,7 +4,9 @@ const saltRound=10;
 
 const createRecruiter=async(req,res)=>{
 try {
+    console.log("Body data",req.body)
     const {name,company_name,  email,password,role,phone,company_description,company_website,industry_type}= req.body;
+
     const hashpassword=await hasspassword(password,saltRound);
     const data=await createRecruiterDB({name,company_name,  email,password:hashpassword,role,phone,company_description,company_website,industry_type});
     res.status(201).json({
