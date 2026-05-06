@@ -14,4 +14,19 @@ const findUserByEmail = async (email) => {
   );
 };
 
-module.exports = { createUser, findUserByEmail };
+const blockUserModel = async (id) => {
+  return await pool.query(
+    "UPDATE users SET is_blocked=true WHERE id=$1 RETURNING *",
+    [id]
+  );
+}
+
+const UnblockUserModel = async (id) => {
+  return await pool.query(
+    "UPDATE users SET is_blocked=false WHERE id=$1 RETURNING *",
+    [id]
+  );
+}
+
+
+module.exports = { createUser, findUserByEmail , blockUserModel , UnblockUserModel };

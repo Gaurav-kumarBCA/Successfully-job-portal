@@ -1,8 +1,8 @@
 const { getAllCompanies } = require("../models/companies");
-const { getAllJob } = require("../models/job");
+const {  getAllApprovedJobs } = require("../models/job");
 
 const publicJobDB=async()=>{
-    const data = await getAllJob();
+    const data = await getAllApprovedJobs();
     return data.rows;
 }
 

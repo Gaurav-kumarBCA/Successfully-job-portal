@@ -64,7 +64,7 @@ const getAllJobById = async (id) => {
 
         FROM jobcreate j
         JOIN companiesdata c ON j.company_id = c.id
-        WHERE j.id = $1
+        WHERE j.status = 'approved' AND j.id = $1
     `, [id]);
 };
 
@@ -85,11 +85,48 @@ const deleteJobById = async (id) => {
     );
 };
 
+const approveJobModel=async(id) =>{
+    return await pool.query(
+        "UPDATE jobcreate SET status='approved' WHERE id=$1 RETURNING * ",[id]
+    )
+}
+
+
+const getAllApprovedJobs = async () => {
+    return await pool.query(`
+        SELECT 
+            j.id,
+            j.job_name,
+            j.description,
+            j.salary,
+            j.location,
+            j.job_type,
+            j.posted_by,
+
+            json_build_object(
+                'id', c.id,
+                'company_name', c.company_name,
+                'website_url', c.website_url,
+                'location', c.location,
+                'description', c.description
+            ) AS company
+
+        FROM jobcreate j
+        JOIN companiesdata c ON j.company_id = c.id
+
+        WHERE j.status = 'approved' 
+
+        ORDER BY j.id DESC
+    `);
+};
+
 module.exports = {
     createJob,
     findJobByName,
     getAllJob,
     getAllJobById,
     updateJobById,
-    deleteJobById
+    deleteJobById,
+    approveJobModel,
+    getAllApprovedJobs
 };

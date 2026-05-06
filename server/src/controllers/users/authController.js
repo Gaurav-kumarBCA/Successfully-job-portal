@@ -23,6 +23,14 @@ const login=async(req,res)=>{
     try {
         const {email , password} = req.body;
         const loginUser = await loginServices(email , password);
+
+        if(loginUser.is_blocked){
+            return res.status(403).json({
+                success:false,
+                message:"Account block by Admin"
+            })
+        }
+
         const isValid=await verifyPassword(password, loginUser.password);
         if(!isValid){
             res.json({

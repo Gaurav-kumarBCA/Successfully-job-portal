@@ -37,6 +37,7 @@ const ininDB = async () => {
                 job_type VARCHAR(50),
                 company_id INTEGER REFERENCES companiesdata(id) ON DELETE CASCADE,
                 posted_by INTEGER REFERENCES users(id) ON DELETE CASCADE,
+                status VARCHAR(20) DEFAULT "pending",
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 );
                 `);
