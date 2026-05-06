@@ -74,6 +74,16 @@ const ininDB = async () => {
               industry_type  VARCHAR (100) NOT NULL
               );
              `);
+
+    await pool.query(`
+              CREATE TABLE IF NOT EXISTS follow_companies(
+              id SERIAL PRIMARY KEY,
+              user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+              company_id INTEGER REFERENCES companiesdata(id) ON DELETE CASCADE,
+              created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+              UNIQUE(user_id, company_id)
+              ); 
+      `)
                 
     console.log("tables ready");
   } catch (error) {
