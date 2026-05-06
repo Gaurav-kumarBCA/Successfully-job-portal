@@ -13,5 +13,12 @@ const Checkcompany=async(user_id,company_id)=>{
         "SELECT * FROM follow_companies WHERE user_id=$1 AND company_id=$2",
         [user_id,company_id]
     )
-}
-module.exports={followCompaniesModel,Checkcompany}
+};
+
+const getFollowersByCompany = (company_id) => {
+    return pool.query(
+        "SELECT user_id FROM follow_companies WHERE company_id=$1",
+        [company_id]
+    );
+};
+module.exports={followCompaniesModel,Checkcompany,getFollowersByCompany}

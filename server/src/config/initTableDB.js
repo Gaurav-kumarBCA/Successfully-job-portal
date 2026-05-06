@@ -84,10 +84,20 @@ const ininDB = async () => {
               UNIQUE(user_id, company_id)
               ); 
       `)
+
+    await pool.query(`
+              CREATE TABLE IF NOT EXISTS notification(
+              id SERIAL PRIMARY KEY,
+              user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+              message TEXT,
+              is_read BOOLEAN DEFAULT false,
+               created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+              )  ;
+      `)
                 
     console.log("tables ready");
   } catch (error) {
-    console.error(error);
+    console.error(error.message);
   }
 };
 

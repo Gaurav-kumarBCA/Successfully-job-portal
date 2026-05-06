@@ -1,9 +1,21 @@
+const { getFollowersByCompany } = require("../../models/followCompany");
 const { AddjobDB, getAlJobDB, getAllJobByIdDB, updateJobByIdDB, deleteJobByIdDB } = require("../../services/recruiter/job.service");
+const { notificationDB } = require("../../services/user/notification.service");
 
 const jobcreate=async(req,res)=>{
 try {
     const {job_name,description, salary,location,job_type,company_id ,posted_by} = req.body;
     const data= await AddjobDB(job_name,description, salary,location,job_type,company_id ,posted_by);
+
+    const followers = await getFollowersByCompany(company_id);
+
+    for(let user of followers.rows){
+        await notificationDB(
+            user.user_id,
+            `new job posted in company (job : ${job_name} )`
+        );
+    }
+
     res.status(201).json({
         success:true,
         message:"JOb Created Successfully",
@@ -14,8 +26,8 @@ try {
             success:false,
             message:error.message
         });
-}
-}
+};
+};
 
 const AllJob=async(req,res)=>{
     try {

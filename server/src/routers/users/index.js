@@ -4,6 +4,7 @@ const router=express.Router();
 router.use("/job",require("./jobApplied.route"));
 router.use("/saveJob",require("./saveJob.route"));
 router.use("/follow",require("./followCompany.routers"));
+router.use("/notification",require("./notification.routers"))
 
 
 module.exports=router;
