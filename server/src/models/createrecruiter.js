@@ -13,4 +13,6 @@ const findRecruiterByEmail = async (email) => {
   );
 };
 
+
+
 module.exports={CreateRecruitermodel,findRecruiterByEmail}

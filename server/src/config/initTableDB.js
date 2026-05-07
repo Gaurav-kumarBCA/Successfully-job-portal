@@ -77,6 +77,18 @@ const ininDB = async () => {
              `);
 
     await pool.query(`
+             CREATE TABLE IF NOT EXISTS appliedform_recruiter (
+             id SERIAL PRIMARY KEY,
+             name VARCHAR (100) NOT NULL,
+             company_name VARCHAR (200) NOT NULL,
+             company_email VARCHAR (100) UNIQUE NOT NULL,
+             company_description VARCHAR (100) NOT NULL,
+             company_website VARCHAR(100),
+             industry_type VARCHAR (100) NOT NULL
+             )   ;
+      `)         
+
+    await pool.query(`
               CREATE TABLE IF NOT EXISTS follow_companies(
               id SERIAL PRIMARY KEY,
               user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
