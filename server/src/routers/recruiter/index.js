@@ -6,6 +6,5 @@ const Applicants=require("./AllApplicants.route");
 router.use("/api/companies", companies);
 router.use("/api/job",jobPost);
 router.use("/api",Applicants);
-router.use("/applied_form",require("./appliedFormRecruiter.route"))
 
 module.exports=router

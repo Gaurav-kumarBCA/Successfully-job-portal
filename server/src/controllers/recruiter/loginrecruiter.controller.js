@@ -4,19 +4,19 @@ const { verifyPassword, generatetoken } = require("../../utility");
 const loginRecruiter=async(req,res)=>{
 try {
     const {email,password}=req.body;
-    const loginRecruiter = await loginRecruiterDB(email , password);
-    const isValid = await verifyPassword(password,loginRecruiter.password);
+    const loginUser = await loginRecruiterDB(email , password);
+    const isValid = await verifyPassword(password,loginUser.password);
     if(!isValid){
-        res.json({
+       return res.json({
             success:false,
             message:"Invalid password"
         });
     }
     const {token,refreshToken}=generatetoken({
-        id:loginRecruiter.id,
-        name:loginRecruiter.name,
-        email:loginRecruiter.email,
-        role:loginRecruiter.role
+        id:loginUser.id,
+        name:loginUser.name,
+        email:loginUser.email,
+        role:loginUser.role
     });
     res.cookie("token",token,{
         httpOnly:true,
@@ -27,7 +27,7 @@ try {
     res.status(201).json({
         success:true,
         message:"recruiter login successfully",
-        data:{loginRecruiter,token,refreshToken},
+        data:{loginUser,token,refreshToken},
     })
 } catch (error) {
     res.status(400).json({
