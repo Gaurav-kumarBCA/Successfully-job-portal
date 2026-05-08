@@ -1,4 +1,4 @@
-const { blockUserModel, UnblockUserModel } = require("../../models/user");
+const { blockUserModel, UnblockUserModel, getAlluserModel } = require("../../models/user");
 
 const blockUserDB = async(id)=>{
     if(!id)throw new Error("User id is required");
@@ -12,4 +12,13 @@ const UnblockUserDB = async (id) =>{
     return data.rows[0];
 }
 
-module.exports={blockUserDB,UnblockUserDB};
+const getAlluserDB=async()=>{
+    const data= await  getAlluserModel();
+    if(data.rows.length === 0){
+        throw new Error("User not found");
+    }
+    return data.rows;
+};
+
+
+module.exports={blockUserDB,UnblockUserDB,getAlluserDB};

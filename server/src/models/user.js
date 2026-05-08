@@ -14,6 +14,12 @@ const findUserByEmail = async (email) => {
   );
 };
 
+const getAlluserModel = async () =>{
+  return await pool.query (
+    "SELECT * FROM users ORDER BY id DESC"
+  );
+};
+
 const blockUserModel = async (id) => {
   return await pool.query(
     "UPDATE users SET is_blocked=true WHERE id=$1 RETURNING *",
@@ -29,4 +35,4 @@ const UnblockUserModel = async (id) => {
 }
 
 
-module.exports = { createUser, findUserByEmail , blockUserModel , UnblockUserModel };
+module.exports = { createUser, findUserByEmail , blockUserModel , UnblockUserModel , getAlluserModel };
