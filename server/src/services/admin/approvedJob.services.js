@@ -1,4 +1,4 @@
-const { approveJobModel } = require("../../models/job");
+const { approveJobModel, getAllJob } = require("../../models/job");
 
 const approvedJobDB=async(id)=>{
     if(!id)throw new Error("Job id ir required");
@@ -6,4 +6,12 @@ const approvedJobDB=async(id)=>{
     return data.rows[0];
 }
 
-module.exports={approvedJobDB}
+const getAllJobDB=async()=>{
+    const data= await getAllJob();
+    if(data.rows.length === 0){
+        throw new Error("Job data not found");
+    }
+    return data.rows;
+}
+
+module.exports={approvedJobDB,getAllJobDB}

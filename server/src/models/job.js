@@ -27,6 +27,7 @@ const getAllJob = async () => {
             j.location,
             j.job_type,
             j.posted_by,
+            j.status,
 
             json_build_object(
                 'id', c.id,
