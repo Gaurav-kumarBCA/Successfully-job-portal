@@ -141,7 +141,7 @@
 //             <button
 //               disabled={loading}
 //               className={`
-//     h-10 w-[90%] rounded-lg  text-black dark:text-white text-[18px]
+//     h-10 w-[90%] rounded-lg  text-white text-[18px]
 //     flex items-center justify-center gap-3
 //     transition-all duration-300
 //     ${
@@ -223,12 +223,16 @@
 import React, { useEffect, useState } from "react";
 import { MdEmail, MdDarkMode, MdLightMode } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
+import { RiShieldCheckLine } from "react-icons/ri";
 import toast from "react-hot-toast";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
 
-  const [darkMode, setDarkMode] = useState(true);
+  // const [darkMode, setDarkMode] = useState(true);
+  const [darkMode , setDarkMode] = useState(()=>{
+    return localStorage.getItem("theme") === "dark";
+  });
 
   const [form, setForm] = useState({
     email: "",
@@ -239,8 +243,11 @@ const Login = () => {
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
+      return localStorage.setItem("theme","dark");
     } else {
       document.documentElement.classList.remove("dark");
+      return localStorage.setItem("theme","light");
+
     }
   }, [darkMode]);
 
@@ -305,6 +312,8 @@ const Login = () => {
       {/* Login Card */}
       <div
         className="
+        md:m-0
+        mb-25
         relative
         w-full
         max-w-[420px]
@@ -452,6 +461,40 @@ const Login = () => {
             )}
           </button>
         </form>
+         <div className="flex  mt-2 items-center justify-center gap-2 text-gray-400">
+          <div className="h-[1px] w-45 bg-gray-500"></div>
+
+          <span className="text-sm whitespace-nowrap">OR</span>
+
+          <div className="h-[1px] w-45 bg-gray-500"></div>
+        </div>
+
+         <div className="flex mt-3 items-center justify-center">
+          <button
+            className="
+          w-[90%]
+          h-10
+          rounded-lg
+          border
+          border-blue-500
+          bg-transparent
+          text-blue-400
+          text-[18px]
+          font-medium
+          flex
+          items-center
+          justify-center
+          gap-3
+          transition-all
+          duration-300
+          hover:bg-blue-500/10
+          hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]
+        "
+          >
+            <RiShieldCheckLine className="text-3xl" />
+            Login with Admin ID
+          </button>
+        </div>
       </div>
     </div>
   );

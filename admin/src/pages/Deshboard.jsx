@@ -1,8 +1,11 @@
 import React from 'react'
+import Layout from '../component/Layout'
 
 const Deshboard = () => {
   return (
-    <div className='text-xl md:text-3xl lg:text-5xl'>Hello</div>
+   <Layout>
+     <div>Hello</div>
+   </Layout>
   )
 }
 

@@ -4,6 +4,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Login from './pages/Login'
 
 const App = () => {
+  const theme = localStorage.getItem("theme");
+
+if (theme === "dark") {
+  document.documentElement.classList.add("dark");
+} else {
+  document.documentElement.classList.remove("dark");
+}
   return ( 
     <BrowserRouter>
     <Routes>
@@ -15,3 +22,16 @@ const App = () => {
 }
 
 export default App
+
+
+// import React from 'react'
+
+// const App = () => {
+//   return (
+//     <div>
+//       <h1>Hello bhai</h1>
+//     </div>
+//   )
+// }
+
+// export default App
