@@ -33,7 +33,7 @@ const login=async(req,res)=>{
 
         const isValid=await verifyPassword(password, loginUser.password);
         if(!isValid){
-            res.json({
+           return res.json({
                 success:false,
                 message:"Invalid password"
             });
