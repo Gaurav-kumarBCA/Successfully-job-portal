@@ -4,8 +4,9 @@ const { notificationDB } = require("../../services/user/notification.service");
 
 const jobcreate=async(req,res)=>{
 try {
-    const {job_name,description, salary,location,job_type,company_id ,posted_by} = req.body;
-    const data= await AddjobDB(job_name,description, salary,location,job_type,company_id ,posted_by);
+    const id = req.loginUser.id;
+    const {job_name,description, salary,location,job_type,company_id} = req.body;
+    const data= await AddjobDB(job_name,description, salary,location,job_type,company_id ,id);
 
     const followers = await getFollowersByCompany(company_id);
 

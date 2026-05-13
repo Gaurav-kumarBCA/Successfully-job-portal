@@ -28,6 +28,12 @@ const getAllJob = async () => {
             j.job_type,
             j.posted_by,
             j.status,
+            j.created_at,
+
+            json_build_object(
+            'id',r.id,
+            'name',r.name
+            ) AS posted_by,
 
             json_build_object(
                 'id', c.id,
@@ -39,6 +45,8 @@ const getAllJob = async () => {
 
         FROM jobcreate j
         JOIN companiesdata c ON j.company_id = c.id
+
+        JOIN create_recruiter r ON j.posted_by = r.id
         ORDER BY j.id DESC
     `);
 };
