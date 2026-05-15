@@ -3,11 +3,11 @@ const pool = require("../config/db");
 const dashboardStats = async () => {
 
     const totalUsers = await pool.query(
-        "SELECT COUNT(*) FROM users"
+        "SELECT COUNT(*) FROM users WHERE role != 'admin' "
     );
 
     const blockedUsers = await pool.query(
-        "SELECT COUNT(*) FROM users WHERE is_blocked = true"
+        "SELECT COUNT(*) FROM users WHERE is_blocked = true AND role != 'admin'"
     );
 
     const totalJobs = await pool.query(

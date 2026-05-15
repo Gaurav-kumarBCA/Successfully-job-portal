@@ -3,6 +3,7 @@ import { MdEmail, MdDarkMode, MdLightMode } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
 import { RiShieldCheckLine } from "react-icons/ri";
 import {toast} from "react-toastify";
+import { TailSpin, ThreeDots } from "react-loader-spinner";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -70,6 +71,46 @@ const Login = () => {
     }
   };
 
+  if (loading) {
+  return (
+    <div className='
+      h-screen
+      w-full
+      bg-gray-100
+    dark:bg-gradient-to-br
+      from-slate-950
+      via-blue-950
+      to-slate-900
+      flex
+      items-center
+      justify-center
+    '>
+
+      <div className='flex flex-col items-center gap-3'>
+        <ThreeDots
+          height="70"
+          width="70"
+          color={darkMode ? "#ffffff" : "#000000"}
+          visible={true}
+        />
+
+        <div className='flex items-center gap-2'>
+          <p className=' text-black dark:text-white  text-sm md:text-lg'>
+            Loading Login Page...
+          </p>
+
+          <TailSpin
+            height="20"
+            width="20"
+            color={darkMode ? "#60A5FA" : "#000000"}
+          />
+        </div>
+
+      </div>
+
+    </div>
+  );
+}
   return (
     <div
       className="
