@@ -14,5 +14,12 @@ const findRecruiterByEmail = async (email) => {
 };
 
 
+const getAllRecruiters=async()=>{
+  return await pool.query(
+    "SELECT * FROM create_recruiter ORDER BY id DESC"
+  );
+};
 
-module.exports={CreateRecruitermodel,findRecruiterByEmail}
+
+
+module.exports={CreateRecruitermodel,findRecruiterByEmail,getAllRecruiters}

@@ -14,4 +14,6 @@ const approveRecruiterDB=async(id)=>{
     return await data.rows[0];
     
 }
+
+
 module.exports={getAllAppliedRecruiterDB,approveRecruiterDB}

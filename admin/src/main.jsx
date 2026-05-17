@@ -18,6 +18,7 @@ createRoot(document.getElementById('root')).render(
   pauseOnHover
   theme="dark"
   limit={3}
+  pauseOnHover
   toastClassName="rounded-xl text-sm"
   bodyClassName="font-medium"
   style={{

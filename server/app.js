@@ -1,6 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const http = require("http");
+const {Server} = require("socket.io");
 
 const initDB = require("./src/config/initTableDB");
 const authRoutes = require("./src/routers/auth.route");
@@ -18,6 +20,23 @@ const publicrecruiter= require("./src/routers/recruiter/loginrecruiter.router")
 
 
 const app = express();
+const server=http.createServer(app);
+const io = new Server(server,{
+  cors:{
+    origin:"http://localhost:5173",
+    methods:["GET","POST"]
+  }
+});
+
+global.io = io;
+
+io.on("connection",(socket)=>{
+  // console.log("User connected:",socket.id);
+  socket.on("disconnect",()=>{
+    console.log("Disconnect");
+  })
+});
+
 const port = 5000;
 
 app.use(cors(
@@ -48,7 +67,7 @@ app.get("/", (req, res) => {
 const startServer = async () => {
   try {
     await initDB();
-    app.listen(port, () => {
+    server.listen(port, () => {
       console.log(`server running on port ${port}`);
     });
   } catch (err) {

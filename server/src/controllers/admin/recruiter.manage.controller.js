@@ -1,4 +1,4 @@
-const { createRecruiterDB } = require("../../services/admin/recruiter.manage.service");
+const { createRecruiterDB, getAllRecruitersDB } = require("../../services/admin/recruiter.manage.service");
 const { hasspassword } = require("../../utility");
 const saltRound=10;
 
@@ -21,4 +21,20 @@ try {
         });
 }
 }
-module.exports={createRecruiter}
+
+const getAllRecruiters=async(req,res)=>{
+    try {
+    const data = await getAllRecruitersDB();
+        res.json({
+            success:true,
+            message:"Fetch All Recruiters",
+            data:data
+        })
+    } catch (error) {
+        res.json({
+            success:false,
+            message:error.message
+        });
+    };
+}
+module.exports={createRecruiter ,getAllRecruiters}

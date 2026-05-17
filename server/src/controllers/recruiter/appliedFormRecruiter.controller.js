@@ -4,6 +4,13 @@ const appliedform_recruiter=async(req,res)=>{
 try {
     const {name,company_name,phone,company_email,company_description,company_website,industry_type}=req.body;
     const data=await appliedform_recruiterDB(name,company_name,phone,company_email,company_description,company_website,industry_type);
+
+    global.io.emit("newRecruiterApply",{
+        message:"new recruiter applied",
+        name:name,
+        company:company_name
+    });
+
     res.status(201).json({
         success:true,
         message:"Applied Success by Recruiter"

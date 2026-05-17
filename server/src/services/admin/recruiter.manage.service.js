@@ -1,4 +1,4 @@
-const { CreateRecruitermodel, findRecruiterByEmail } = require("../../models/createrecruiter");
+const { CreateRecruitermodel, findRecruiterByEmail, getAllRecruiters } = require("../../models/createrecruiter");
 
 const createRecruiterDB=async({name,company_name,  email,password,role,phone,company_description,company_website,industry_type})=>{
     if(!name|| !company_name ||  !email ||!password|| !role || !phone || !company_description || !company_website || !industry_type){
@@ -12,4 +12,12 @@ const createRecruiterDB=async({name,company_name,  email,password,role,phone,com
     return recruiter.rows[0]
 
 }
-module.exports={createRecruiterDB}
+
+const getAllRecruitersDB=async()=>{
+    const data = await getAllRecruiters();
+    if(data.length === 0){
+        throw new Error("Recruiter not found");
+    }
+    return data.rows;
+}
+module.exports={createRecruiterDB,getAllRecruitersDB}
