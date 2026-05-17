@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { HiBriefcase } from "react-icons/hi2";
 import { MdWork } from "react-icons/md";
 import { TailSpin, ThreeDots } from "react-loader-spinner";
+import { NavLink } from "react-router-dom";
 
 const AllJob = () => {
   const [data, setData] = useState([]);
@@ -47,9 +48,19 @@ const AllJob = () => {
             </div>
           </div>
           <div className="h-full w-[80px] md:w-[150px]   flex items-center justify-center ">
+            <NavLink to="/jobs">
             <button className="bg-gradient-to-br h-[30px] w-[70px] md:h-[50px] md:w-[90px] rounded-[5px] md:rounded-2xl font-bold from-slate-900 via-slate-800 to-slate-900 text-amber-50 shadow-slate-500 cursor-pointer shadow-2xl md:text-[16px] text-[12px]">
-              View All
+               {loading ? (<div className='flex items-center justify-center gap-2'>
+                                <h1 className="text-[10px]">Please Wait </h1>
+                                <TailSpin
+                                 visible={true}
+                                height="15"
+                                width="15"
+                                color="#60A5FA"
+                                />
+                            </div>) : ("View All")}
             </button>
+            </NavLink>
           </div>
         </div>
         {loading ? (

@@ -140,12 +140,12 @@ const UsersTable = () => {
                   <td className={`px-2 py-3 font-bold wrap-break-word md:text-[15px] text-[12px] whitespace-normal ${user.is_blocked === true ? "text-red-500":"text-green-500"}`}>
                     {user.is_blocked === true ? "Blocked" : "Active"}
                   </td>
-                  <NavLink to="/users">
-                  <td> <button className={`px-2 py-3  md:text-[15px] font-bold wrap-break-word text-[12px] whitespace-normal cursor-pointer underline underline-offset-4 decoration-blue-700 ${user.is_blocked ? "text-green-500" : "text-red-500"} relative w-fit  text-2xl cursor-pointer after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:h-[3px] after:w-0 after:bg-cyan-500 after:transition-all after:duration-300 hover:after:w-full `}>
+                  
+                  <td> <NavLink to="/users"> <button className={`px-2 py-3  md:text-[15px] font-bold wrap-break-word text-[12px] whitespace-normal cursor-pointer underline underline-offset-4 decoration-blue-700 ${user.is_blocked ? "text-green-500" : "text-red-500"} relative w-fit  text-2xl cursor-pointer after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:h-[3px] after:w-0 after:bg-cyan-500 after:transition-all after:duration-300 hover:after:w-full `}>
                     {user.is_blocked ? "UnBlock" : "Block"}
                   </button>
-                  </td>
                   </NavLink>
+                  </td>
                 </tr>
               ))}
             </tbody>

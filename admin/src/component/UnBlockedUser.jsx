@@ -90,8 +90,9 @@ const UnBlockedUserData=({id,name,onClose, updateUnBlockedUser})=>{
         
                   <button onClick={unblockedhandle}
                     className="w-full sm:w-1/2
-              bg-red-600
-              hover:bg-red-700
+              bg-green-700
+              hover:bg-green-800
+              cursor-pointer
               text-white py-2
               rounded-lg
               shadow-lg

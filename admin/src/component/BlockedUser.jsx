@@ -92,6 +92,7 @@ rounded-2xl shadow-2xl p-5 flex flex-col gap-4 md:m-0 mb-20"
             className="w-full sm:w-1/2
       bg-red-600
       hover:bg-red-700
+      cursor-pointer
       text-white py-2
       rounded-lg
       shadow-lg
