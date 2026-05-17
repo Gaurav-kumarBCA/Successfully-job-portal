@@ -11,12 +11,13 @@ import ApprovedJob from "../component/ApprovedJob";
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
-  const approvedData=(id)=>{
-    setJobs((prev)=>prev.map((item)=>
-    item.id === id ? {...item,status:"approved"} : item
-    )
-  );
-  }
+  const approvedData = (id) => {
+    setJobs((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, status: "approved" } : item,
+      ),
+    );
+  };
   useEffect(() => {
     const AllJobsDashboard = async () => {
       try {
@@ -40,9 +41,10 @@ const Jobs = () => {
     AllJobsDashboard();
   }, []);
 
-   if (loading) {
+  if (loading) {
     return (
-      <div className='
+      <div
+        className="
         h-screen
         w-full
         bg-gradient-to-br
@@ -52,30 +54,19 @@ const Jobs = () => {
         flex
         items-center
         justify-center
-      '>
-  
-        <div className='flex flex-col items-center gap-3'>
-          <ThreeDots
-            height="70"
-            width="70"
-            color="#fff"
-            visible={true}
-          />
-  
-          <div className='flex items-center gap-2'>
-            <p className='text-white text-sm md:text-lg'>
+      "
+      >
+        <div className="flex flex-col items-center gap-3">
+          <ThreeDots height="70" width="70" color="#fff" visible={true} />
+
+          <div className="flex items-center gap-2">
+            <p className="text-white text-sm md:text-lg">
               Loading Jobs page...
             </p>
-  
-            <TailSpin
-              height="20"
-              width="20"
-              color="#60A5FA"
-            />
+
+            <TailSpin height="20" width="20" color="#60A5FA" />
           </div>
-  
         </div>
-  
       </div>
     );
   }
@@ -234,7 +225,11 @@ ${
                     {item.status}
                   </div>
 
-                  <ApprovedJob status={item.status} id={item.id} approvedData={approvedData} />
+                  <ApprovedJob
+                    status={item.status}
+                    id={item.id}
+                    approvedData={approvedData}
+                  />
                 </div>
               </div>
             ))}

@@ -142,45 +142,151 @@ md:pb-10
 
 '>
 
-{filterUser.map((item,index)=>(
-  <div
-    key={index}
-    className='bg-slate-800 rounded-2xl p-5 shadow-lg w-full min-h-[230px] overflow-hidden'
-  >
-    <div className='flex gap-3'>
-      <img
-        src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${index}`}
-        alt='avatar'
-        className='h-14 w-14 rounded-full'
-      />
+  {filterUser.map((item,index)=>(
 
-      <div className='w-full flex flex-col items-center gap-2 justify-center'>
-        <p className={`${!item.is_blocked
-          ? "text-green-500 font-bold"
-          : "text-red-500 font-bold"
-        }`}>
-          {!item.is_blocked
-            ? "This account is active"
-            : "This account is currently Blocked"}
-        </p>
+<div
+key={item.id}
+className="
+relative
+rounded-3xl
+bg-gradient-to-br
+from-slate-900
+via-slate-800
+to-slate-900
+border
+border-slate-700
+shadow-2xl
+p-5
+hover:scale-[1.02]
+duration-300
+transition-all
 
-        <div className='text-white text-center break-words'>
-          Email : {item.email}
-        </div>
-      </div>
-    </div>
+"
+>
 
-    <h2 className='text-white font-bold mt-3'>
-      {item.name}
-    </h2>
+<div
+className="
+absolute
+top-0
+left-0
+w-full
+h-[3px]
+bg-gradient-to-r
+from-cyan-500
+via-blue-500
+to-purple-500
+"
+/>
 
-    <div className='flex gap-3 mt-5'>
-      <BlockedUser id={item.id} name={item.name} updateBlockedUser={updateBlockedUser}/>
-      <UnBlockedUser id={item.id} name={item.name}  updateUnBlockedUser={updateUnBlockedUser}/>
-     
-    </div>
+<div className="flex items-center gap-4">
 
-  </div>
+<img
+src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${index}`}
+alt=""
+className="
+h-16
+w-16
+rounded-full
+border-2
+border-cyan-500
+bg-slate-700
+"
+/>
+
+<div>
+
+<h1
+className="
+text-cyan-400
+text-xl
+font-bold
+"
+>
+{item.name}
+</h1>
+
+<p className="text-gray-400 text-sm">
+{item.role}
+</p>
+
+</div>
+
+</div>
+
+
+<div className="mt-5 space-y-3">
+
+<div className="flex justify-between">
+
+<p className="text-gray-400">
+Email
+</p>
+
+<p className="
+text-white
+text-sm
+truncate
+max-w-[150px]
+">
+{item.email}
+</p>
+
+</div>
+
+
+<div className="flex justify-between">
+
+<p className="text-gray-400">
+Status
+</p>
+
+<p
+className={`
+font-bold
+${!item.is_blocked
+? "text-green-400"
+: "text-red-400"}
+`}
+>
+
+{!item.is_blocked
+? "Active"
+: "Blocked"}
+
+</p>
+
+</div>
+
+</div>
+
+
+<div
+className="
+mt-5
+pt-4
+border-t
+border-slate-700
+flex
+gap-3
+"
+>
+
+<BlockedUser
+id={item.id}
+name={item.name}
+updateBlockedUser={updateBlockedUser}
+/>
+
+<UnBlockedUser
+id={item.id}
+name={item.name}
+updateUnBlockedUser={updateUnBlockedUser}
+/>
+
+</div>
+
+</div>
+
 ))}
 
 </div>
