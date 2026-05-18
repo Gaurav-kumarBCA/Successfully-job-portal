@@ -11,7 +11,8 @@ try {
     const data=await createRecruiterDB({name,company_name,  email,password:hashpassword,role,phone,company_description,company_website,industry_type});
     res.status(201).json({
             success:true,
-            message:"Recruiter Registration Successfully"
+            message:"Recruiter Registration Successfully",
+            data:data
         })
 
 } catch (error) {

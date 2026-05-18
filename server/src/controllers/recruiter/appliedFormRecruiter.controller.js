@@ -7,13 +7,18 @@ try {
 
     global.io.emit("newRecruiterApply",{
         message:"new recruiter applied",
-        name:name,
-        company:company_name
+       id:data.id,
+       name:name,
+       company:company_name,
+       email:company_email,
+       phone:phone,
+       website:company_website
     });
 
     res.status(201).json({
         success:true,
-        message:"Applied Success by Recruiter"
+        message:"Applied Success by Recruiter",
+        data:data
     })
 } catch (error) {
     console.log(error);

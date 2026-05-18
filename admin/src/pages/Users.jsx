@@ -41,7 +41,17 @@ const Users = () => {
             credentials:"include",
           })
           const data = await res.json();
-          setUser(data.data);
+          if(data.success){
+setUser(
+data.data || []
+);
+
+}else{
+
+setUser([]);
+
+}
+
         } catch (error) {
           console.log(error)
         } finally{

@@ -21,6 +21,12 @@ const approveRecruiter=async(req,res)=>{
     try {
         const id= req.params.id;
         const data= await approveRecruiterDB(id);
+        if(!data){
+            return res.json({
+                success:false,
+                message:"User not found"
+            })
+        }
         res.json({
             success:true,
             message:"Recruiter status Update",

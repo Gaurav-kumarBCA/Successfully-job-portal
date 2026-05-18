@@ -61,7 +61,7 @@ const Login = () => {
 
       setTimeout(() => {
         window.location.href = "/";
-      }, 1500);
+      }, 1000);
 
     } catch (error) {
       console.log(error);

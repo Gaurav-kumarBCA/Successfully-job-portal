@@ -29,6 +29,12 @@ const Deshboard = () => {
           return toast.error(data.message || "Somthing went Wrong")
         }
         Setdata(data.data)
+        if(data.success){
+          Setdata(data.data || [])
+        } 
+        else{
+          Setdata([])
+        }
       } catch (error) {
         return toast.error(error.message);
       } finally{

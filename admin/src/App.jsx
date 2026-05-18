@@ -6,6 +6,9 @@ import Users from './pages/Users'
 import Jobs from './pages/Jobs'
 import Recruiters from './pages/Recruiters'
 import Companies from './pages/Companies'
+import Notification from './pages/Notification'
+import CreateRecruiters from './pages/CreateRecruiters'
+import AllpandingRecruiter from './pages/AllpandingRecruiter'
 
 const App = () => {
   const theme = localStorage.getItem("theme");
@@ -24,6 +27,9 @@ if (theme === "dark") {
       <Route path='/jobs' element={<Jobs/>}/>
       <Route path='/recruiters' element={<Recruiters/>}/>
       <Route path='/companies' element={<Companies/>}/>
+      <Route path='/notification' element={<Notification/>}/>
+      <Route path='/create-recruiter' element={<CreateRecruiters/>}/>
+      <Route path='/pending-recruiters' element={<AllpandingRecruiter/>}/>
     </Routes>
     </BrowserRouter>
    )

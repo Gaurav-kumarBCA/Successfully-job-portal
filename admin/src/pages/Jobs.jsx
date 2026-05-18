@@ -32,6 +32,12 @@ const Jobs = () => {
         });
         const data = await res.json();
         setJobs(data.data);
+        if(data.success){
+          setJobs(data.data || [])
+        } 
+        else{
+          setJobs([])
+        }
       } catch (error) {
         console.log(error);
       } finally {
