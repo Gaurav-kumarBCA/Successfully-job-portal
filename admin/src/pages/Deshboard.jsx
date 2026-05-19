@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import UsersTable from '../component/UsersTable';
 import AllJob from '../component/AllJob';
 import { TailSpin, ThreeDots } from 'react-loader-spinner';
+import withAuth from '../component/withAuth';
 
 const Deshboard = () => {
   const [data,Setdata]=useState([]);
@@ -86,7 +87,7 @@ const Deshboard = () => {
 
   return (
    <Layout>
-    <div className='w-full h-[636px] no-scrollbar border-3 border-slate-900 md:h-[614px]  lg:h-[616px] bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 overflow-y-scroll '> 
+    <div className='w-full h-[636px] no-scrollbar border-3 border-slate-900 md:h-[614px]  lg:min-h-full bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 overflow-y-scroll '> 
 
       {loading ? (
         <div className='flex flex-col items-center justify-center h-[70vh]'>
@@ -213,4 +214,4 @@ const Deshboard = () => {
   )
 }
 
-export default Deshboard
+export default withAuth(Deshboard)

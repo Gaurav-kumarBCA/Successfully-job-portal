@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 import { MdWork } from "react-icons/md";
 import ApprovedJob from "../component/ApprovedJob";
+import withAuth from "../component/withAuth";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -246,4 +247,4 @@ ${
   );
 };
 
-export default Jobs;
+export default withAuth(Jobs);

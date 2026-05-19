@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { FaBuilding, FaUserTie } from "react-icons/fa";
 import { TailSpin, ThreeDots } from "react-loader-spinner";
 import { FiUser } from "react-icons/fi";
+import withAuth from "../component/withAuth";
 
 const Recruiters = () => {
   const [recruitersData, setRecruiters] = useState([]);
@@ -307,4 +308,4 @@ duration-300
   );
 };
 
-export default Recruiters;
+export default withAuth(Recruiters);

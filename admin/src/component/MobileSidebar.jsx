@@ -11,8 +11,10 @@ import {
 import { LuBuilding2 } from "react-icons/lu";
 import { NavLink, useSearchParams } from 'react-router-dom';
 import MobileSettingSidebar from './MobileSettingSidebar';
+import MobileLogout from './MobileLogout';
 const MobileSidebar = ({open,setOpen}) => {
   const [openSidebarSetting,setOpenSidebarSetting]=useState(false);
+  const [openLogout,setOpenLogout] = useState(false);
      const navLinkStyle = ({ isActive }) =>
     `
     flex items-center gap-4
@@ -135,25 +137,33 @@ const MobileSidebar = ({open,setOpen}) => {
             </span>
           </button>
 
-          <NavLink
-            to="/logout"
-            onClick={() => setOpen(false)}
-            className="
-              flex items-center gap-4
-              px-4 py-3
-              rounded-xl
-              text-red-300
-              hover:bg-red-500/20
-              transition-all duration-300
-            "
-          >
-            <FiLogOut className="text-xl" />
-            <span>Logout</span>
-          </NavLink>
+         <div
+           onClick={() => setOpenLogout(true)}
+           className="
+             flex items-center
+             gap-3
+             px-4
+             py-3
+             mx-2
+             rounded-xl
+             text-red-300
+             cursor-pointer
+             hover:bg-red-500/20
+             transition-all
+             duration-300
+           "
+         >
+           <FiLogOut className="text-xl" />
+         
+           <span className="text-[15px] font-medium">
+             Logout
+           </span>
+         </div>
 
         </div>
       </div>
         {<MobileSettingSidebar openSidebarSetting={openSidebarSetting} setOpenSidebarSetting={setOpenSidebarSetting} />}
+        {<MobileLogout openLogout={openLogout} setOpenLogout={setOpenLogout}/>}
 
     </>
   )

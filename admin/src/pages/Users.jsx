@@ -6,6 +6,7 @@ import { FaUser } from 'react-icons/fa'
 import BlockedUser from '../component/BlockedUser'
 import UnBlockedUser from '../component/UnBlockedUser'
 import { NavLink } from 'react-router-dom'
+import withAuth from '../component/withAuth'
 const Users = () => {
   const [user,setUser]=useState([]);
   const [loading,setLoading]=useState(false);
@@ -307,4 +308,4 @@ updateUnBlockedUser={updateUnBlockedUser}
   )
 }
 
-export default Users
+export default withAuth(Users);

@@ -42,5 +42,19 @@ const findUserById = async(id)=>{
    )
 }
 
+const profileModel = async(id)=>{
+   return await pool.query(
+      `
+      SELECT 
+        id,
+        name,
+        email,
+        is_blocked
+      FROM users
+      WHERE id=$1
+      `,
+      [id]
+   )
+}
 
-module.exports = { createUser, findUserByEmail , blockUserModel , UnblockUserModel , getAlluserModel , findUserById };
+module.exports = { createUser, findUserByEmail , blockUserModel , UnblockUserModel , getAlluserModel , findUserById, profileModel };

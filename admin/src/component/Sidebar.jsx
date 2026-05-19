@@ -13,8 +13,10 @@ import {
 } from "react-icons/fi";
 import { FaBuilding } from "react-icons/fa";
 import { useState } from "react";
+import Logout from "./Logout";
 const Sidebar = () => {
 const [openSetting, setOpenSetting] = useState(false);
+const [openLogout,setOpenLogout] = useState(false);
 console.log(openSetting,"hihih")
   const navLinkStyle = ({ isActive }) =>
     `
@@ -121,28 +123,32 @@ console.log(openSetting,"hihih")
 
 
 
-        <NavLink
-          to="/logout"
-          className={({ isActive }) =>
-            `
-            flex items-center gap-3
-            px-4 py-3 mx-2
-            rounded-xl
-            text-red-300
-            hover:bg-red-500/20
-            transition-all duration-300
-            ${isActive ? "bg-red-500/20" : ""}
-          `
-          }
-        >
-          <FiLogOut className="text-xl" />
-          <span className="text-[15px] font-medium">
-            Logout
-          </span>
-        </NavLink>
+        <div
+  onClick={() => setOpenLogout(true)}
+  className="
+    flex items-center
+    gap-3
+    px-4
+    py-3
+    mx-2
+    rounded-xl
+    text-red-300
+    cursor-pointer
+    hover:bg-red-500/20
+    transition-all
+    duration-300
+  "
+>
+  <FiLogOut className="text-xl" />
+
+  <span className="text-[15px] font-medium">
+    Logout
+  </span>
+</div>
 
       </div>
       <Setting openSetting={openSetting} setOpenSetting={setOpenSetting}  />
+      <Logout openLogout={openLogout} setOpenLogout={setOpenLogout}/>
     </div>
     
   );

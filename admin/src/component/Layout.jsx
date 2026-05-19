@@ -15,7 +15,7 @@ const Layout = ({children}) => {
         <div className='flex-1 min-h-screen flex flex-col'>
             <Navbar/>
 
-        <div className='flex-1  bg-amber-950 '>
+        <div className='flex-1 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900  '>
             {children}  
         </div>
 

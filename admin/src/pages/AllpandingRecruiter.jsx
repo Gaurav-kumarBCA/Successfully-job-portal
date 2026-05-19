@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import Layout from "../component/Layout";
 import { TailSpin, ThreeDots } from "react-loader-spinner";
 import { BsPeopleFill } from "react-icons/bs";
+import withAuth from "../component/withAuth";
 
 const AllpandingRecruiter = () => {
   const [recruiter, setRecruiter] = useState([]);
@@ -380,4 +381,4 @@ text-white
   );
 };
 
-export default AllpandingRecruiter;
+export default withAuth(AllpandingRecruiter);

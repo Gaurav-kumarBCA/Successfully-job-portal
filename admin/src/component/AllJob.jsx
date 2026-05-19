@@ -149,9 +149,9 @@ const AllJob = () => {
                     <td>
                       {" "}
                       <button
-                        className={`px-2 py-3  md:text-[15px] font-bold wrap-break-word text-[12px] whitespace-normal cursor-pointer underline underline-offset-4 decoration-blue-700 ${user.status === "approved" ? "text-red-500" : "text-green-500"} relative w-fit  text-2xl cursor-pointer after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:h-[3px] after:w-0 after:bg-cyan-500 after:transition-all after:duration-300 hover:after:w-full `}
+                        className={`px-2 py-3  md:text-[15px] font-bold wrap-break-word text-[12px] whitespace-normal cursor-pointer underline underline-offset-4 decoration-blue-700 ${user.status === "approved" ? "text-green-500" : "text-red-500"} relative w-fit  text-2xl cursor-pointer after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:h-[3px] after:w-0 after:bg-cyan-500 after:transition-all after:duration-300 hover:after:w-full `}
                       >
-                        {user.status === "approved" ? "Pending" : "Approved"}
+                        {user.status === "approved" ? "Approved" : "Pending"}
                       </button>
                     </td>
                   </tr>

@@ -47,10 +47,12 @@ const Setting = ({ openSetting, setOpenSetting }) => {
 
         <div className="p-4 flex flex-col gap-4">
 
-          <button className="flex items-center cursor-pointer gap-4 p-4 rounded-xl text-white bg-slate-800">
+          <NavLink to="/profile">
+            <button className="flex items-center w-full cursor-pointer gap-4 p-4 rounded-xl text-white bg-slate-800">
             <FiUser />
             <span>Profile</span>
           </button>
+          </NavLink>
 
          <NavLink to="/pending-recruiters">
            <button className="flex items-center w-full cursor-pointer gap-4 p-4 rounded-xl text-white bg-slate-800">

@@ -5,9 +5,11 @@ import MobileSidebar from "./MobileSidebar";
 import { io } from "socket.io-client";
 import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const { user } = useAuth();
 
   const [notificationCount, setNotificationCount] = useState(
     Number(localStorage.getItem("notificationCount")) || 0,
@@ -202,12 +204,47 @@ text-white
             </button>
           </NavLink>
 
-          <FaUserCircle
-            className="
-text-white
-text-3xl
-"
-          />
+         <div className="flex items-center gap-3">
+
+  <div
+    className="
+    w-10
+    h-10
+    rounded-full
+    bg-blue-600
+    flex
+    items-center
+    justify-center
+    text-white
+    font-bold
+    text-lg
+    "
+  >
+    {user?.name?.charAt(0).toUpperCase() || "A"}
+  </div>
+
+  <div className="hidden sm:flex flex-col">
+    <p
+      className="
+      text-white
+      text-sm
+      font-semibold
+      "
+    >
+      {user?.name || "Admin"}
+    </p>
+
+    <span
+      className="
+      text-gray-400
+      text-xs
+      "
+    >
+      Administrator
+    </span>
+  </div>
+
+</div>
         </div>
 
         <MobileSidebar open={open} setOpen={setOpen} />

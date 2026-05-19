@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useLocation } from "react-router-dom";
+import withAuth from "../component/withAuth";
 
 const CreateRecruiters = () => {
   const location = useLocation();
@@ -452,4 +453,4 @@ duration-300
   );
 };
 
-export default CreateRecruiters;
+export default withAuth(CreateRecruiters);

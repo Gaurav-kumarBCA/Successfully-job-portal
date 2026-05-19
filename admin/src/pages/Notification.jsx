@@ -4,6 +4,7 @@ import { IoNotifications } from "react-icons/io5";
 import { FaUserPlus, FaPhone, FaEnvelope, FaGlobe } from "react-icons/fa";
 
 import { NavLink, useLocation } from "react-router-dom";
+import withAuth from "../component/withAuth";
 
 const Notification = () => {
   const [notification, setNotification] = useState([]);
@@ -192,4 +193,4 @@ gap-2
   );
 };
 
-export default Notification;
+export default withAuth(Notification);

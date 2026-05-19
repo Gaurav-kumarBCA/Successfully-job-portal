@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 import { TailSpin, ThreeDots } from "react-loader-spinner";
 import { FaBuilding } from "react-icons/fa";
+import withAuth from "../component/withAuth";
 
 const Companies = () => {
   const [companiesData, setCompaniedData] = useState([]);
@@ -296,4 +297,4 @@ duration-300
   );
 };
 
-export default Companies;
+export default withAuth(Companies);
