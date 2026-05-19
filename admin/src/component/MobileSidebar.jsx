@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   FiHome,
   FiUsers,
@@ -9,8 +9,10 @@ import {
 } from "react-icons/fi";
 
 import { LuBuilding2 } from "react-icons/lu";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
+import MobileSettingSidebar from './MobileSettingSidebar';
 const MobileSidebar = ({open,setOpen}) => {
+  const [openSidebarSetting,setOpenSidebarSetting]=useState(false);
      const navLinkStyle = ({ isActive }) =>
     `
     flex items-center gap-4
@@ -123,14 +125,15 @@ const MobileSidebar = ({open,setOpen}) => {
             <span>Create Recruiter</span>
           </NavLink>
 
-          <NavLink
-            to="/settings"
-            className={navLinkStyle}
-            onClick={() => setOpen(false)}
+           <button
+            onClick={() => {setOpen(false);setOpenSidebarSetting(true);}}
+            className={navLinkStyle({ isActive: false })}
           >
             <FiSettings className="text-xl" />
-            <span>Settings</span>
-          </NavLink>
+            <span className="text-[15px] font-medium">
+              Settings
+            </span>
+          </button>
 
           <NavLink
             to="/logout"
@@ -150,6 +153,7 @@ const MobileSidebar = ({open,setOpen}) => {
 
         </div>
       </div>
+        {<MobileSettingSidebar openSidebarSetting={openSidebarSetting} setOpenSidebarSetting={setOpenSidebarSetting} />}
 
     </>
   )

@@ -31,10 +31,10 @@ const AllJob = () => {
   }, []);
   const latestJobs = [...data].reverse().slice(0, 9);
   return (
-    <div className="w-full  min-h-screen  flex flex-col items-center  justify-center ">
+    <div className="w-full  min-h-screen  flex flex-col items-center  justify-center pb-35">
       <div
         className="w-full overflow-hidden max-w-[350px] sm:max-w-[500px] md:max-w-[700px] lg:max-w-[900px]
-              h-[650px] sm:h-[950px] md:h-[500px] lg:h-[550px] rounded-2xl mt-2  shadow-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 "
+              h-[650px] sm:h-[950px] md:h-[500px] lg:h-[550px] rounded-2xl mt-2  shadow-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900  "
       >
         <div className="w-full h-[60px] md:h-[80px] bg-slate-900 rounded-tl-2xl rounded-tr-2xl  flex justify-between">
           <div className="h-full w-[150px] md:w-[180px]  flex items-center justify-between">

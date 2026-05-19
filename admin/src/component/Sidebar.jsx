@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Setting from "./Setting";
 
 import {
   FiHome,
@@ -11,8 +12,10 @@ import {
 
 } from "react-icons/fi";
 import { FaBuilding } from "react-icons/fa";
+import { useState } from "react";
 const Sidebar = () => {
-
+const [openSetting, setOpenSetting] = useState(false);
+console.log(openSetting,"hihih")
   const navLinkStyle = ({ isActive }) =>
     `
     flex items-center gap-3
@@ -30,9 +33,11 @@ const Sidebar = () => {
   `;
 
   return (
+    
     <div
       className="
-      min-h-screen
+      no-scrollbar
+      min-h-full
       w-[200px]
       bg-gradient-to-br
       from-slate-950
@@ -104,12 +109,17 @@ const Sidebar = () => {
           </span>
         </NavLink>
 
-        <NavLink to="/settings" className={navLinkStyle}>
-          <FiSettings className="text-xl" />
-          <span className="text-[15px] font-medium">
-            Settings
-          </span>
-        </NavLink>
+       <button
+  onClick={() => setOpenSetting(true)}
+  className={navLinkStyle({isActive:false})}
+>
+  <FiSettings className="text-xl" />
+  <span className="text-[15px] font-medium">
+    Settings
+  </span>
+</button>
+
+
 
         <NavLink
           to="/logout"
@@ -132,7 +142,9 @@ const Sidebar = () => {
         </NavLink>
 
       </div>
+      <Setting openSetting={openSetting} setOpenSetting={setOpenSetting}  />
     </div>
+    
   );
 };
 

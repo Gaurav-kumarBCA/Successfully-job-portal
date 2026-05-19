@@ -30,6 +30,7 @@ if (theme === "dark") {
       <Route path='/notification' element={<Notification/>}/>
       <Route path='/create-recruiter' element={<CreateRecruiters/>}/>
       <Route path='/pending-recruiters' element={<AllpandingRecruiter/>}/>
+      
     </Routes>
     </BrowserRouter>
    )

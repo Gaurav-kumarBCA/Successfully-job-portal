@@ -86,7 +86,7 @@ const Deshboard = () => {
 
   return (
    <Layout>
-    <div className='w-full h-[517px] no-scrollbar border-3 border-slate-900 md:h-[510px]  lg:h-[505px] bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 overflow-y-scroll '> 
+    <div className='w-full h-[636px] no-scrollbar border-3 border-slate-900 md:h-[614px]  lg:h-[616px] bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 overflow-y-scroll '> 
 
       {loading ? (
         <div className='flex flex-col items-center justify-center h-[70vh]'>
