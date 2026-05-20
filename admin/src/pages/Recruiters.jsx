@@ -6,8 +6,9 @@ import { FaBuilding, FaUserTie } from "react-icons/fa";
 import { TailSpin, ThreeDots } from "react-loader-spinner";
 import { FiUser } from "react-icons/fi";
 import withAuth from "../component/withAuth";
-
+import { useTheme } from "../hooks/useTheme";
 const Recruiters = () => {
+  const { darkMode } = useTheme();
   const [recruitersData, setRecruiters] = useState([]);
   const [loading,setLoading]= useState(false);
   useEffect(() => {
@@ -48,10 +49,11 @@ setRecruiters([]);
           <div className='
             h-screen
             w-full
-            bg-gradient-to-br
-            from-slate-950
-            via-blue-950
-            to-slate-900
+            bg-white
+           dark:bg-gradient-to-br
+            dark:from-slate-950
+            dark:via-blue-950
+            dark:to-slate-900
             flex
             items-center
             justify-center
@@ -61,19 +63,19 @@ setRecruiters([]);
               <ThreeDots
                 height="70"
                 width="70"
-                color="#fff"
+                color={darkMode ? "#ffffff" : "#000000"}
                 visible={true}
               />
       
               <div className='flex items-center gap-2'>
-                <p className='text-white text-sm md:text-lg'>
+                <p className='text-black dark:text-white text-sm md:text-lg'>
                   Loading Recruiters page...
                 </p>
       
                 <TailSpin
                   height="20"
                   width="20"
-                  color="#60A5FA"
+                  color={darkMode ? "#60A5FA" : "#2563EB"}
                 />
               </div>
       
@@ -84,15 +86,15 @@ setRecruiters([]);
       }
   return (
     <Layout>
-      <div className="min-h-full  w-full bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 ">
-        <div className="w-full h-[50px] border-b border-slate-900  flex gap-4 ">
+      <div className="min-h-full  w-full bg-white dark:bg-gradient-to-br dark:from-slate-950 dark:via-blue-950 dark:to-slate-900 ">
+        <div className="w-full h-[50px] border-b border-gray-300 dark:border-slate-900  flex gap-4 ">
           <div className="h-full w-[50px] md:w-[50px]  flex items-center ">
             <NavLink to="/">
-              <IoArrowBack size={23} className="text-white ml-2 mt-3 " />
+              <IoArrowBack size={23} className="dark:text-white text-black ml-2 mt-3 " />
             </NavLink>
           </div>
           <div className="h-full   flex items-end ">
-            <h1 className="text-white font-semibold  text-2xl md:text-3xl ">
+            <h1 className="text-black dark:text-white font-semibold  text-2xl md:text-3xl ">
               Recruiter Cards{" "}
             </h1>
           </div>
@@ -104,23 +106,23 @@ setRecruiters([]);
                                       height="50"
                                       width="50"
                                       radius="9"
-                                      color="#ffffff"
+                                      color={darkMode ? "#ffffff" : "#000000"}
                                       visible={true}
                                     />
                                   </div>
                                   <div className="flex items-center justify-center gap-2.5">
-                                    <h3 className="text-white text-[10px] ml-12">
+                                    <h3 className="text-black dark:text-white text-[10px] ml-12">
                                       Please Wait Recruiters Uploade
                                     </h3>
-                                    <TailSpin visible={true} height="20" width="20" color="#60A5FA" />
+                                    <TailSpin visible={true} height="20" width="20" color={darkMode ? "#60A5FA" : "#2563EB"} />
                                   </div>
                                 </div>
         ) : recruitersData.length === 0 ? (
            <div className="flex gap-2 items-center justify-center h-[70vh]">
-                                  <span className="text-white">
+                                  <span className="text-black dark:text-white">
                                     <FiUser size={20} />
                                   </span>
-                                  <h1 className="text-white text-sm md:text-2xl font-bold">
+                                  <h1 className="text-black dark:text-white text-sm md:text-2xl font-bold">
                                     Companies not found
                                   </h1>
                                 </div>
@@ -143,12 +145,14 @@ md:pb-10
               className="
 relative
 rounded-3xl
-bg-gradient-to-br
-from-slate-900
-via-slate-800
-to-slate-900
+bg-white
+dark:bg-gradient-to-br
+dark:from-slate-900
+dark:via-slate-800
+dark:to-slate-900
 border
-border-slate-700
+dark:border-slate-700
+border-gray-300
 shadow-2xl
 p-5
 hover:scale-[1.02]
@@ -199,31 +203,31 @@ font-bold
                     {item.name}
                   </h1>
 
-                  <p className="text-gray-400 text-sm">{item.role}</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">{item.role}</p>
                 </div>
               </div>
 
               <div className="mt-5 space-y-3">
                 <div className="flex justify-between">
-                  <p className="text-gray-400">Company</p>
+                  <p className="text-gray-600 dark:text-gray-400">Company</p>
 
-                  <p className="text-white">{item.company_name}</p>
+                  <p className="text-black dark:text-white">{item.company_name}</p>
                 </div>
 
                 <div className="flex justify-between">
-                  <p className="text-gray-400">Industry</p>
+                  <p className="text-gray-600 dark:text-gray-400">Industry</p>
 
                   <p className="text-cyan-400">{item.industry_type}</p>
                 </div>
 
                 <div className="flex justify-between">
-                  <p className="text-gray-400">Phone</p>
+                  <p className="text-gray-600 dark:text-gray-400">Phone</p>
 
-                  <p className="text-white">{item.phone}</p>
+                  <p className="text-black dark:text-white">{item.phone}</p>
                 </div>
 
                 <div className="flex justify-between">
-                  <p className="text-gray-400">Email</p>
+                  <p className="text-gray-600 dark:text-gray-400">Email</p>
 
                   <p
                     className="
@@ -238,7 +242,7 @@ max-w-[150px]
                 </div>
 
                 <div>
-                  <p className="text-gray-400 text-sm">Description</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Description</p>
 
                   <p
                     className="
@@ -258,7 +262,8 @@ line-clamp-3
 mt-5
 pt-3
 border-t
-border-slate-700
+dark:border-slate-700
+border-gray-600
 flex
 justify-between
 items-center
@@ -288,7 +293,8 @@ px-4
 py-2
 rounded-xl
 text-sm
-text-white
+dark:text-white
+text-black
 duration-300
 "
                 >

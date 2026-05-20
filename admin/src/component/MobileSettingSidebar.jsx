@@ -8,17 +8,14 @@ import {
 } from "react-icons/fi";
 import { MdAnimation } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import { useTheme } from "../hooks/useTheme";
 
 const MobileSettingSidebar = ({
   openSidebarSetting,
   setOpenSidebarSetting,
 }) => {
-
-  const [darkMode, setDarkMode] =
-    useState(true);
-
-  const [animation, setAnimation] =
-    useState(true);
+  const [animation, setAnimation] = useState(true);
+  const {darkMode,setDarkMode}=useTheme();
 
   return (
     <>
@@ -53,11 +50,11 @@ const MobileSettingSidebar = ({
           right-0
           h-screen
           w-[290px]
-
-          bg-gradient-to-br
-          from-slate-950
-          via-blue-950
-          to-slate-900
+          bg-white
+          dark:bg-gradient-to-br
+          dark:from-slate-950
+          dark:via-blue-950
+          dark:to-slate-900
 
           border-l
           border-white/10
@@ -84,12 +81,14 @@ const MobileSettingSidebar = ({
           items-center
           p-5
           border-b
-          border-white/10
+          dark:border-white/10
+          border-gray-300
         "
         >
           <h1
             className="
-            text-white
+            dark:text-white
+            text-black
             text-xl
             font-bold
           "
@@ -104,7 +103,8 @@ const MobileSettingSidebar = ({
           >
             <IoClose
               className="
-              text-white
+              dark:text-white
+              text-black
               text-3xl
             "
             />
@@ -133,8 +133,10 @@ const MobileSettingSidebar = ({
             p-4
             w-full
             rounded-xl
-            text-white
-            bg-slate-800
+            dark:text-white
+            text-black
+            dark:bg-slate-800
+            bg-gray-200
           "
           >
             <FiUser />
@@ -162,8 +164,10 @@ const MobileSettingSidebar = ({
               p-4
               rounded-xl
               w-full
-              text-white
-              bg-slate-800
+              dark:text-white
+              text-black
+              dark:bg-slate-800
+              bg-gray-200
             "
             >
               <FiUsers />
@@ -191,8 +195,10 @@ const MobileSettingSidebar = ({
               p-4
               rounded-xl
               w-full
-              text-white
-              bg-slate-800
+              dark:text-white
+              text-black
+              dark:bg-slate-800
+              bg-gray-200
             "
             >
               <FiBell />
@@ -213,7 +219,8 @@ const MobileSettingSidebar = ({
             items-center
             p-4
             rounded-xl
-            bg-slate-800
+            dark:bg-slate-800
+            bg-gray-200
           "
           >
             <div
@@ -221,7 +228,8 @@ const MobileSettingSidebar = ({
               flex
               items-center
               gap-3
-              text-white
+              dark:text-white
+              text-black
             "
             >
               <FiMoon />
@@ -258,7 +266,8 @@ const MobileSettingSidebar = ({
                 w-4
                 h-4
                 rounded-full
-                bg-white
+                dark:bg-white
+                bg-black
                 transition-all
                 ${
                   darkMode
@@ -281,7 +290,8 @@ const MobileSettingSidebar = ({
             items-center
             p-4
             rounded-xl
-            bg-slate-800
+            dark:bg-slate-800
+            bg-gray-200
           "
           >
             <div
@@ -289,7 +299,8 @@ const MobileSettingSidebar = ({
               flex
               items-center
               gap-3
-              text-white
+              dark:text-white
+              text-black
             "
             >
               <MdAnimation />
@@ -326,7 +337,8 @@ const MobileSettingSidebar = ({
                 w-4
                 h-4
                 rounded-full
-                bg-white
+                dark:bg-white
+                bg-black
                 transition-all
                 ${
                   animation
@@ -337,12 +349,12 @@ const MobileSettingSidebar = ({
               />
 
             </button>
-
           </div>
-
         </div>
+        
 
       </div>
+    
     </>
   );
 };

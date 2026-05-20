@@ -53,10 +53,11 @@ const Logout = ({ openLogout, setOpenLogout }) => {
           max-w-[420px]
           rounded-3xl
           border border-white/10
-          bg-gradient-to-br
-          from-slate-950
-          via-blue-950
-          to-slate-900
+          bg-white
+          dark:bg-gradient-to-br
+          dark:from-slate-950
+          dark:via-blue-950
+          dark:to-slate-900
           shadow-[0_0_50px_rgba(59,130,246,0.25)]
           p-7
           transform
@@ -77,7 +78,8 @@ const Logout = ({ openLogout, setOpenLogout }) => {
           absolute
           right-4
           top-4
-          text-gray-400
+          dark:text-gray-400
+          text-black
           hover:text-white
           "
         >
@@ -90,21 +92,23 @@ const Logout = ({ openLogout, setOpenLogout }) => {
           w-16
           h-16
           rounded-full
-          bg-red-500/20
+          dark:bg-red-500/20
+          bg-red-500/40
           mx-auto
           flex
           items-center
           justify-center
           "
         >
-          <FiLogOut className="text-red-400 text-3xl" />
+          <FiLogOut className="dark:text-red-400 text-red-600 text-3xl" />
         </div>
 
         {/* Title */}
         <h1
           className="
           text-center
-          text-white
+          dark:text-white
+          text-black
           text-2xl
           font-bold
           mt-5
@@ -116,7 +120,8 @@ const Logout = ({ openLogout, setOpenLogout }) => {
         <p
           className="
           text-center
-          text-gray-400
+          dark:text-gray-400
+          text-gray-600
           text-sm
           mt-3
           "
@@ -134,9 +139,11 @@ const Logout = ({ openLogout, setOpenLogout }) => {
             flex-1
             h-12
             rounded-xl
-            bg-white/10
-            text-white
-            hover:bg-white/20
+            dark:bg-white/10
+            bg-gray-400
+            dark:text-white
+            text-black
+            
             transition-all
             "
           >

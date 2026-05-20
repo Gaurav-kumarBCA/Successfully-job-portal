@@ -5,8 +5,10 @@ import Layout from "../component/Layout";
 import { TailSpin, ThreeDots } from "react-loader-spinner";
 import { BsPeopleFill } from "react-icons/bs";
 import withAuth from "../component/withAuth";
+import { useTheme } from "../hooks/useTheme";
 
 const AllpandingRecruiter = () => {
+  const { darkMode } = useTheme();
   const [recruiter, setRecruiter] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -54,24 +56,25 @@ const AllpandingRecruiter = () => {
         className="
           h-screen
           w-full
-          bg-gradient-to-br
-          from-slate-950
-          via-blue-950
-          to-slate-900
+          bg-white
+          derk:bg-gradient-to-br
+          dark:from-slate-950
+          dark:via-blue-950
+          dark:to-slate-900
           flex
           items-center
           justify-center
         "
       >
         <div className="flex flex-col items-center gap-3">
-          <ThreeDots height="70" width="70" color="#fff" visible={true} />
+          <ThreeDots height="70" width="70" color={darkMode ? "#ffffff" : "#000000"} visible={true} />
 
           <div className="flex items-center gap-2">
-            <p className="text-white text-sm md:text-lg">
+            <p className="text-black dark:text-white text-sm md:text-lg">
               Loading Recruiters Data page...
             </p>
 
-            <TailSpin height="20" width="20" color="#60A5FA" />
+            <TailSpin height="20" width="20" color={darkMode ? "#60A5FA" : "#2563EB"} />
           </div>
         </div>
       </div>
@@ -84,10 +87,11 @@ const AllpandingRecruiter = () => {
         className="
 min-h-full
 w-full
-bg-gradient-to-br
-from-slate-950
-via-blue-950
-to-slate-900
+bg-gray-100
+dark:bg-gradient-to-br
+dark:from-slate-950
+dark:via-blue-950
+dark:to-slate-900
 "
       >
         <div
@@ -95,7 +99,8 @@ to-slate-900
 w-full
 h-[50px]
 border-b
-border-slate-900
+dark:border-slate-900
+border-gray-300
 flex
 gap-4
 "
@@ -112,7 +117,8 @@ items-center
               <IoArrowBack
                 size={23}
                 className="
-text-white
+dark:text-white
+text-black
 ml-2
 mt-3
 "
@@ -129,7 +135,8 @@ items-end
           >
             <h1
               className="
-text-white
+dark:text-white
+text-black
 font-semibold
 text-2xl
 md:text-3xl
@@ -150,7 +157,7 @@ justify-center
 h-[70vh]
 "
           >
-            <ThreeDots height="70" width="70" color="#fff" />
+            <ThreeDots height="70" width="70" color={darkMode ? "#ffffff" : "#000000"} />
 
             <div
               className="
@@ -161,13 +168,14 @@ gap-2
             >
               <p
                 className="
-text-white
+dark:text-white
+text-black
 "
               >
                 Loading Recruiters...
               </p>
 
-              <TailSpin height="20" width="20" color="#60A5FA" />
+              <TailSpin height="20" width="20" color={darkMode ? "#60A5FA" : "#2563EB"} />
             </div>
           </div>
         ) : recruiter.length === 0 ? (
@@ -183,13 +191,15 @@ h-[70vh]
             <BsPeopleFill
               size={22}
               className="
-text-white
+dark:text-white
+text-black
 "
             />
 
             <h1
               className="
-text-white
+dark:text-white
+text-black
 text-sm
 md:text-2xl
 font-bold
@@ -218,12 +228,14 @@ md:pb-10
                 className="
 relative
 rounded-3xl
-bg-gradient-to-br
-from-slate-900
-via-slate-800
-to-slate-900
+bg-white
+dark:bg-gradient-to-br
+dark:from-slate-900
+dark:via-slate-800
+dark:to-slate-900
 border
-border-slate-700
+dark:border-slate-700
+border-gray-300
 shadow-2xl
 p-5
 hover:scale-[1.02]
@@ -277,7 +289,8 @@ font-bold
 
                     <p
                       className="
-text-gray-400
+dark:text-gray-400
+text-gray-600
 text-sm
 "
                     >
@@ -292,7 +305,7 @@ mt-5
 space-y-3
 "
                 >
-                  <p className="text-white">
+                  <p className="dark:text-white text-black">
                     Company:
                     <span
                       className="
@@ -306,7 +319,8 @@ ml-2
 
                   <p
                     className="
-text-gray-300
+dark:text-gray-300
+text-gray-600
 truncate
 "
                   >
@@ -315,7 +329,8 @@ truncate
 
                   <p
                     className="
-text-gray-300
+dark:text-gray-300
+text-gray-600
 "
                   >
                     {item.phone}
@@ -323,7 +338,8 @@ text-gray-300
 
                   <p
                     className="
-text-white
+dark:text-white
+text-black
 text-sm
 line-clamp-3
 "
@@ -337,7 +353,8 @@ line-clamp-3
 mt-5
 pt-3
 border-t
-border-slate-700
+dark:border-slate-700
+border-gray-600
 flex
 justify-between
 items-center

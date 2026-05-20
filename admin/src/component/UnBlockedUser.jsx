@@ -130,10 +130,11 @@ className="
 w-full
 max-w-sm
 sm:max-w-md
-bg-gradient-to-br
-from-slate-900
-via-slate-800
-to-slate-900
+bg-white
+dark:bg-gradient-to-br
+dark:from-slate-900
+dark:via-slate-800
+dark:to-slate-900
 border
 border-slate-700
 rounded-2xl
@@ -152,7 +153,8 @@ className="
 h-16
 w-16
 rounded-full
-bg-green-500/20
+dark:bg-green-500/20
+bg-green-400
 flex
 items-center
 justify-center
@@ -162,8 +164,8 @@ justify-center
 <FaUserCheck
 className="
 text-3xl
-text-green-500
-"
+dark:text-green-500
+text-green-700"
 />
 
 </div>
@@ -175,7 +177,8 @@ className="
 text-center
 text-lg
 font-bold
-text-white
+dark:text-white
+text-black
 "
 >
 UnBlock User Account
@@ -193,7 +196,7 @@ bg-slate-700
 className="
 text-center
 text-sm
-text-slate-300
+dark:text-slate-300 text-black
 leading-6
 "
 >
@@ -235,7 +238,7 @@ w-full
 sm:w-1/2
 border
 border-slate-600
-text-slate-300
+dark:text-slate-300 text-black
 py-2
 rounded-lg
 hover:bg-slate-700

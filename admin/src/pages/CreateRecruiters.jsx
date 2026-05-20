@@ -124,10 +124,11 @@ else{
       className="
 min-h-screen
 w-full
-bg-gradient-to-br
-from-slate-950
-via-blue-950
-to-slate-900
+bg-gray-100
+dark:bg-gradient-to-br
+dark:from-slate-950
+dark:via-blue-950
+dark:to-slate-900
 pb-10
 "
     >
@@ -136,7 +137,8 @@ pb-10
 w-full
 h-[60px]
 border-b
-border-white/10
+dark:border-white/10
+border-gray-300
 flex
 items-center
 gap-4
@@ -144,12 +146,13 @@ px-2
 "
       >
         <NavLink to="/pending-recruiters">
-          <IoArrowBack size={24} className="text-white" />
+          <IoArrowBack size={24} className="text-black dark:text-white" />
         </NavLink>
 
         <h1
           className="
-text-white
+dark:text-white
+text-black
 font-bold
 text-2xl
 "
@@ -175,7 +178,8 @@ md:pb-0
           className="
 w-full
 max-w-4xl
-bg-slate-900/60
+dark:bg-slate-900/60
+bg-white
 backdrop-blur-lg
 border
 border-white/10
@@ -190,7 +194,8 @@ shadow-2xl
 text-center
 text-3xl
 font-bold
-text-cyan-400
+dark:text-cyan-50
+text-black
 mb-8
 "
           >
@@ -211,7 +216,8 @@ gap-5
 absolute
 left-4
 top-4
-text-cyan-400
+dark:text-cyan-50
+text-black
 "
               />
 
@@ -224,8 +230,10 @@ text-cyan-400
                 className="
 w-full
 pl-12
-bg-slate-800
-text-white
+dark:bg-slate-800
+bg-gray-200
+dark:text-white
+text-black
 p-3
 rounded-xl
 outline-none
@@ -239,7 +247,8 @@ outline-none
 absolute
 left-4
 top-4
-text-cyan-400
+dark:text-cyan-400
+text-black
 "
               />
 
@@ -252,8 +261,10 @@ text-cyan-400
                 className="
 w-full
 pl-12
-bg-slate-800
-text-white
+dark:bg-slate-800
+bg-gray-200
+dark:text-white
+text-black
 p-3
 rounded-xl
 outline-none
@@ -267,7 +278,8 @@ outline-none
 absolute
 left-4
 top-4
-text-cyan-400
+dark:text-cyan-400
+text-black
 "
               />
 
@@ -281,8 +293,10 @@ text-cyan-400
                 className="
 w-full
 pl-12
-bg-slate-800
-text-white
+dark:bg-slate-800
+bg-gray-200
+dark:text-white
+text-black
 p-3
 rounded-xl
 outline-none
@@ -296,7 +310,8 @@ outline-none
 absolute
 left-4
 top-4
-text-cyan-400
+dark:text-cyan-400
+text-black
 "
               />
 
@@ -310,8 +325,10 @@ text-cyan-400
                 className="
 w-full
 pl-12
-bg-slate-800
-text-white
+dark:bg-slate-800
+bg-gray-200
+dark:text-white
+text-black
 p-3
 rounded-xl
 outline-none
@@ -325,7 +342,8 @@ outline-none
 absolute
 left-4
 top-4
-text-cyan-400
+dark:text-cyan-400
+text-black
 "
               />
 
@@ -338,8 +356,10 @@ text-cyan-400
                 className="
 w-full
 pl-12
-bg-slate-800
-text-white
+dark:bg-slate-800
+bg-gray-200
+dark:text-white
+text-black
 p-3
 rounded-xl
 outline-none
@@ -353,7 +373,8 @@ outline-none
 absolute
 left-4
 top-4
-text-cyan-400
+dark:text-cyan-400
+text-black
 "
               />
 
@@ -366,8 +387,10 @@ text-cyan-400
                 className="
 w-full
 pl-12
-bg-slate-800
-text-white
+dark:bg-slate-800
+bg-gray-200
+dark:text-white
+text-black
 p-3
 rounded-xl
 outline-none
@@ -386,7 +409,8 @@ md:col-span-2
 absolute
 left-4
 top-4
-text-cyan-400
+dark:text-cyan-400
+text-black
 "
               />
 
@@ -399,8 +423,10 @@ text-cyan-400
                 className="
 w-full
 pl-12
-bg-slate-800
-text-white
+dark:bg-slate-800
+bg-gray-200
+dark:text-white
+text-black
 p-3
 rounded-xl
 outline-none
@@ -421,8 +447,11 @@ md:col-span-2
                 onChange={handleChange}
                 className="
 w-full
-bg-slate-800
-text-white
+dark:bg-slate-800
+bg-gray-200
+dark:text-white
+text-black
+
 p-4
 rounded-xl
 outline-none
@@ -436,13 +465,17 @@ resize-none
             className="
 w-full
 mt-8
-bg-cyan-500
-hover:bg-cyan-600
-text-white
+dark:bg-cyan-500
+bg-gray-200
+dark:hover:bg-cyan-600
+hover:bg-gray-300
+dark:text-white
+text-black
 font-bold
 py-3
 rounded-xl
 duration-300
+cursor-pointer
 "
           >
             Create Recruiter

@@ -71,7 +71,8 @@ const ApprovedJobhandle = ({ onClose,id,approvedData }) => {
         className="
         w-[350px]
         md:w-[400px]
-        bg-slate-900
+        bg-white
+        dark:bg-slate-900
         rounded-2xl
         p-6
         border border-slate-700
@@ -84,11 +85,11 @@ const ApprovedJobhandle = ({ onClose,id,approvedData }) => {
           />
         </div>
 
-        <h1 className="text-white text-center text-xl font-bold mt-3">
+        <h1 className="dark:text-white text-black text-center text-xl font-bold mt-3">
           Approve Job
         </h1>
 
-        <p className="text-gray-300 text-center mt-3">
+        <p className="dark:text-gray-300 text-black text-center mt-3">
           Are you sure you want to approve this job?
         </p>
 

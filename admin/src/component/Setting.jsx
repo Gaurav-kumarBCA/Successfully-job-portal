@@ -8,9 +8,10 @@ import {
 } from "react-icons/fi";
 import { MdAnimation } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import { useTheme } from "../hooks/useTheme";
 
 const Setting = ({ openSetting, setOpenSetting }) => {
-  const [darkMode, setDarkMode] = useState(true);
+  const {darkMode,setDarkMode}=useTheme();
   const [animation, setAnimation] = useState(true);
 
   return (
@@ -26,7 +27,7 @@ const Setting = ({ openSetting, setOpenSetting }) => {
         className={`
         fixed top-0 right-0 h-screen
         w-full sm:w-[350px]
-        bg-slate-900 z-50
+        bg-white dark:bg-slate-900 z-50
         transform transition-transform duration-500
         ${
           openSetting
@@ -35,42 +36,42 @@ const Setting = ({ openSetting, setOpenSetting }) => {
         }
       `}
       >
-        <div className="flex justify-between items-center p-5 border-b border-gray-700">
-          <h1 className="text-white text-2xl font-bold">
+        <div className="flex justify-between items-center p-5 border-b dark:border-gray-700 border-gray-400">
+          <h1 className="text-black dark:text-white text-2xl font-bold">
             Settings
           </h1>
 
           <button onClick={() => setOpenSetting(false)}>
-            <IoClose className="text-white text-3xl" />
+            <IoClose className="text-black dark:text-white text-3xl" />
           </button>
         </div>
 
         <div className="p-4 flex flex-col gap-4">
 
           <NavLink to="/profile">
-            <button className="flex items-center w-full cursor-pointer gap-4 p-4 rounded-xl text-white bg-slate-800">
+            <button className="flex items-center w-full cursor-pointer gap-4 p-4 rounded-xl  text-black dark:text-white bg-gray-200 dark:bg-slate-800">
             <FiUser />
             <span>Profile</span>
           </button>
           </NavLink>
 
          <NavLink to="/pending-recruiters">
-           <button className="flex items-center w-full cursor-pointer gap-4 p-4 rounded-xl text-white bg-slate-800">
+           <button className="flex items-center w-full cursor-pointer gap-4 p-4 rounded-xl text-black dark:text-white bg-gray-200 dark:bg-slate-800">
             <FiUsers />
             <span>Applied Recruiters</span>
           </button>
          </NavLink>
 
          <NavLink to="/notification">
-           <button className="flex w-full items-center gap-4 p-4 cursor-pointer rounded-xl text-white bg-slate-800">
+           <button className="flex w-full items-center gap-4 p-4 cursor-pointer rounded-xl text-black dark:text-white bg-gray-200 dark:bg-slate-800">
             <FiBell />
             <span>Notifications</span>
           </button>
          </NavLink>
 
           {/* Theme Switch */}
-          <div className="flex justify-between items-center p-4 rounded-xl bg-slate-800">
-            <div className="flex items-center gap-3 text-white">
+          <div className="flex justify-between items-center p-4 rounded-xl bg-gray-200 dark:bg-slate-800">
+            <div className="flex items-center gap-3 text-black dark:text-white">
               <FiMoon />
               <span>Dark Theme</span>
             </div>
@@ -93,7 +94,7 @@ const Setting = ({ openSetting, setOpenSetting }) => {
                 className={`
                 absolute top-1
                 w-4 h-4 rounded-full
-                bg-white transition-all
+                dark:bg-white transition-all bg-black
                 ${
                   darkMode
                     ? "left-7"
@@ -105,8 +106,8 @@ const Setting = ({ openSetting, setOpenSetting }) => {
           </div>
 
           {/* Animation Switch */}
-          <div className="flex justify-between items-center p-4 rounded-xl bg-slate-800">
-            <div className="flex items-center gap-3 text-white">
+          <div className="flex justify-between items-center p-4 rounded-xl bg-gray-200 dark:bg-slate-800">
+            <div className="flex items-center gap-3 text-black dark:text-white">
               <MdAnimation />
               <span>Animation</span>
             </div>
@@ -129,7 +130,7 @@ const Setting = ({ openSetting, setOpenSetting }) => {
                 className={`
                 absolute top-1
                 w-4 h-4 rounded-full
-                bg-white transition-all
+                dark:bg-white bg-black transition-all
                 ${
                   animation
                     ? "left-7"

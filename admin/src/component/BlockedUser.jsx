@@ -112,10 +112,11 @@ const Blocked = ({
         w-full
         max-w-sm
         sm:max-w-md
-        bg-gradient-to-br
-        from-slate-900
-        via-slate-800
-        to-slate-900
+        bg-white
+        dark:bg-gradient-to-br
+        dark:from-slate-900
+        dark:via-slate-800
+        dark:to-slate-900
         border
         border-slate-700
         rounded-2xl
@@ -134,14 +135,15 @@ const Blocked = ({
             h-16
             w-16
             rounded-full
-            bg-red-500/20
+            dark:bg-red-500/20
+            bg-red-400
             flex
             items-center
             justify-center
             "
           >
 
-            <FaUserSlash className="text-3xl text-red-500" />
+            <FaUserSlash className="text-3xl dark:text-red-500 text-red-600" />
 
           </div>
 
@@ -152,7 +154,8 @@ const Blocked = ({
           text-center
           text-lg
           font-bold
-          text-white
+          dark:text-white
+          text-black
           "
         >
           Block User Account
@@ -164,7 +167,8 @@ const Blocked = ({
           className="
           text-center
           text-sm
-          text-slate-300
+          dark:text-slate-300
+          text-black
           leading-6
           "
         >
@@ -194,10 +198,12 @@ const Blocked = ({
             sm:w-1/2
             border
             border-slate-600
-            text-slate-300
+            dark:text-slate-300
+            text-black
             py-2
             rounded-lg
             hover:bg-slate-700
+            
             transition
             cursor-pointer
             "

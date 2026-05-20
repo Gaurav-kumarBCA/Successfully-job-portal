@@ -66,11 +66,11 @@ const MobileLogout = ({
           rounded-3xl
           border
           border-white/10
-
-          bg-gradient-to-br
-          from-slate-950
-          via-blue-950
-          to-slate-900
+          bg-white
+          dark:bg-gradient-to-br
+          dark:from-slate-950
+          dark:via-blue-950
+          dark:to-slate-900
 
           shadow-[0_0_60px_rgba(59,130,246,0.30)]
 
@@ -94,7 +94,8 @@ const MobileLogout = ({
           absolute
           right-4
           top-4
-          text-gray-400
+          dark:text-gray-400
+          text-black
           hover:text-white
           transition
         "
@@ -108,7 +109,8 @@ const MobileLogout = ({
           w-16
           h-16
           rounded-full
-          bg-red-500/20
+          dark:bg-red-500/20
+          bg-red-500/40
           mx-auto
           flex
           items-center
@@ -117,7 +119,8 @@ const MobileLogout = ({
         >
           <FiLogOut
             className="
-            text-red-400
+            dark:text-red-400
+            text-red-600
             text-3xl
           "
           />
@@ -127,7 +130,8 @@ const MobileLogout = ({
         <h1
           className="
           text-center
-          text-white
+          dark:text-white
+          text-black
           text-2xl
           font-bold
           mt-5
@@ -139,7 +143,8 @@ const MobileLogout = ({
         <p
           className="
           text-center
-          text-gray-400
+          dark:text-gray-400
+          text-gray-600
           text-sm
           mt-3
           leading-6
@@ -166,8 +171,10 @@ const MobileLogout = ({
             flex-1
             h-12
             rounded-xl
-            bg-white/10
-            text-white
+            dark:bg-white/10
+            bg-gray-400
+            dark:text-white
+            text-black
             hover:bg-white/20
             transition-all
           "

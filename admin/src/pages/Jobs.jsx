@@ -8,8 +8,9 @@ import { IoArrowBack } from "react-icons/io5";
 import { MdWork } from "react-icons/md";
 import ApprovedJob from "../component/ApprovedJob";
 import withAuth from "../component/withAuth";
-
+import { useTheme } from "../hooks/useTheme";
 const Jobs = () => {
+  const { darkMode } = useTheme();
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
   const approvedData = (id) => {
@@ -54,24 +55,25 @@ const Jobs = () => {
         className="
         h-screen
         w-full
-        bg-gradient-to-br
-        from-slate-950
-        via-blue-950
-        to-slate-900
+        bg-gray-100
+        dark:bg-gradient-to-br
+        dark:from-slate-950
+       dark:via-blue-950
+        dark:to-slate-900
         flex
         items-center
         justify-center
       "
       >
         <div className="flex flex-col items-center gap-3">
-          <ThreeDots height="70" width="70" color="#fff" visible={true} />
+          <ThreeDots height="70" width="70" color={darkMode ? "#ffffff" : "#000000"} visible={true} />
 
           <div className="flex items-center gap-2">
-            <p className="text-white text-sm md:text-lg">
+            <p className="text-black   dark:text-white text-sm md:text-lg">
               Loading Jobs page...
             </p>
 
-            <TailSpin height="20" width="20" color="#60A5FA" />
+            <TailSpin height="20" width="20" color={darkMode ? "#60A5FA" : "#2563EB"} />
           </div>
         </div>
       </div>
@@ -79,15 +81,15 @@ const Jobs = () => {
   }
   return (
     <Layout>
-      <div className="min-h-full  w-full bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 ">
-        <div className="w-full h-[50px] border-b border-slate-900  flex gap-4 ">
+      <div className="min-h-full  w-full bg-gray-100 dark:bg-gradient-to-br dark:from-slate-950 dark:via-blue-950 dark:to-slate-900 ">
+        <div className="w-full h-[50px] border-b border-gray-300 dark:border-slate-900  flex gap-4 ">
           <div className="h-full w-[50px] md:w-[50px]  flex items-center ">
             <NavLink to="/">
-              <IoArrowBack size={23} className="text-white ml-2 mt-3 " />
+              <IoArrowBack size={23} className="text-black dark:text-white ml-2 mt-3 " />
             </NavLink>
           </div>
           <div className="h-full w-[200px]  flex items-end ">
-            <h1 className="text-white font-semibold  text-2xl md:text-3xl ">
+            <h1 className="text-black dark:text-white font-semibold  text-2xl md:text-3xl ">
               Jobs Cards{" "}
             </h1>
           </div>
@@ -99,23 +101,23 @@ const Jobs = () => {
                 height="50"
                 width="50"
                 radius="9"
-                color="#ffffff"
+          color={darkMode ? "#ffffff" : "#000000"}
                 visible={true}
               />
             </div>
             <div className="flex items-center justify-center gap-2.5">
-              <h3 className="text-white text-[10px] ml-12">
+              <h3 className="text-black dark:text-white text-[10px] ml-12">
                 Please Wait Job Uploade
               </h3>
-              <TailSpin visible={true} height="20" width="20" color="#60A5FA" />
+              <TailSpin visible={true} height="20" width="20" color={darkMode ? "#60A5FA" : "#2563EB"} />
             </div>
           </div>
-        ) : jobs.length == 0 ? (
+        ) : jobs.length === 0 ? (
           <div className="flex gap-2 items-center justify-center h-[70vh]">
-            <span className="text-white">
+            <span className="text-black dark:text-white">
               <MdWork size={20} />
             </span>
-            <h1 className="text-white text-sm md:text-2xl font-bold">
+            <h1 className="text-black dark:text-white text-sm md:text-2xl font-bold">
               job not found
             </h1>
           </div>
@@ -140,12 +142,14 @@ md:pb-10
                 className="
 relative
 rounded-3xl
-bg-gradient-to-br
-from-slate-900
-via-slate-800
-to-slate-900
+bg-white
+dark:bg-gradient-to-br
+dark:from-slate-900
+dark:via-slate-800
+dark:to-slate-900
 border
-border-slate-700
+border-gray-300
+dark:border-slate-700
 shadow-2xl
 p-5
 hover:scale-[1.02]
@@ -172,43 +176,43 @@ bg-slate-700
                   />
 
                   <div>
-                    <h1 className="text-cyan-400 text-xl font-bold">
+                    <h1 className="text-blue-700 dark:text-cyan-400 text-xl font-bold">
                       {item.job_name}
                     </h1>
 
-                    <p className="text-gray-400 text-sm">{item.job_type}</p>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">{item.job_type}</p>
                   </div>
                 </div>
 
                 <div className="mt-5 space-y-3">
                   <div className="flex justify-between">
-                    <p className="text-gray-400">Salary</p>
+                    <p className="text-gray-600 dark:text-gray-400">Salary</p>
 
-                    <p className="text-white font-semibold">₹ {item.salary}</p>
+                    <p className="text-black dark:text-white font-semibold">₹ {item.salary}</p>
                   </div>
 
                   <div className="flex justify-between">
-                    <p className="text-gray-400">Location</p>
+                    <p className="text-gray-600 dark:text-gray-400">Location</p>
 
-                    <p className="text-white">{item.location}</p>
+                    <p className="text-black dark:text-white">{item.location}</p>
                   </div>
 
                   <div className="flex justify-between">
-                    <p className="text-gray-400">Recruiter</p>
+                    <p className="text-gray-600 dark:text-gray-400">Recruiter</p>
 
                     <p className="text-cyan-400">{item.posted_by.name}</p>
                   </div>
 
                   <div className="flex justify-between">
-                    <p className="text-gray-400">Company</p>
+                    <p className="text-gray-600 dark:text-gray-400">Company</p>
 
-                    <p className="text-white">{item.company.company_name}</p>
+                    <p className="text-black dark:text-white">{item.company.company_name}</p>
                   </div>
 
                   <div>
-                    <p className="text-gray-400 text-sm">Description</p>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">Description</p>
 
-                    <p className="text-white text-sm mt-1">
+                    <p className="text-black dark:text-white text-sm mt-1">
                       {item.description}
                     </p>
                   </div>

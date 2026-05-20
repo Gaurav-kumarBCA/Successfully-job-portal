@@ -4,31 +4,15 @@ import { FaLock } from "react-icons/fa";
 import { RiShieldCheckLine } from "react-icons/ri";
 import {toast} from "react-toastify";
 import { TailSpin, ThreeDots } from "react-loader-spinner";
+import { useTheme } from "../hooks/useTheme";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
-
-  // const [darkMode, setDarkMode] = useState(true);
-  const [darkMode , setDarkMode] = useState(()=>{
-    return localStorage.getItem("theme") === "dark";
-  });
-
+  const {darkMode,setDarkMode}=useTheme();
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
-
-  // Dark Mode
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      return localStorage.setItem("theme","dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      return localStorage.setItem("theme","light");
-
-    }
-  }, [darkMode]);
 
   const formSubmit = async (e) => {
     e.preventDefault();

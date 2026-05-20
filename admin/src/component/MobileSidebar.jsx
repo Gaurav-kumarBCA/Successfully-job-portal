@@ -21,7 +21,8 @@ const MobileSidebar = ({open,setOpen}) => {
     px-4 py-3
     rounded-xl
     transition-all duration-300
-    text-white/90
+    dark:text-white/90
+    text-black
     hover:bg-blue-700/30
     ${
       isActive
@@ -44,24 +45,26 @@ const MobileSidebar = ({open,setOpen}) => {
         className={`
           fixed top-0 left-0 z-50
           h-screen w-[200px]
-          bg-gradient-to-br
-          from-slate-950
-          via-blue-950
-          to-slate-900
+          bg-white
+          dark:bg-gradient-to-br
+          dark:from-slate-950
+          dark:via-blue-950
+          dark:to-slate-900
           border-r border-white/10
           transform transition-transform duration-300
           ${open ? "translate-x-0" : "-translate-x-full"}`}
           onClick={(e)=>e.stopPropagation()}
       >
-        <div className="h-[85px] flex items-center px-5 border-b border-white/10">
+        <div className="h-[85px] flex items-center px-5 border-b dark:border-white/10
+        border-gray-300">
           <img
-            src="/admin.png"
+            src="/job-portal.png"
             alt="logo"
-            className="w-[45px] h-[45px] rounded-lg"
+            className="w-[45px] h-[45px] rounded-xl object-cover"
           />
 
           <div className="ml-3">
-            <h1 className="text-white text-2xl font-bold">
+            <h1 className="text-black dark:text-white text-2xl font-bold">
               JobPortal
             </h1>
 
@@ -146,7 +149,8 @@ const MobileSidebar = ({open,setOpen}) => {
              py-3
              mx-2
              rounded-xl
-             text-red-300
+             dark:text-red-300
+             text-red-600
              cursor-pointer
              hover:bg-red-500/20
              transition-all

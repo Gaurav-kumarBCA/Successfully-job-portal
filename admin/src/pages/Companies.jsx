@@ -5,8 +5,9 @@ import { IoArrowBack } from "react-icons/io5";
 import { TailSpin, ThreeDots } from "react-loader-spinner";
 import { FaBuilding } from "react-icons/fa";
 import withAuth from "../component/withAuth";
-
+import { useTheme } from "../hooks/useTheme";
 const Companies = () => {
+  const { darkMode } = useTheme();
   const [companiesData, setCompaniedData] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -43,24 +44,25 @@ const Companies = () => {
         className="
           h-screen
           w-full
-          bg-gradient-to-br
-          from-slate-950
-          via-blue-950
-          to-slate-900
+          bg-white
+          dark:bg-gradient-to-br
+          dark:from-slate-950
+          dark:via-blue-950
+          dark:to-slate-900
           flex
           items-center
           justify-center
         "
       >
         <div className="flex flex-col items-center gap-3">
-          <ThreeDots height="70" width="70" color="#fff" visible={true} />
+          <ThreeDots height="70" width="70" color={darkMode ? "#ffffff" : "#000000"} visible={true} />
 
           <div className="flex items-center gap-2">
-            <p className="text-white text-sm md:text-lg">
+            <p className="text-black dark:text-white text-sm md:text-lg">
               Loading Companies page...
             </p>
 
-            <TailSpin height="20" width="20" color="#60A5FA" />
+            <TailSpin height="20" width="20" color={darkMode ? "#60A5FA" : "#2563EB"} />
           </div>
         </div>
       </div>
@@ -68,15 +70,15 @@ const Companies = () => {
   }
   return (
     <Layout>
-      <div className="min-h-full  w-full bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 ">
-        <div className="w-full h-[50px] border-b border-slate-900  flex gap-4 ">
+      <div className="min-h-full  w-full bg-gray-100 dark:bg-gradient-to-br dark:from-slate-950 dark:via-blue-950 dark:to-slate-900 ">
+        <div className="w-full h-[50px] border-b border-gray-300 dark:border-slate-900  flex gap-4 ">
           <div className="h-full w-[50px] md:w-[50px]  flex items-center ">
             <NavLink to="/">
-              <IoArrowBack size={23} className="text-white ml-2 mt-3 " />
+              <IoArrowBack size={23} className="text-black dark:text-white ml-2 mt-3 " />
             </NavLink>
           </div>
           <div className="h-full   flex items-end ">
-            <h1 className="text-white font-semibold  text-2xl md:text-3xl ">
+            <h1 className="text-black dark:text-white font-semibold  text-2xl md:text-3xl ">
               Companies Cards{" "}
             </h1>
           </div>
@@ -88,23 +90,23 @@ const Companies = () => {
                 height="50"
                 width="50"
                 radius="9"
-                color="#ffffff"
+                color={darkMode ? "#ffffff" : "#000000"}
                 visible={true}
               />
             </div>
             <div className="flex items-center justify-center gap-2.5">
-              <h3 className="text-white text-[10px] ml-12">
+              <h3 className="text-black dark:text-white text-[10px] ml-12">
                 Please Wait Companies Uploade
               </h3>
-              <TailSpin visible={true} height="20" width="20" color="#60A5FA" />
+              <TailSpin visible={true} height="20" width="20" color={darkMode ? "#60A5FA" : "#2563EB"} />
             </div>
           </div>
-        ) : companiesData.length === 0 ? (
+      ) : companiesData.length === 0 ? (
           <div className="flex gap-2 items-center justify-center h-[70vh]">
-            <span className="text-white">
+            <span className="text-black dark:text-white">
               <FaBuilding size={20} />
             </span>
-            <h1 className="text-white text-sm md:text-2xl font-bold">
+            <h1 className="text-black dark:text-white text-sm md:text-2xl font-bold">
               Companies not found
             </h1>
           </div>
@@ -127,12 +129,14 @@ md:pb-10
                 className="
 relative
 rounded-3xl
-bg-gradient-to-br
-from-slate-900
-via-slate-800
-to-slate-900
+bg-white
+dark:bg-gradient-to-br
+dark:from-slate-900
+dark:via-slate-800
+dark:to-slate-900
 border
-border-slate-700
+dark:border-slate-700
+border-gray-300
 shadow-2xl
 p-5
 hover:scale-[1.02]
@@ -183,7 +187,8 @@ font-bold
 
                     <p
                       className="
-text-gray-400
+text-gray-600
+dark:text-gray-400
 text-sm
 "
                     >
@@ -194,7 +199,7 @@ text-sm
 
                 <div className="mt-5 space-y-3">
                   <div className="flex justify-between">
-                    <p className="text-gray-400">Website</p>
+                    <p className="text-gray-600 dark:text-gray-400">Website</p>
 
                     <a
                       href={item.website_url}
@@ -213,7 +218,8 @@ max-w-[150px]
                   <div>
                     <p
                       className="
-text-gray-400
+dark:text-gray-400
+text-gray-600
 text-sm
 "
                     >
@@ -222,7 +228,8 @@ text-sm
 
                     <p
                       className="
-text-white
+dark:text-white
+text-black
 text-sm
 mt-1
 line-clamp-3
@@ -238,7 +245,7 @@ flex
 justify-between
 "
                   >
-                    <p className="text-gray-400">Created</p>
+                    <p className="text-gray-600 dark:text-gray-400">Created</p>
 
                     <p className="text-white text-sm">
                       {new Date(item.created_at).toLocaleDateString()}

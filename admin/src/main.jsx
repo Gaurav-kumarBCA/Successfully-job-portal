@@ -4,8 +4,10 @@ import "./index.css"
 import App from './App.jsx'
 import { ToastContainer } from "react-toastify";
 import AuthProvider from './stores/auth.store.jsx';
+import ThemeProvider from './stores/themeStore.jsx';
 
 createRoot(document.getElementById('root')).render(
+  <ThemeProvider>
   <AuthProvider>
     <App />
     <ToastContainer
@@ -28,7 +30,8 @@ createRoot(document.getElementById('root')).render(
     maxWidth: "400px"
   }}
 />
-  </AuthProvider>,
+  </AuthProvider>
+  </ThemeProvider>
 )
 
 
