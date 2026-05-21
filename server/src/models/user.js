@@ -57,4 +57,21 @@ const profileModel = async(id)=>{
    )
 }
 
-module.exports = { createUser, findUserByEmail , blockUserModel , UnblockUserModel , getAlluserModel , findUserById, profileModel };
+const searchUsers = async (text) => {
+  return await pool.query(
+    `
+    SELECT id,name,email,role
+    FROM users
+    WHERE
+    role != 'admin'
+    AND
+    (name ILIKE $1
+    OR 
+    email ILIKE $1)
+    ORDER BY id DESC
+    `,
+    [`%${text}%`]
+  );
+};
+
+module.exports = { createUser,searchUsers,findUserByEmail , blockUserModel , UnblockUserModel , getAlluserModel , findUserById, profileModel };

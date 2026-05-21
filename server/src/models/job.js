@@ -129,8 +129,37 @@ const getAllApprovedJobs = async () => {
     `);
 };
 
+
+const searchJobs = async(text)=>{
+return await pool.query(
+`
+SELECT
+j.id,
+j.job_name,
+j.status,
+
+json_build_object(
+'id',c.id,
+'company_name',c.company_name
+) as company
+
+FROM jobcreate j
+
+JOIN companiesdata c
+ON j.company_id=c.id
+
+WHERE
+j.job_name ILIKE $1
+
+ORDER BY j.id DESC
+`,
+[`%${text}%`]
+)
+}
+
 module.exports = {
     createJob,
+    searchJobs,
     findJobByName,
     getAllJob,
     getAllJobById,

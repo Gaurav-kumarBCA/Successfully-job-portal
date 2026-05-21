@@ -40,4 +40,20 @@ const deleteCompany = async(id)=>{
     )
 }
 
-module.exports={createCompanies,findCompanyByName,getAllCompanies,getCompanyByid,updateCompanies,deleteCompany}
+
+const searchCompany=async(text)=>{
+
+return await pool.query(
+`
+SELECT *
+FROM companiesdata
+WHERE
+company_name ILIKE $1
+`,
+[`%${text}%`]
+
+)
+
+}
+
+module.exports={createCompanies,findCompanyByName,getAllCompanies,getCompanyByid,updateCompanies,deleteCompany,searchCompany}

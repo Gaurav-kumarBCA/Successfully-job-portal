@@ -20,6 +20,4 @@ const getAllRecruiters=async()=>{
   );
 };
 
-
-
 module.exports={CreateRecruitermodel,findRecruiterByEmail,getAllRecruiters}

@@ -34,5 +34,50 @@ const approveRecruiterModel=async(id) =>{
     )
 }
 
+const searchRecruiters = async(text)=>{
 
-module.exports={appliedform_recruiter, duplicaseRecruiterCheck, getAllAppliedRecruiter,getAllAppliedRecruiterByid,approveRecruiterModel};
+return await pool.query(
+`
+SELECT
+id,
+name,
+company_name,
+company_email as email,
+'approved recruiter' as type
+
+FROM appliedform_recruiter
+
+WHERE
+status='approved'
+AND
+(
+name ILIKE $1
+OR company_name ILIKE $1
+)
+
+UNION
+
+SELECT
+id,
+name,
+company_name,
+email,
+'created recruiter' as type
+
+FROM create_recruiter
+
+WHERE
+(
+name ILIKE $1
+OR company_name ILIKE $1
+)
+
+ORDER BY id DESC
+`,
+[`%${text}%`]
+
+)
+
+}
+
+module.exports={appliedform_recruiter, duplicaseRecruiterCheck, getAllAppliedRecruiter,getAllAppliedRecruiterByid,approveRecruiterModel,searchRecruiters};
