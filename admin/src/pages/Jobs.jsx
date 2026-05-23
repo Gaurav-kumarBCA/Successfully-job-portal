@@ -33,6 +33,7 @@ const Jobs = () => {
           credentials: "include",
         });
         const data = await res.json();
+        console.log(data)
         setJobs(data.data);
         if(data.success){
           setJobs(data.data || [])
@@ -185,6 +186,13 @@ bg-slate-700
                 </div>
 
                 <div className="mt-5 space-y-3">
+
+                   <div className="flex justify-between">
+                    <p className="text-gray-600 dark:text-gray-400">Category</p>
+
+                    <p className="text-black dark:text-white font-semibold">{item.category}</p>
+                  </div>
+
                   <div className="flex justify-between">
                     <p className="text-gray-600 dark:text-gray-400">Salary</p>
 

@@ -1,14 +1,14 @@
 const { createJob, findJobByName, getAllJob, getAllJobById, updateJobById, deleteJobById } = require("../../models/job");
 
-const AddjobDB=async(job_name,description, salary,location,job_type,company_id ,id)=>{
-    if(!job_name || !description || !salary,!location || !job_type || !company_id ){
+const AddjobDB=async(job_name,description, salary,location,job_type,company_id ,category ,id)=>{
+    if(!job_name || !description || !salary ||  !location || !job_type || !company_id || !category){
         throw new Error("All Field required");
     }
     const existsJob=await findJobByName(job_name);
     if(existsJob.rows.length > 0){
         throw new Error("This Job Already exists");        
     }
-    const jobdata  = await createJob(job_name,description, salary,location,job_type,company_id ,id)
+    const jobdata  = await createJob(job_name,description, salary,location,job_type,company_id ,category, id)
     return jobdata.rows[0]
 }
 

@@ -6,6 +6,7 @@ router.use("/job",require("./jobApplied.route"));
 router.use("/saveJob",require("./saveJob.route"));
 router.use("/follow",require("./followCompany.routers"));
 router.use("/notification",require("./notification.routers"));
+router.use("/category",require("./category.route"))
 router.get("/me",profiile);
 
 

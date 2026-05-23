@@ -1,12 +1,13 @@
 const pool = require("../config/db");
 
-const createJob = async (job_name, description, salary, location, job_type, company_id, posted_by) => {
+const createJob = async (job_name, description, salary, location, job_type, company_id, category,posted_by) => {
     return await pool.query(
         `INSERT INTO jobcreate 
-        (job_name, description, salary, location, job_type, company_id, posted_by) 
-        VALUES ($1,$2,$3,$4,$5,$6,$7) 
+        (job_name, description, salary, location, job_type, company_id, category, posted_by) 
+        VALUES ($1,$2,$3,$4,$5,$6,$7,$8) 
         RETURNING *`,
-        [job_name, description, salary, location, job_type, company_id, posted_by]
+        [job_name, description, salary, location, job_type, company_id,category,posted_by]
+        
     );
 };
 
@@ -28,6 +29,7 @@ const getAllJob = async () => {
             j.job_type,
             j.posted_by,
             j.status,
+            j.category,
             j.created_at,
 
             json_build_object(
@@ -157,8 +159,27 @@ ORDER BY j.id DESC
 )
 }
 
+const categoryJobs = async(category)=>{
+
+console.log("Model category =", category);
+
+const data = await pool.query(
+`
+SELECT *
+FROM jobcreate
+WHERE LOWER(category)=LOWER($1)
+AND status='approved'
+`,
+[category]
+);
+
+console.log("Model Result",data.rows);
+
+return data;
+}
 module.exports = {
     createJob,
+    categoryJobs,
     searchJobs,
     findJobByName,
     getAllJob,
