@@ -1,39 +1,69 @@
+const { findCompanyByRecruiter } = require("../../models/companies");
 const { getFollowersByCompany } = require("../../models/followCompany");
 const { AddjobDB, getAlJobDB, getAllJobByIdDB, updateJobByIdDB, deleteJobByIdDB } = require("../../services/recruiter/job.service");
 const { notificationDB } = require("../../services/user/notification.service");
 
-const jobcreate=async(req,res)=>{
-try {
-    const id = req.loginUser.id;
-    const {job_name,description, salary,location,job_type,company_id ,category} = req.body;
-    const data= await AddjobDB(job_name,description, salary,location,job_type,company_id ,category ,id);
+const jobcreate = async (req, res) => {
+  try {
+    const recruiter_id = req.loginUser.id;
+
+    const company = await findCompanyByRecruiter(recruiter_id);
+
+    if (company.rows.length === 0) {
+      throw new Error("Company profile not found");
+    }
+
+    const company_id = company.rows[0].id;
+
+    const {
+      job_name,
+      description,
+      salary,
+      location,
+      job_type,
+      category
+    } = req.body;
+
+    const data = await AddjobDB(
+      job_name,
+      description,
+      salary,
+      location,
+      job_type,
+      company_id,
+      category,
+      recruiter_id
+    );
 
     const followers = await getFollowersByCompany(company_id);
 
-    for(let user of followers.rows){
-        await notificationDB(
-            user.user_id,
-            `new job posted in company (job : ${job_name} )`
-        );
+    for (let user of followers.rows) {
+      await notificationDB(
+        user.user_id,
+        `New job posted: ${job_name}`
+      );
     }
 
     res.status(201).json({
-        success:true,
-        message:"JOb Created Successfully",
-        data:data
-    })
-} catch (error) {
-    console.log(error)
-     res.status(400).json({
-            success:false,
-            message:error.message
-        });
-};
+      success: true,
+      message: "Job Created Successfully",
+      data
+    });
+
+  } catch (error) {
+    console.log(error);
+
+    res.status(400).json({
+      success: false,
+      message: error.message
+    });
+  }
 };
 
 const AllJob=async(req,res)=>{
+     const recruiter_id = req.loginUser.id;
     try {
-        const data=await getAlJobDB();
+        const data=await getAlJobDB(recruiter_id);
         res.status(200).json({
             success:true,
             message:"Fetch All jobs",

@@ -53,6 +53,14 @@ const getAllJob = async () => {
     `);
 };
 
+
+const getAllJobOnlyRecruiter = async (recruiter_id) => {
+  return await pool.query(
+    "SELECT * FROM jobcreate WHERE posted_by = $1 ORDER BY id DESC",
+    [recruiter_id]
+  );
+};
+
 const getAllJobById = async (id) => {
     return await pool.query(`
         SELECT 
@@ -187,5 +195,6 @@ module.exports = {
     updateJobById,
     deleteJobById,
     approveJobModel,
-    getAllApprovedJobs
+    getAllApprovedJobs,
+    getAllJobOnlyRecruiter
 };

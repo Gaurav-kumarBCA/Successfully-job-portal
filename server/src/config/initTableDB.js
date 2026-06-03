@@ -22,6 +22,7 @@ const ininDB = async () => {
             description TEXT ,
             website_url VARCHAR(200),
             location VARCHAR(100),
+            recruiter_id INTEGER REFERENCES create_recruiter(id),
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
             `);
@@ -87,7 +88,9 @@ const ininDB = async () => {
              phone VARCHAR (100) NOT NULL,
              company_website VARCHAR(100),
              industry_type VARCHAR (100) NOT NULL,
-             status VARCHAR(20) DEFAULT 'pending'
+             status VARCHAR(20) DEFAULT 'pending',
+             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
              );
       `)         
 

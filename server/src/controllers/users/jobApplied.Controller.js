@@ -3,6 +3,8 @@ const { applyJobDB } = require("../../services/user/jobApplied.service");
 const applyJob = async (req, res) => {
     try {
         const { job_id, user_id, cover_letter } = req.body;
+        console.log(req.file);
+console.log(req.body);
 
         if (!job_id || !user_id) {
             return res.status(400).json({

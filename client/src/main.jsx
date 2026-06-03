@@ -1,4 +1,5 @@
 import { StrictMode } from 'react'
+import { ToastContainer } from "react-toastify"
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
@@ -6,5 +7,25 @@ import App from './App.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
-  </StrictMode>,
+    <ToastContainer
+  position="top-center"
+  autoClose={2500}
+  hideProgressBar={false}
+  newestOnTop
+  closeOnClick
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+  theme="dark"
+  limit={3}
+  pauseOnHover
+  toastClassName="rounded-xl text-sm"
+  bodyClassName="font-medium"
+  style={{
+    marginTop: "10px",
+    width: "90%",
+    maxWidth: "400px"
+  }}
+/> 
+ </StrictMode>,
 )

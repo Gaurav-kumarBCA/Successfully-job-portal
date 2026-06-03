@@ -8,6 +8,7 @@ import {
   FaLayerGroup,
   FaInfoCircle
 } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -42,23 +43,27 @@ const Navbar = () => {
 
           <div className="hidden md:flex gap-8 font-semibold">
 
-            <a href="">Home</a>
-            <a href="">Jobs</a>
-            <a href="">Companies</a>
-            <a href="">Categories</a>
-            <a href="">About</a>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/">Jobs</NavLink>
+            <NavLink to="/">Companies</NavLink>
+            <NavLink to="/applied-recruiters">+ Add Recruiter</NavLink>
+            <NavLink to="/">About</NavLink>
 
           </div>
 
           <div className="hidden md:flex gap-3">
 
-            <button className="px-5 py-2 border rounded-xl">
+            <NavLink to="/login">
+              <button className="px-5 py-2 border rounded-xl">
               Login
             </button>
+            </NavLink>
 
-            <button className="px-5 py-2 bg-blue-900 text-white rounded-xl">
+            <NavLink to="/signup">
+              <button className="px-5 py-2 bg-blue-900 text-white rounded-xl">
               Sign Up
             </button>
+            </NavLink>
 
           </div>
 
@@ -144,13 +149,17 @@ ${open ? "translate-y-0" : "-translate-y-full"}`}
 
     <div className="flex gap-3 mt-6">
 
-      <button className="flex-1 border-2 border-blue-700 py-2 rounded-xl text-blue-700 font-semibold">
+      <NavLink to="/login">
+        <button className="w-[150px] border-2 border-blue-700 py-2 rounded-xl text-blue-700 font-semibold">
         Login
       </button>
+      </NavLink>
 
-      <button className="flex-1 bg-blue-700 text-white py-2 rounded-xl font-semibold">
+      <NavLink to="/signup">
+        <button className="w-[150px] bg-blue-700 text-white py-2 rounded-xl font-semibold">
         Sign Up
       </button>
+      </NavLink>
 
     </div>
 

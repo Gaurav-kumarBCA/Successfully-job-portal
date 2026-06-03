@@ -1,19 +1,41 @@
-const { createJob, findJobByName, getAllJob, getAllJobById, updateJobById, deleteJobById } = require("../../models/job");
+const { createJob, findJobByName, getAllJob, getAllJobById, updateJobById, deleteJobById, getAllJobOnlyRecruiter } = require("../../models/job");
 
-const AddjobDB=async(job_name,description, salary,location,job_type,company_id ,category ,id)=>{
-    if(!job_name || !description || !salary ||  !location || !job_type || !company_id || !category){
-        throw new Error("All Field required");
-    }
+const AddjobDB=async( job_name,
+  description,
+  salary,
+  location,
+  job_type,
+  company_id,
+  category,
+  recruiter_id)=>{
+  if (
+    !job_name ||
+    !description ||
+    !salary ||
+    !location ||
+    !job_type ||
+    !company_id ||
+    !category
+  ) {
+    throw new Error("All fields are required");
+  }
     const existsJob=await findJobByName(job_name);
     if(existsJob.rows.length > 0){
         throw new Error("This Job Already exists");        
     }
-    const jobdata  = await createJob(job_name,description, salary,location,job_type,company_id ,category, id)
+    const jobdata  = await createJob(  job_name,
+    description,
+    salary,
+    location,
+    job_type,
+    company_id,
+    category,
+    recruiter_id)
     return jobdata.rows[0]
 }
 
-const getAlJobDB=async()=>{
-    const data=await getAllJob();
+const getAlJobDB=async(recruiter_id)=>{
+    const data=await getAllJobOnlyRecruiter(recruiter_id);
     return data.rows;
 }
 

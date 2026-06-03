@@ -1,9 +1,11 @@
 const { AddCompaniesDB, getcompaniesDB, getSingleCompanyDB, updateCompanieDB, deleteCompanyDB } = require("../../services/recruiter/companies.service");
 
 const AddCompanies=async(req,res)=>{
+    const recruiter_id = req.loginUser.id;
+    console.log(req.loginUser)
 try {
-    const {company_name , description , website_url , location} = req.body;
-    const companiesdata=await AddCompaniesDB(company_name , description , website_url , location);
+    const {company_name , description , website_url , location } = req.body;
+    const companiesdata=await AddCompaniesDB(company_name , description , website_url , location , recruiter_id);
     res.status(201).json({
         success:true,
         message:"Successfully Companie Profile Created ",
@@ -49,26 +51,26 @@ const getSingleCompany=async(req,res)=>{
     }
 }
 
-const updateCompany=async(req,res)=>{
-    try {
-    const id=parseInt(req.params.id);
-    if(isNaN(id)){
-        throw new Error("invalid id");        
+    const updateCompany=async(req,res)=>{
+        try {
+        const id=parseInt(req.params.id);
+        if(isNaN(id)){
+            throw new Error("invalid id");        
+        }
+        const {company_name , description , website_url , location} = req.body;
+        const data= await updateCompanieDB(id,company_name , description , website_url , location);
+            res.json({
+            success:true,
+            message:"Company Profile Updated Successfully",
+            data:data
+        })
+        } catch (error) {
+            res.status(400).json({
+                success:false,
+                message:error.message
+            });
+        }
     }
-    const {company_name , description , website_url , location} = req.body;
-    const data= await updateCompanieDB(id,company_name , description , website_url , location);
-        res.json({
-        success:true,
-        message:"Company Profile Updated Successfully",
-        data:data
-    })
-    } catch (error) {
-         res.status(400).json({
-            success:false,
-            message:error.message
-        });
-    }
-}
 
 const deleteCompanycontroller=async(req,res)=>{
    try {

@@ -9,7 +9,7 @@ const appliedform_recruiter=async(name,company_name,phone,company_email,company_
 
 const getAllAppliedRecruiterByid=async(company_email)=>{
     return await pool.query(
-        "SELECT id,name, company_name ,company_email,status FROM appliedform_recruiter WHERE company_email=$1",
+        "SELECT id,name, company_name ,company_email,status,created_at, updated_at FROM appliedform_recruiter WHERE company_email=$1",
         [company_email]
     );
 }

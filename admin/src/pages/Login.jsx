@@ -5,8 +5,10 @@ import { RiShieldCheckLine } from "react-icons/ri";
 import {toast} from "react-toastify";
 import { TailSpin, ThreeDots } from "react-loader-spinner";
 import { useTheme } from "../hooks/useTheme";
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
+  const navigate =  useNavigate()
   const [loading, setLoading] = useState(false);
   const {darkMode,setDarkMode}=useTheme();
   const [form, setForm] = useState({
@@ -44,8 +46,8 @@ const Login = () => {
       toast.success("Login Successfully");
 
       setTimeout(() => {
-        window.location.href = "/";
-      }, 1000);
+        navigate("/");
+      }, 3000);
 
     } catch (error) {
       console.log(error);

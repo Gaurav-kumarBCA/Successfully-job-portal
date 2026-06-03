@@ -1,9 +1,9 @@
 const pool = require("../config/db")
 
-const createCompanies = async (company_name , description , website_url , location) =>{
+const createCompanies = async (company_name , description , website_url , location , recruiter_id) =>{
    return await pool.query(
-    "INSERT INTO companiesdata (company_name , description , website_url , location) VALUES ($1,$2,$3,$4) RETURNING *",
-    [company_name , description , website_url , location]
+    "INSERT INTO companiesdata (company_name , description , website_url , location ,  recruiter_id) VALUES ($1,$2,$3,$4,$5) RETURNING *",
+    [company_name , description , website_url , location , recruiter_id]
    );
 };
 
@@ -13,6 +13,13 @@ const findCompanyByName=async(company_name)=>{
         [company_name]
     );
 };
+
+const findCompanyByRecruiter = async(recruiter_id)=>{
+  return await pool.query(
+    "SELECT * FROM companiesdata WHERE recruiter_id = $1",
+    [recruiter_id]
+  );
+}
 
 const getAllCompanies = async()=>{
     return await pool.query(
@@ -56,4 +63,4 @@ company_name ILIKE $1
 
 }
 
-module.exports={createCompanies,findCompanyByName,getAllCompanies,getCompanyByid,updateCompanies,deleteCompany,searchCompany}
+module.exports={createCompanies,findCompanyByName,getAllCompanies,getCompanyByid,updateCompanies,deleteCompany,searchCompany,findCompanyByRecruiter}

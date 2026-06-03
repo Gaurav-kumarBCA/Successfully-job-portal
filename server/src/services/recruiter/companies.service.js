@@ -1,6 +1,6 @@
-const { createCompanies, findCompanyByName, getAllCompanies, getCompanyByid, updateCompanies, deleteCompany } = require("../../models/companies")
+const { createCompanies, findCompanyByName, getAllCompanies, getCompanyByid, updateCompanies, deleteCompany, findCompanyByRecruiter } = require("../../models/companies")
 
-const AddCompaniesDB = async (company_name , description , website_url , location) =>{
+const AddCompaniesDB = async (company_name , description , website_url , location,recruiter_id) =>{
 if(!company_name || !description || !website_url || !location){
     throw new Error("All field required")
 }
@@ -9,9 +9,17 @@ const existsCompany = await findCompanyByName(company_name);
 if(existsCompany.rows.length > 0){
     throw new Error("This company already Exists")
 }
-    const companiesdata = await createCompanies(company_name , description , website_url , location)
+
+const company = await findCompanyByRecruiter(recruiter_id);
+
+if(company.rows.length > 0){
+   throw new Error("You already created a company");
+}
+
+    const companiesdata = await createCompanies(company_name , description , website_url , location,recruiter_id)
     return companiesdata.rows[0]
 }
+
 
 const getcompaniesDB=async()=>{
     const data = await getAllCompanies();
