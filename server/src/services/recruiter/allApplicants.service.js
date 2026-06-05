@@ -1,13 +1,14 @@
-const { getAllApplicants } = require("../../models/applicants");
+const {getAllRecruiterbyApplicants} = require ("../../models/applicants")
+const getAllApplicantsDB = async (recruiterId) => {
+  const data = await getAllRecruiterbyApplicants(recruiterId);
 
-const getAllApplicantsDB = async () => {
-    const data = await getAllApplicants();
+  if (data.rows.length === 0) {
+    return [];
+  }
 
-    if(data.rows.length === 0){
-        throw new Error("No applicants found");
-    }
-
-    return data.rows;
+  return data.rows;
 };
 
-module.exports = { getAllApplicantsDB };
+module.exports = {
+  getAllApplicantsDB,
+};

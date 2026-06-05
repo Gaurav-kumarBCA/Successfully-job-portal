@@ -1,11 +1,11 @@
-import { StrictMode } from 'react'
 import { ToastContainer } from "react-toastify"
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
+import RecruiterProvider from "./store/recruiter.store.jsx"
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <RecruiterProvider>
     <App />
     <ToastContainer
   position="top-center"
@@ -27,5 +27,5 @@ createRoot(document.getElementById('root')).render(
     maxWidth: "400px"
   }}
 /> 
- </StrictMode>,
+</RecruiterProvider>
 )

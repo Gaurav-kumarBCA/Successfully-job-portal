@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaBars,
   FaHome,
@@ -14,19 +14,42 @@ import {
   FaSearch,
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-
+import {toast} from "react-toastify"
+import {useRecruiter} from "../store/recruiter.store"
 const RecruitersHome = () => {
   const menuItems = [
-  { name: "Dashboard", icon: <FaHome />, path: "/dashboard-recruiters" },
-  { name: "My Profile", icon: <FaUser />, path: "/profile" },
-  { name: "Companies", icon: <FaBuilding />, path: "/company-profile" },
-  { name: "Jobs", icon: <FaBriefcase />, path: "/create-all-job" },
-  { name: "Applicants", icon: <FaUsers />, path: "/applicants" },
-  { name: "Analytics", icon: <FaChartBar />, path: "/analytics" },
-  { name: "Messages", icon: <FaEnvelope />, path: "/messages" },
-  { name: "Settings", icon: <FaCog />, path: "/settings" },
-];
+    { name: "Dashboard", icon: <FaHome />, path: "/dashboard-recruiters" },
+    { name: "My Profile", icon: <FaUser />, path: "/recruiter/profile" },
+    { name: "Companies", icon: <FaBuilding />, path: "/company-profile" },
+    { name: "Jobs", icon: <FaBriefcase />, path: "/create-all-job" },
+    { name: "Applicants", icon: <FaUsers />, path: "/applicants" },
+    { name: "Analytics", icon: <FaChartBar />, path: "/analytics" },
+    { name: "Messages", icon: <FaEnvelope />, path: "/messages" },
+    { name: "Settings", icon: <FaCog />, path: "/settings" },
+  ];
+  const {recruiter} = useRecruiter();
   const [open, setOpen] = useState(false);
+  const [data,setData] = useState();
+  console.log(data);
+  useEffect(()=>{
+    const handledata = async() =>{
+      try {
+        const url = import.meta.env.VITE_SERVER_URL;
+        const res = await fetch(`${url}/recruiter/dashboard`,{
+          method:"GET",
+          credentials:"include",
+          headers:{
+            "Content-Type" :  "application/json"
+          }
+        })
+        const data = await res.json();
+        setData(data.data);
+      } catch (error) {
+        toast.error("Server not responding")
+      }
+    }
+    handledata()
+  },[])
 
   return (
     <div className="min-h-screen bg-[#f5f7fb] flex">
@@ -150,15 +173,14 @@ const RecruitersHome = () => {
 
             <div className="flex gap-3 items-center">
 
-              <img
-                src="https://i.pravatar.cc/100"
-                className="w-12 h-12 rounded-full"
-              />
+           <NavLink to="/recruiter/profile"> <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">
+  {recruiter?.name?.charAt(0)?.toUpperCase() }
+</div></NavLink>
 
               <div className="hidden md:block">
 
                 <h1 className="font-bold">
-                  John Smith
+                {recruiter?.name }
                 </h1>
 
                 <p className="text-gray-500 text-sm">
@@ -188,7 +210,7 @@ const RecruitersHome = () => {
               </h2>
 
               <h1 className="text-5xl font-bold mt-2">
-                John Smith 👋
+                {recruiter?.name} 👋
               </h1>
 
               <p className="text-gray-500 mt-4">
@@ -226,32 +248,19 @@ const RecruitersHome = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-7">
 
             {[
-              ["24", "Active Jobs"],
-              ["5", "Companies"],
-              ["128", "Applicants"],
-              ["342", "Users"]
-            ].map((card, i) => (
-
-              <div
-                key={i}
-                className="bg-white rounded-3xl p-6 shadow-sm"
-              >
-
-                <h1 className="text-4xl font-bold">
-
-                  {card[0]}
-
-                </h1>
-
-                <p className="text-gray-500 mt-2">
-
-                  {card[1]}
-
-                </p>
-
-              </div>
-
-            ))}
+  [data?.activeJobs ?? 0, "Active Jobs"],
+  [data?.totalJobs ?? 0, "Total Jobs"],
+  [data?.totalApplications ?? 0, "Applications"],
+  [data?.totalUsers ?? 0, "Users"],
+  [data?.pendingJobs ?? 0, "Pending Jobs"],
+  [data?.appliedUsers?.length ?? 0, "Applied Users"],
+  [data?.uniqueApplicants ?? 0, "Unique Applicants"]
+].map((card, i) => (
+  <div key={i} className="bg-white rounded-3xl p-6 shadow-sm">
+    <h1 className="text-4xl font-bold">{card[0]}</h1>
+    <p className="text-gray-500 mt-2">{card[1]}</p>
+  </div>
+))}
 
           </div>
 
@@ -310,24 +319,20 @@ const RecruitersHome = () => {
 
               <div className="mt-6 space-y-5">
 
-                {["Frontend Dev","Backend Dev","UI UX Designer"].map((job)=>(
+                {data?.recentJobs?.map((job) => (
+  <div key={job.id} className="flex justify-between border-b pb-4">
+    <div>
+      <h1 className="font-semibold">{job.job_name}</h1>
+      <p className="text-gray-500">
+        {job.location}
+      </p>
+    </div>
 
-                  <div className="flex justify-between border-b pb-4">
-
-                    <div>
-                      <h1 className="font-semibold">{job}</h1>
-                      <p className="text-gray-500">
-                        Tech Solutions
-                      </p>
-                    </div>
-
-                    <span className="text-green-600">
-                      Active
-                    </span>
-
-                  </div>
-
-                ))}
+    <span className={job.status === "approved" ? "text-green-700 font-bold" : job.status === "pending" ? "text-yellow-500 font-bold" : ""}>
+      {job.status}
+    </span>
+  </div>
+))}
 
               </div>
 
@@ -343,38 +348,29 @@ const RecruitersHome = () => {
 
               <div className="mt-6 space-y-5">
 
-                {["Ravi","Priya","Amit"].map((user)=>(
+               {data?.recentApplicants?.map((user, i) => (
+  <div key={i} className="flex justify-between border-b pb-4">
 
-                  <div className="flex justify-between border-b pb-4">
+    <div className="flex gap-3">
+      <img
+        src="https://i.pravatar.cc/50"
+        className="w-10 h-10 rounded-full"
+      />
 
-                    <div className="flex gap-3">
+      <div>
+        <h1>{user.name}</h1>
+        <p className="text-gray-500">
+          {user.job_name}
+        </p>
+      </div>
+    </div>
 
-                      <img
-                        src="https://i.pravatar.cc/50"
-                        className="w-10 h-10 rounded-full"
-                      />
+    <span className="text-blue-600 font-bold">
+      {new Date(user.created_at).toLocaleDateString()}
+    </span>
 
-                      <div>
-
-                        <h1>{user}</h1>
-
-                        <p className="text-gray-500">
-                          Python Developer
-                        </p>
-
-                      </div>
-
-                    </div>
-
-                    <span className="text-blue-600">
-
-                      Review
-
-                    </span>
-
-                  </div>
-
-                ))}
+  </div>
+))}
 
               </div>
 

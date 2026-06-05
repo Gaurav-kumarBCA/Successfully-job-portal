@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaEdit,
   FaTrash,
@@ -6,33 +6,35 @@ import {
   FaMoneyBillWave,
   FaBriefcase,
 } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
+import JobUpdated from "../component/JobUpdated";
+import JobDeleted from "../component/JobDeleted";
 
 const GetAllJobs = () => {
-  const jobs = [
-    {
-      id: 15,
-      job_name: "ice",
-      description: "cold",
-      salary: 30000,
-      location: "delhi",
-      job_type: "full-time",
-      status: "pending",
-      category: "food",
-      created_at: "2026-06-03T19:18:32.005Z",
-    },
-    {
-      id: 14,
-      job_name: "group",
-      description:
-        "very-good is a very good companies by recruiters in delhi to moradabad",
-      salary: 50000,
-      location: "delhi",
-      job_type: "full-time",
-      status: "pending",
-      category: "Creater",
-      created_at: "2026-06-03T18:49:45.025Z",
-    },
-  ];
+  const [jobs,setJobs] = useState([]);
+  useEffect(()=>{
+    const jobhandle = async() =>{
+      try {
+        const url = import.meta.env.VITE_SERVER_URL;
+        const res = await fetch(`${url}/recruiter/jobs/job_data`,{
+          method:"GET",
+          credentials:"include",
+          headers:{
+            "Content-Type": "application/json"
+          }
+        })
+        const data = await res.json();
+        if(!data.success){
+          return toast.error(data.message)
+        }
+        setJobs(data.data)
+      } catch (error) {
+        toast.error("Server not responding")
+      }
+    }
+    jobhandle();
+  },[])
 
   const handleUpdate = (id) => {
     console.log("Update Job:", id);
@@ -50,9 +52,11 @@ const GetAllJobs = () => {
           <div className="flex flex-col md:flex-row justify-between gap-4">
 
             <div>
-              <h1 className="text-3xl font-bold text-slate-800">
+              <NavLink to="/dashboard-recruiters">
+                <h1 className="text-3xl font-bold text-slate-800">
                 My Jobs
               </h1>
+              </NavLink>
               <p className="text-slate-500 mt-1">
                 Manage and track all jobs you have posted.
               </p>
@@ -92,7 +96,7 @@ const GetAllJobs = () => {
                       {job.job_name}
                     </h2>
 
-                    <span className="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm">
+                    <span className={`px-3 py-1 ${job.status === "approved" ? "bg-green-100 text-green-500" : job.status === "pending" ? "bg-yellow-100 text-yellow-700" : job.status === "reject" ? "bg-red-100 text-red-500" : ""}  rounded-full text-sm`}>
                       {job.status}
                     </span>
                   </div>
@@ -133,21 +137,13 @@ const GetAllJobs = () => {
                 </div>
 
                 <div className="flex lg:flex-col gap-3">
-                  <button
-                    onClick={() => handleUpdate(job.id)}
-                    className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-700"
-                  >
-                    <FaEdit />
-                    Update
-                  </button>
+                 
+                 <JobUpdated job={job}
+  setJobs={setJobs}/>
 
-                  <button
-                    onClick={() => handleDelete(job.id)}
-                    className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-red-50 border border-red-200 text-red-600 hover:bg-red-100"
-                  >
-                    <FaTrash />
-                    Delete
-                  </button>
+                  <JobDeleted    job={job}
+  setJobs={setJobs}/>      
+                 
                 </div>
 
               </div>

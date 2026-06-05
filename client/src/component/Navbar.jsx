@@ -44,8 +44,8 @@ const Navbar = () => {
           <div className="hidden md:flex gap-8 font-semibold">
 
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/">Jobs</NavLink>
-            <NavLink to="/">Companies</NavLink>
+            <NavLink to="/all_jobs/applied">Jobs</NavLink>
+            <NavLink to="/all_companies">Companies</NavLink>
             <NavLink to="/applied-recruiters">+ Add Recruiter</NavLink>
             <NavLink to="/">About</NavLink>
 

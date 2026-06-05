@@ -6,7 +6,7 @@ const {Server} = require("socket.io");
 
 const initDB = require("./src/config/initTableDB");
 const authRoutes = require("./src/routers/auth.route");
-
+const path = require("path")
 const admin=require("./src/routers/admin/index");
 const recruiter= require("./src/routers/recruiter/index");
 const user=require("./src/routers/users/index");
@@ -52,10 +52,11 @@ app.use("/api/auth", authRoutes);
 app.use("/public",publicJob);
 app.use("/login",publicrecruiter)
 
+app.use("/uploads", express.static(path.join(__dirname,"src/uploads")));
+
 app.use(authMiddleware)
 
 
-app.use("/uploads", express.static("src/uploads"));
 app.use("/recruiter",recruiterMiddleware,recruiter);
 app.use("/admin",adminMiddleware,admin);
 app.use("/user",usermiddleware,user)

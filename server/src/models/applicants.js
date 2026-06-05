@@ -36,4 +36,30 @@ const getAllApplicants = async () => {
     `);
 };
 
-module.exports = { getAllApplicants };
+
+const getAllRecruiterbyApplicants = async (recruiterId) => {
+  return await pool.query(
+    `
+    SELECT
+      a.id,
+      a.created_at,
+      a.resume,
+      u.id AS user_id,
+      u.name,
+      u.email,
+      j.id AS job_id,
+      j.job_name
+    FROM allapplicants a
+    INNER JOIN users u
+      ON u.id = a.user_id
+    INNER JOIN jobcreate j
+      ON j.id = a.job_id
+    WHERE j.posted_by = $1
+    ORDER BY a.created_at DESC
+    `,
+    [recruiterId]
+  );
+
+};
+
+module.exports = { getAllApplicants,getAllRecruiterbyApplicants};

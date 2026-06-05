@@ -8,6 +8,8 @@ import {
   FaBuilding,
 } from "react-icons/fa";
 import { toast } from "react-toastify"
+import CompanyUpdate from "../component/CompanyUpdate";
+import CompanyDeleted from "../component/CompanyDeleted";
 
 const CompanyProfile = () => {
   const [company,setCompany]=useState([]);
@@ -31,19 +33,11 @@ const CompanyProfile = () => {
       profile()
   },[])
 
-  const handleUpdate = () => {
-    console.log("update company");
-  };
-
-  const handleDelete = () => {
-    console.log("delete company");
-  };
 
   return (
     <div className="min-h-screen bg-slate-100 py-8 px-4">
       <div className="max-w-6xl mx-auto">
 
-        {/* HERO SECTION */}
         <div className="relative overflow-hidden rounded-3xl shadow-xl">
           <img
             src="/companyprofile.jpeg"
@@ -73,7 +67,6 @@ const CompanyProfile = () => {
           </div>
         </div>
 
-        {/* COMPANY CARD */}
         <div className="-mt-16 relative z-10">
           <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8">
 
@@ -100,27 +93,15 @@ const CompanyProfile = () => {
               </div>
 
               <div className="flex gap-3 flex-wrap">
-                <button
-                  onClick={handleUpdate}
-                  className="px-5 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition flex items-center gap-2"
-                >
-                  <FaEdit />
-                  Update
-                </button>
+                <CompanyUpdate company={company} setCompany={setCompany}/>
 
-                <button
-                  onClick={handleDelete}
-                  className="px-5 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200 hover:bg-red-100 transition flex items-center gap-2"
-                >
-                  <FaTrash />
-                  Delete
-                </button>
+                <CompanyDeleted  companyId={company.id} />
+
               </div>
             </div>
           </div>
         </div>
 
-        {/* INFO CARDS */}
         <div className="grid md:grid-cols-3 gap-5 mt-8">
 
           <div className="bg-white rounded-2xl p-6 shadow-sm">
@@ -172,7 +153,6 @@ const CompanyProfile = () => {
 
         </div>
 
-        {/* ABOUT COMPANY */}
         <div className="bg-white rounded-3xl shadow-sm mt-8 p-8">
           <h2 className="text-2xl font-bold text-slate-800 mb-4">
             About Our Company

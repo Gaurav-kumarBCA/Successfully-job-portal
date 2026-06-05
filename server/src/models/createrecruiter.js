@@ -20,4 +20,10 @@ const getAllRecruiters=async()=>{
   );
 };
 
-module.exports={CreateRecruitermodel,findRecruiterByEmail,getAllRecruiters}
+const recruiterProfile = async(id)=>{
+  return await pool.query(
+    `SELECT id,name,email,company_name,company_website FROM create_recruiter WHERE id=$1`,[id]
+  )
+}
+
+module.exports={CreateRecruitermodel,findRecruiterByEmail,getAllRecruiters,recruiterProfile}

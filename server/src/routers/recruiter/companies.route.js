@@ -4,7 +4,7 @@ const router= express.Router();
 router.post("/companies_data",AddCompanies);
 router.get("/companies_data",getCompanies);
 router.get("/companies_data/:id",getSingleCompany);
-router.put("/companies_data/:id",updateCompany);
+router.patch("/companies_data/:id",updateCompany);
 router.delete("/companies_data/:id",deleteCompanycontroller)
 
 module.exports= router

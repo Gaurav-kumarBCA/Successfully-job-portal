@@ -5,7 +5,7 @@ const router = express.Router();
 router.post("/job_data",jobcreate);
 router.get("/job_data",AllJob);
 router.get("/job_data/:id",AllJobById);
-router.put("/job_data/:id",updateJob);
+router.patch("/job_data/:id",updateJob);
 router.delete("/job_data/:id",deleteJob);
 
 module.exports = router;

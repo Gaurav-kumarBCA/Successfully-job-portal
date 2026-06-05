@@ -7,8 +7,10 @@ import {
   FaBuilding,
   FaUser,
   FaClipboardList,
-  FaLaptopCode
+  FaLaptopCode,
+  FaHome
 } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify"
 const CreateJobs = () => {
 
@@ -61,16 +63,17 @@ const CreateJobs = () => {
       <div className="max-w-7xl mx-auto bg-white rounded-[35px] shadow-md overflow-hidden">
 
 
-        <div className="border-b p-6 flex items-center gap-4">
+        <div className="border-b p-6 flex items-center justify-between  gap-4 ">
 
-          <img
+          <div className="flex">
+            <img
             src="/job-portal.png"
             className="w-12 h-12 object-contain"
           />
 
           <div>
 
-            <h1 className="font-bold text-3xl">
+             <h1 className="font-bold text-3xl">
               Career Path
             </h1>
 
@@ -79,9 +82,12 @@ const CreateJobs = () => {
             </p>
 
           </div>
+          </div>
+
+            <NavLink to="/dashboard-recruiters"><div><FaHome size={20}/></div></NavLink>
 
         </div>
-
+        
 
         <div className="grid lg:grid-cols-2 gap-8 p-5 md:p-8">
 

@@ -5,6 +5,15 @@ const router = express.Router();
 
 
 
-router.post("/apply", upload.single("resume"),applyJob);
+router.post(
+  "/apply",
+  upload.single("resume"),
+  (req, res, next) => {
+    console.log("MULTER FILE:", req.file);
+    console.log("MULTER BODY:", req.body);
+    next();
+  },
+  applyJob
+);
 
 module.exports = router;
