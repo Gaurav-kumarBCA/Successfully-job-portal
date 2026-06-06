@@ -16,6 +16,7 @@ import {
   FaTrophy
 } from "react-icons/fa";
 import { IoPaperPlane } from "react-icons/io5";
+import { NavLink } from "react-router-dom";
 
 const categories = [
   { title:"Development", jobs:"12,450 Jobs", icon:<FaCode/> },
@@ -28,7 +29,7 @@ const jobs = [
 {
 title:"Senior React Developer",
 company:"Google",
-location:"Remote",
+location:"Lucknow",
 salary:"₹12L - ₹18L"
 },
 {
@@ -46,7 +47,7 @@ salary:"₹15L - ₹22L"
 {
 title:"Product Manager",
 company:"Microsoft",
-location:"Hybrid",
+location:"Chhattisgarh",
 salary:"₹20L - ₹28L"
 }
 ];
@@ -265,13 +266,13 @@ className="bg-white rounded-2xl p-6 shadow">
 {job.salary}
 
 </p>
-
+<NavLink to="/all_jobs/applied">
 <button className="mt-5 w-full bg-blue-600 text-white py-3 rounded-xl">
 
-Apply Now
+See More
 
 </button>
-
+</NavLink>
 </div>
 
 ))}

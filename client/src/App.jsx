@@ -20,6 +20,7 @@ import JobUpdated from './component/JobUpdated'
 import JobDeleted from './component/JobDeleted'
 import GetAllJobbyUsers from './Pages/GetAllJobbyUsers'
 import GetAllCompaniesbyUsers from './Pages/GetAllCompaniesbyUsers'
+import SaveJobs from './Pages/SaveJobs'
 
 const App = () => {
   return (
@@ -33,7 +34,7 @@ const App = () => {
       <Route path='/login-recruiters' element={<RecruitersLogin/>}/>
       <Route path='/add-companies' element={<AddCompanies/>}/>
       <Route path='/add-jobs' element={<CreateJobs/>}/>
-      <Route path='/job-applied' element={<AppliedJob/>}/>
+      <Route path='/job-applied/:id' element={<AppliedJob/>}/>
       <Route path='/dashboard-recruiters' element={<RecruitersHome/>}/>
       <Route path='/company-profile' element={<CompanyProfile/>}/>
       <Route path='/create-all-job' element={<GetAllJobs/>}/>
@@ -45,6 +46,7 @@ const App = () => {
       <Route path='/job_delete/:id' element={<JobDeleted/>}/>
       <Route path='/all_jobs/applied' element={<GetAllJobbyUsers/>} />
       <Route path='/all_companies' element={<GetAllCompaniesbyUsers/>}/>
+      <Route path='/save_jobs' element={<SaveJobs/>}/>
     </Routes>
     </BrowserRouter>
   )

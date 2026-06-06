@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FaBuilding, FaMapMarkerAlt, FaMoneyBillWave, FaBriefcase } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const GetAllJobbyUsers = () => {
+
+const navigate = useNavigate();
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
@@ -32,10 +35,30 @@ const GetAllJobbyUsers = () => {
     fetchJobs();
   }, []);
 
-  const handleSaveJob = (job) => {
-    toast.success(`Job Saved: ${job.job_name}`);
-    console.log("Saved Job:", job);
-  };
+  const handleSave = async (job_id) => {
+  try {
+    const url = import.meta.env.VITE_SERVER_URL;
+
+    const res = await fetch(`${url}/user/saveJob/job`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include", 
+      body: JSON.stringify({
+        job_id: job_id,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!data.success) throw new Error(data.message);
+
+    toast.success("Job Saved ❤️");
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 py-10 px-4">
@@ -121,13 +144,12 @@ const GetAllJobbyUsers = () => {
 
                 <div className="flex gap-3 mt-5">
 
-                  <button className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition">
+                  <button onClick={()=>navigate(`/job-applied/${job.id}`)} className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition">
                     Apply Now
                   </button>
 
-                  <button
-                    onClick={() => handleSaveJob(job)}
-                    className="px-4 py-3 rounded-xl border border-slate-200 hover:bg-slate-100 transition"
+                  <button  onClick={() => handleSave(job.id)}
+                    className="px-4 py-3 rounded-xl border border-slate-200 hover:bg-slate-100 transition rounded-xl bg-gray-400 font-bold"
                   >
                     Save
                   </button>

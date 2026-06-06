@@ -352,10 +352,9 @@ const RecruitersHome = () => {
   <div key={i} className="flex justify-between border-b pb-4">
 
     <div className="flex gap-3">
-      <img
-        src="https://i.pravatar.cc/50"
-        className="w-10 h-10 rounded-full"
-      />
+      <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">
+  {user?.name?.charAt(0)?.toUpperCase() }
+</div>
 
       <div>
         <h1>{user.name}</h1>

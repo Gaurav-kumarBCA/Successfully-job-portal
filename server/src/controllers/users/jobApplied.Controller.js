@@ -2,10 +2,8 @@ const { applyJobDB } = require("../../services/user/jobApplied.service");
 
 const applyJob = async (req, res) => {
     try {
-          // 👈 DEBUG HERE
-        const { job_id, user_id, cover_letter } = req.body;
-        console.log(req.file);
-console.log(req.body);
+        const { job_id,  cover_letter } = req.body;
+        const user_id = req.loginUser?.id
 
         if (!job_id || !user_id) {
             return res.status(400).json({
@@ -14,10 +12,7 @@ console.log(req.body);
             });
         }
 
-        // 📄 Resume from file upload
-     const resume = req.file
-  ? `/uploads/${req.file.filename}`
-  : null;
+     const resume = req.file ? `/uploads/${req.file.filename}` : null;
 
         const data = await applyJobDB(job_id, user_id, resume, cover_letter);
 

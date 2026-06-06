@@ -6,21 +6,29 @@ import {
   FaBriefcase,
   FaBuilding,
   FaLayerGroup,
-  FaInfoCircle
+  FaInfoCircle,
+  FaUserCircle,
+  FaSignOutAlt,
+  FaUser,
+  FaSun,
+  FaMoon
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { FiSettings } from "react-icons/fi";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-
+  const [profileOpen, setProfileOpen] = useState(false);
+  const [theme, setTheme] = useState(false);
+  const [mobileSettings, setMobileSettings] = useState(false);
   return (
     <>
       <nav className="w-full h-[75px] bg-gray-100 sticky top-0 z-50">
 
         <div className="max-w-7xl mx-auto h-full px-4 flex items-center justify-between">
 
+          {/* LOGO */}
           <div className="flex items-center gap-2">
-
             <img
               src="/job-portal.png"
               alt=""
@@ -28,45 +36,82 @@ const Navbar = () => {
             />
 
             <div>
-
               <h1 className="font-bold text-lg md:text-2xl text-blue-900">
                 Career Path
               </h1>
-
               <p className="hidden md:block text-xs text-gray-500">
                 Find your dream job
               </p>
-
             </div>
-
           </div>
 
+          {/* MENU */}
           <div className="hidden md:flex gap-8 font-semibold">
-
             <NavLink to="/">Home</NavLink>
             <NavLink to="/all_jobs/applied">Jobs</NavLink>
             <NavLink to="/all_companies">Companies</NavLink>
             <NavLink to="/applied-recruiters">+ Add Recruiter</NavLink>
-            <NavLink to="/">About</NavLink>
-
+            <NavLink to="/save_jobs">Save Jobs</NavLink>
           </div>
 
-          <div className="hidden md:flex gap-3">
+          {/* RIGHT SIDE */}
+          <div className="hidden md:flex items-center gap-4">
 
+            {/* LOGIN */}
             <NavLink to="/login">
               <button className="px-5 py-2 border rounded-xl">
-              Login
-            </button>
+                Login
+              </button>
             </NavLink>
 
+            {/* SIGNUP */}
             <NavLink to="/signup">
               <button className="px-5 py-2 bg-blue-900 text-white rounded-xl">
-              Sign Up
-            </button>
+                Sign Up
+              </button>
             </NavLink>
+
+            {/* PROFILE ICON */}
+            <div className="relative">
+              <button
+                onClick={() => setProfileOpen(!profileOpen)}
+                className="text-3xl text-blue-900 hover:scale-110 transition"
+              >
+                <FaUserCircle />
+              </button>
+
+              {/* DROPDOWN */}
+              {profileOpen && (
+                <div className="absolute right-0 mt-3 w-48 bg-white shadow-xl rounded-2xl overflow-hidden border">
+
+                  <NavLink
+                    to="/profile"
+                    className="flex items-center gap-2 px-4 py-3 hover:bg-gray-100"
+                  >
+                    <FaUser />
+                    My Profile
+                  </NavLink>
+
+                  <NavLink
+  onClick={() => setTheme(prev => !prev)}
+  className="flex items-center gap-2 px-4 py-3 hover:bg-gray-100"
+>
+  {theme ? <FaMoon /> : <FaSun />}
+  Theme change
+</NavLink>
+
+                  <button className="w-full flex items-center gap-2 px-4 py-3 hover:bg-red-50 text-red-600">
+                    <FaSignOutAlt />
+                    Logout
+                  </button>
+
+                </div>
+              )}
+            </div>
 
           </div>
 
+          {/* MOBILE MENU BUTTON */}
           <button
             onClick={() => setOpen(true)}
             className="md:hidden text-3xl"
@@ -75,97 +120,105 @@ const Navbar = () => {
           </button>
 
         </div>
-
       </nav>
 
+      {/* MOBILE MENU (same as yours) */}
+      <div
+        className={`fixed top-0 left-0 w-full z-50 md:hidden duration-500
+        ${open ? "translate-y-0" : "-translate-y-full"}`}
+      >
+        <div className="bg-white shadow-2xl rounded-b-[30px] px-5 py-5">
 
+          <div className="flex items-center justify-between border-b pb-4">
 
-<div
-className={`fixed top-0 left-0 w-full z-50 md:hidden duration-500
-${open ? "translate-y-0" : "-translate-y-full"}`}
->
+            <div>
+              <h1 className="font-bold text-lg text-blue-900">
+                Career Path
+              </h1>
+              <p className="text-xs text-gray-500">
+                Find Your Dream Job
+              </p>
+            </div>
 
-  <div className="bg-white shadow-2xl rounded-b-[30px] px-5 py-5">
+            <button
+              onClick={() => setOpen(false)}
+              className="h-9 w-9 rounded-full bg-gray-100 flex items-center justify-center"
+            >
+              <IoClose size={22} />
+            </button>
 
-  
+          </div>
 
-    <div className="flex items-center justify-between border-b pb-4">
+          <div className="flex flex-col gap-3 mt-5">
 
-      <div>
-        <h1 className="font-bold text-lg text-blue-900">
-          Career Path
-        </h1>
+            <a href="/" className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300">
+              <FaHome className="text-blue-600" />
+              Home
+            </a>
 
-        <p className="text-xs text-gray-500">
-          Find Your Dream Job
-        </p>
-      </div>
+            <a href="/all_jobs/applied" className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300">
+              <FaBriefcase className="text-blue-600" />
+              Jobs
+            </a>
 
-      <button
-      onClick={()=>setOpen(false)}
-      className="h-9 w-9 rounded-full bg-gray-100 flex items-center justify-center">
+            <a href="/all_companies" className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300">
+              <FaBuilding className="text-blue-600" />
+              Companies
+            </a>
 
-        <IoClose size={22}/>
+            <a href="/applied-recruiters" className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300">
+              <FaUser className="text-blue-600" />
+             + Add Recruiter
+            </a>
 
-      </button>
+            <div>
 
-    </div>
-
-
-
-    
-
-    <div className="flex flex-col gap-3 mt-5">
-
-      <a className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300">
-        <FaHome className="text-blue-600"/>
-        Home
-      </a>
-
-      <a className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300">
-        <FaBriefcase className="text-blue-600"/>
-        Jobs
-      </a>
-
-      <a className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300">
-        <FaBuilding className="text-blue-600"/>
-        Companies
-      </a>
-
-      <a className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300">
-        <FaLayerGroup className="text-blue-600"/>
-        Categories
-      </a>
-
-      <a className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300">
-        <FaInfoCircle className="text-blue-600"/>
-        About
-      </a>
-
-    </div>
-
-
-   
-
-    <div className="flex gap-3 mt-6">
-
-      <NavLink to="/login">
-        <button className="w-[150px] border-2 border-blue-700 py-2 rounded-xl text-blue-700 font-semibold">
-        Login
-      </button>
-      </NavLink>
-
-      <NavLink to="/signup">
-        <button className="w-[150px] bg-blue-700 text-white py-2 rounded-xl font-semibold">
-        Sign Up
-      </button>
-      </NavLink>
-
-    </div>
-
+  {/* SETTINGS BUTTON */}
+  <div
+    onClick={() => setMobileSettings(!mobileSettings)}
+    className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300 cursor-pointer"
+  >
+    <FiSettings className="text-blue-600" />
+    Setting
   </div>
 
+  {/* SETTINGS DROPDOWN */}
+  {mobileSettings && (
+    <div className="ml-6 mt-2 flex flex-col gap-2">
+
+      {/* SAVE JOB */}
+      <a href="/save_jobs" className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-100">
+        💾 Save Jobs
+      </a>
+
+      {/* THEME */}
+      <div
+        onClick={() => setTheme(prev => !prev)}
+        className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-100 cursor-pointer"
+      >
+        {theme ? <FaMoon /> : <FaSun />}
+        Theme
+      </div>
+
+    </div>
+  )}
+
 </div>
+
+            <a className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300">
+              <FaUserCircle className="text-blue-600" />
+              Profile
+            </a>
+            <div className="flex items-center justify-around">
+              <NavLink to="/login"><button className="bg-blue-950 px-5 py-3 text-white rounded-[10px] ">Login</button></NavLink>
+              <NavLink to="/signup">
+                <button className="bg-gray-300 px-5 py-3 text-black rounded-[10px] border">Signup</button>
+              </NavLink>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </>
   );
 };
