@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { FaBuilding, FaMapMarkerAlt, FaMoneyBillWave, FaBriefcase } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-
+import { useAuth} from "../hooks/useAuth"
 const GetAllJobbyUsers = () => {
-
+const {user} = useAuth();
 const navigate = useNavigate();
   const [jobs, setJobs] = useState([]);
 
@@ -36,6 +36,10 @@ const navigate = useNavigate();
   }, []);
 
   const handleSave = async (job_id) => {
+    if(!user){
+      navigate("/login");
+      return;
+    }
   try {
     const url = import.meta.env.VITE_SERVER_URL;
 
@@ -61,21 +65,21 @@ const navigate = useNavigate();
 };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 py-10 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 dark:from-gray-900 dark:to-gray-950 py-10 px-4">
       <div className="max-w-6xl mx-auto">
 
         <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-slate-800">
+          <h1 className="text-4xl font-bold text-slate-800  dark:text-white">
             Explore Latest Jobs 🚀
           </h1>
 
-          <p className="text-slate-500 mt-2">
+          <p className="text-slate-500 mt-2 dark:text-gray-300">
             Find your dream job from top companies and start your career journey today.
           </p>
         </div>
 
         {jobs.length === 0 ? (
-          <div className="text-center text-slate-500 mt-20">
+          <div className="text-center text-slate-500 mt-20 dark:text-gray-300 ">
             No jobs available right now 😔
           </div>
         ) : (
@@ -83,35 +87,35 @@ const navigate = useNavigate();
             {jobs.map((job) => (
               <div
                 key={job.id}
-                className="bg-white rounded-3xl shadow-sm hover:shadow-xl transition p-6 border border-slate-100"
+                className="bg-white dark:bg-gray-900 rounded-3xl shadow-sm hover:shadow-xl transition p-6 border border-slate-100"
               >
 
                 <div className="flex items-center gap-3 mb-4">
 
-                  <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg uppercase">
+                  <div className="w-12 h-12 rounded-xl  bg-blue-600 text-white flex items-center justify-center font-bold text-lg uppercase">
                     {job.company?.company_name?.charAt(0)}
                   </div>
 
                   <div>
-                    <h2 className="font-bold text-slate-800">
+                    <h2 className="font-bold text-slate-800  dark:text-white">
                       {job.company?.company_name}
                     </h2>
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-slate-500 dark:text-gray-400">
                       Hiring Now
                     </p>
                   </div>
 
                 </div>
 
-                <h3 className="text-xl font-bold text-slate-800">
+                <h3 className="text-xl font-bold text-slate-800 dark:text-white">
                   {job.job_name}
                 </h3>
 
-                <p className="text-slate-500 text-sm mt-2 line-clamp-3">
+                <p className="text-slate-500 text-sm mt-2 line-clamp-3 dark:text-gray-300">
                   {job.description}
                 </p>
 
-                <div className="mt-4 space-y-2 text-sm text-slate-600">
+                <div className="mt-4 space-y-2 text-sm text-slate-600 dark:text-gray-300">
 
                   <div className="flex items-center gap-2">
                     <FaMapMarkerAlt className="text-red-500" />
@@ -130,7 +134,7 @@ const navigate = useNavigate();
 
                 </div>
 
-                <div className="mt-4 bg-slate-50 p-3 rounded-xl text-xs text-slate-600">
+                <div className="mt-4 bg-slate-50 p-3  dark:bg-gray-800  dark:text-gray-300 rounded-xl text-xs text-slate-600">
                   <p>
                     <span className="font-semibold">Company:</span>{" "}
                     {job.company?.company_name}
@@ -144,12 +148,12 @@ const navigate = useNavigate();
 
                 <div className="flex gap-3 mt-5">
 
-                  <button onClick={()=>navigate(`/job-applied/${job.id}`)} className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition">
+                  <button onClick={()=>navigate(`/job-applied/${job.id}`)} className="w-full bg-blue-600 dark:bg-blue-700 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 dark:hover:bg-blue-800 transition">
                     Apply Now
                   </button>
 
                   <button  onClick={() => handleSave(job.id)}
-                    className="px-4 py-3 rounded-xl border border-slate-200 hover:bg-slate-100 transition rounded-xl bg-gray-400 font-bold"
+                    className="px-4 py-3 rounded-xl border border-slate-200 dark:border-gray-600 dark:hover:bg-gray-700 dark:bg-gray-700 dark:text-white hover:bg-slate-100 transition rounded-xl bg-gray-400 font-bold"
                   >
                     Save
                   </button>

@@ -58,9 +58,9 @@ const SignUp = () => {
     }
   }
   return (
-    <main className="min-h-screen bg-[#edf2ff] flex items-center justify-center px-4 py-6">
+    <main className="min-h-screen dark:bg-gray-900 bg-[#edf2ff] flex items-center justify-center px-4 py-6">
 
-      <div className="w-full max-w-7xl bg-white rounded-[35px] shadow-2xl overflow-hidden">
+      <div className="w-full max-w-7xl dark:bg-gray-950 bg-white rounded-[35px] shadow-2xl overflow-hidden">
 
 
         <div className="flex justify-between items-center px-6 md:px-10 py-6">
@@ -75,11 +75,11 @@ const SignUp = () => {
 
             <div>
 
-              <h1 className="font-bold text-xl md:text-2xl">
+              <h1 className="font-bold text-xl md:text-2xl dark:text-white">
                 Career Path
               </h1>
 
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-500 text-sm dark:text-gray-300">
                 Find Your Perfect Job
               </p>
 
@@ -87,12 +87,12 @@ const SignUp = () => {
 
           </div>
 
-          <p className="hidden md:block text-gray-500">
+          <p className="text-gray-500 dark:text-gray-300 text-[9px] md:text-sm md:text-base">
 
-            Already have an account?
+            Already account?
 
             <NavLink to="/login">
-                <span className="text-blue-600 ml-2 font-semibold cursor-pointer">
+                <span className="text-blue-600 ml-2  font-semibold cursor-pointer">
 
               Login
 
@@ -141,15 +141,15 @@ const SignUp = () => {
           <div className="flex items-center  justify-center p-5 md:p-10">
             <form onSubmit={handleForm}>
 
-            <div className="w-full max-w-[500px] bg-white rounded-[35px] border shadow-xl p-8">
+            <div className="w-full max-w-[500px] dark:bg-gray-900  dark:border-gray-700 bg-white rounded-[35px] border shadow-xl p-8">
 
-              <h1 className="text-4xl font-bold text-[#0e1747]">
+              <h1 className="text-4xl font-bold text-[#0e1747] dark:text-white">
 
                 Create Account 
 
               </h1>
 
-              <p className="text-gray-500 mt-4 leading-8">
+              <p className="text-gray-500 mt-4 leading-8 dark:text-gray-300">
 
                 Join us today and take the next step towards your dream career.
 
@@ -160,15 +160,15 @@ const SignUp = () => {
 
               <div className="mt-8">
 
-                <label className="font-semibold">
+                <label className="font-semibold  dark:text-white">
 
                   Full Name
 
                 </label>
 
-                <div className="border rounded-2xl mt-3 flex items-center px-4 py-4">
+                <div className="border dark:border-gray-600 rounded-2xl mt-3 flex items-center px-4 py-4">
 
-                  <FaUser className="text-gray-400"/>
+                  <FaUser className="text-gray-400 dark:text-gray-300"/>
 
                   <input
                   required
@@ -177,7 +177,7 @@ const SignUp = () => {
                     name="name"
                     type="text"
                     placeholder="Enter your full name"
-                    className="ml-3 w-full outline-none"
+                    className="ml-3 w-full outline-none bg-transparent text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-300"
                   />
 
                 </div>
@@ -189,15 +189,15 @@ const SignUp = () => {
 
               <div className="mt-6">
 
-                <label className="font-semibold">
+                <label className="font-semibold  dark:text-white">
 
                   Email Address
 
                 </label>
 
-                <div className="border rounded-2xl mt-3 flex items-center px-4 py-4">
+                <div className="border dark:border-gray-600 rounded-2xl mt-3 flex items-center px-4 py-4">
 
-                  <FaEnvelope className="text-gray-400"/>
+                  <FaEnvelope className="text-gray-400 dark:text-gray-300"/>
 
                   <input
                   required
@@ -206,7 +206,7 @@ const SignUp = () => {
                   name="email"
                     type="email"
                     placeholder="Enter your email"
-                    className="ml-3 w-full outline-none"
+                    className="ml-3 w-full outline-none bg-transparent text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-300"
                   />
 
                 </div>
@@ -218,15 +218,15 @@ const SignUp = () => {
 
               <div className="mt-6">
 
-                <label className="font-semibold">
+                <label className="font-semibold  dark:text-white">
 
                   Password
 
                 </label>
 
-                <div className="border rounded-2xl mt-3 flex items-center px-4 py-4">
+                <div className="border dark:border-gray-600 rounded-2xl mt-3 flex items-center px-4 py-4">
 
-                  <FaLock className="text-gray-400"/>
+                  <FaLock className="text-gray-400 dark:text-gray-300"/>
 
                   <input
                   required
@@ -235,7 +235,7 @@ const SignUp = () => {
                   name="password"
                     type="password"
                     placeholder="Create password"
-                    className="ml-3 w-full outline-none"
+                    className="ml-3 w-full outline-none bg-transparent text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-300"
                   />
 
                   {/* <FaEye className="text-gray-400"/> */}
@@ -249,15 +249,15 @@ const SignUp = () => {
 
               <div className="mt-6">
 
-                <label className="font-semibold">
+                <label className="font-semibold  dark:text-white">
 
                   Confirm Password
 
                 </label>
 
-                <div className="border rounded-2xl mt-3 flex items-center px-4 py-4">
+                <div className="border dark:border-gray-600 rounded-2xl mt-3 flex items-center px-4 py-4">
 
-                  <FaLock className="text-gray-400"/>
+                  <FaLock className="text-gray-400 dark:text-gray-300"/>
 
                   <input
                   required
@@ -266,7 +266,7 @@ const SignUp = () => {
                   onChange={onChange}
                     type="password"
                     placeholder="Confirm password"
-                    className="ml-3 w-full outline-none"
+                    className="ml-3 w-full outline-none bg-transparent text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-300"
                   />
 
                   {/* <FaEye className="text-gray-400"/> */}
@@ -281,7 +281,7 @@ const SignUp = () => {
 
                 <input type="checkbox"/>
 
-                <p>
+                <p  className="dark:text-white">
 
                   I agree to the
 
@@ -307,9 +307,9 @@ const SignUp = () => {
 
                 <div className="h-[1px] bg-gray-300 flex-1"></div>
 
-                <span className="text-gray-400">
+                <span className="text-gray-400 dark:text-gray-300">
 
-                  or continue with
+                   continue with
 
                 </span>
 
@@ -320,7 +320,7 @@ const SignUp = () => {
 
               <div className="grid grid-cols-2 gap-4">
 
-                <button className="border rounded-2xl py-4 flex items-center justify-center gap-3">
+                <button className="border  dark:border-gray-600 dark:text-white rounded-2xl py-4 flex items-center justify-center gap-3">
 
                   <FaGoogle className="text-red-500"/>
 
@@ -329,7 +329,7 @@ const SignUp = () => {
                 </button>
 
 
-                <button className="border rounded-2xl py-4 flex items-center justify-center gap-3">
+                <button className="border  dark:border-gray-600 dark:text-white rounded-2xl py-4 flex items-center justify-center gap-3">
 
                   <FaLinkedin className="text-blue-600"/>
 
@@ -346,13 +346,13 @@ const SignUp = () => {
 
 
 
-          <div className="hidden lg:flex relative bg-[#f8faff] overflow-hidden items-center justify-center">
+          <div className="hidden lg:flex relative bg-[#f8faff]  dark:bg-gray-900 overflow-hidden items-center justify-center">
 
-            <div className="absolute w-[700px] h-[700px] bg-blue-100 rounded-full -right-52 -bottom-48"></div>
+            <div className="absolute w-[700px] h-[700px] dark:bg-gray-900 bg-blue-100 rounded-full -right-52 -bottom-48"></div>
 
             <div className="relative z-10 px-10">
 
-              <h1 className="text-6xl font-bold leading-tight text-[#0e1747]">
+              <h1 className="text-6xl font-bold leading-tight dark:text-white text-[#0e1747]">
 
                 Your Career
                 <br/>
@@ -365,7 +365,7 @@ const SignUp = () => {
 
               </h1>
 
-              <p className="mt-6 text-gray-500 text-lg max-w-md leading-8">
+              <p className="mt-6 text-gray-500 text-lg max-w-md leading-8  dark:text-gray-300">
 
                 Create your profile and get access to thousands of job opportunities.
 

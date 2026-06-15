@@ -33,16 +33,16 @@ const GetAllCompaniesbyUsers = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 py-10 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 dark:from-gray-900 dark:to-gray-950 py-10 px-4">
 
       <div className="max-w-6xl mx-auto">
 
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-slate-800">
+          <h1 className="text-4xl font-bold text-slate-800 dark:text-white">
             Explore Top Companies 🏢
           </h1>
 
-          <p className="text-slate-500 mt-2">
+          <p className="text-slate-500 mt-2 dark:text-gray-300">
             Discover companies hiring and building amazing careers worldwide.
           </p>
         </div>
@@ -52,7 +52,7 @@ const GetAllCompaniesbyUsers = () => {
           {companies.map((company) => (
             <div
               key={company.id}
-              className="bg-white rounded-3xl shadow-sm hover:shadow-xl transition p-6 border border-slate-100"
+              className="bg-white dark:bg-gray-900  rounded-3xl shadow-sm hover:shadow-xl transition p-6 border border-slate-100"
             >
 
               <div className="flex items-center gap-4 mb-4">
@@ -62,29 +62,29 @@ const GetAllCompaniesbyUsers = () => {
                 </div>
 
                 <div>
-                  <h2 className="font-bold text-slate-800">
+                  <h2 className="font-bold text-slate-800 dark:text-white">
                     {company.company_name}
                   </h2>
 
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-slate-500  dark:text-gray-400">
                     Hiring Company
                   </p>
                 </div>
 
               </div>
 
-              <p className="text-sm text-slate-600 leading-6 line-clamp-3">
+              <p className="text-sm text-slate-600 leading-6 line-clamp-3  dark:text-gray-300 ">
                 {company.description}
               </p>
 
               <div className="mt-4 space-y-2 text-sm text-slate-600">
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 dark:text-gray-300">
                   <FaMapMarkerAlt className="text-red-500" />
                   {company.location}
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 dark:text-gray-300">
                   <FaGlobe className="text-green-600" />
                   {company.website_url}
                 </div>
@@ -93,7 +93,7 @@ const GetAllCompaniesbyUsers = () => {
 
               <div className="mt-5 flex items-center justify-between">
 
-                <span className="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded-full">
+                <span className="text-xs bg-blue-50 dark:bg-blue-900/30  dark:text-blue-300 text-blue-600 px-3 py-1 rounded-full">
                   Active Company
                 </span>
 

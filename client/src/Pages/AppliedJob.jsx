@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import withAuth from "../component/withAuth";
 
 const AppliedJob = () => {
   const { id } = useParams();
@@ -78,10 +79,10 @@ const AppliedJob = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 p-4 md:p-8">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 dark:from-gray-900 dark:to-gray-950 p-4 md:p-8">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.7fr_1fr] gap-8">
 
-        <div className="bg-white rounded-3xl shadow-xl p-6 md:p-10">
+        <div className="bg-white rounded-3xl shadow-xl p-6 md:p-10 dark:bg-gray-950">
 
           <div
             onClick={() => navigate(-1)}
@@ -91,7 +92,7 @@ const AppliedJob = () => {
             <span>Back</span>
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-bold mt-6">
+          <h1 className="text-3xl md:text-4xl font-bold mt-6 dark:text-gray-300">
             Apply for this Job
           </h1>
 
@@ -100,10 +101,10 @@ const AppliedJob = () => {
           </p>
 
           <div className="mt-8">
-            <label className="font-semibold">Cover Letter</label>
+            <label className="font-semibold dark:text-gray-200">Cover Letter</label>
 
             <div className="flex gap-4 mt-3">
-              <div className="w-14 h-32 bg-blue-50 rounded-xl flex items-start justify-center pt-4">
+              <div className="w-14 h-32 bg-blue-50 rounded-xl dark:bg-gray-950 flex items-start justify-center pt-4">
                 <FaPen className="text-blue-600" />
               </div>
 
@@ -112,24 +113,24 @@ const AppliedJob = () => {
                 value={formData.cover_letter}
                 onChange={handleChange}
                 rows={6}
-                className="w-full border rounded-xl p-4 outline-none focus:border-blue-500"
+                className="w-full border rounded-xl p-4 outline-none dark:border-white dark:text-white focus:border-blue-500"
               />
             </div>
           </div>
 
           <div className="mt-8">
-            <label className="font-semibold">Upload Resume</label>
+            <label className="font-semibold dark:text-white">Upload Resume</label>
 
-            <div className="border-2 border-dashed rounded-2xl p-6 mt-3 flex flex-col md:flex-row justify-between items-center gap-5">
+            <div className="border-2 border-dashed rounded-2xl p-6 mt-3 flex dark:border-white flex-col md:flex-row justify-between items-center gap-5">
 
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center">
+                <div className="w-16 h-16 bg-blue-50 rounded-xl dark:bg-gray-800 flex items-center justify-center">
                   <FaUpload className="text-blue-600 text-2xl" />
                 </div>
 
                 <div>
                   <h1 className="font-semibold">Upload Resume</h1>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     PDF / DOC (Max 5MB)
                   </p>
                 </div>
@@ -151,7 +152,7 @@ const AppliedJob = () => {
           </button>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+        <div className="bg-white rounded-3xl shadow-xl dark:bg-gray-900 overflow-hidden">
 
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white">
             <h2 className="text-2xl font-bold">Job Overview</h2>
@@ -163,39 +164,39 @@ const AppliedJob = () => {
           <div className="p-6 space-y-5">
 
             <div className="flex justify-between">
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-2 dark:text-gray-200">
                 <FaMapMarkerAlt /> Location
               </span>
-              <span>Delhi</span>
+              <span className="dark:text-gray-300">Delhi</span>
             </div>
 
             <div className="flex justify-between">
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-2 dark:text-gray-200">
                 <FaMoneyBillWave /> Salary
               </span>
-              <span>₹50,000</span>
+              <span className="dark:text-gray-300">₹50,000</span>
             </div>
 
             <div className="flex justify-between">
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-2 dark:text-gray-200">
                 <FaClock /> Type
               </span>
-              <span>Full Time</span>
+              <span className="dark:text-gray-300">Full Time</span>
             </div>
 
             <div className="flex justify-between">
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-2 dark:text-gray-200">
                 <FaFolder /> Category
               </span>
-              <span>IT</span>
+              <span className="dark:text-gray-300">IT</span>
             </div>
 
           </div>
 
-          <div className="m-6 p-4 bg-green-50 rounded-2xl flex gap-3">
+          <div className="m-6 p-4 bg-green-50 rounded-2xl dark:bg-gray-800 flex gap-3">
             <FaShieldAlt className="text-green-600 mt-1" />
             <div>
-              <h3 className="font-semibold">Secure Application</h3>
+              <h3 className="font-semibold dark:text-gray-200">Secure Application</h3>
               <p className="text-sm text-gray-500">
                 Your data is protected
               </p>
@@ -209,4 +210,4 @@ const AppliedJob = () => {
   );
 };
 
-export default AppliedJob;
+export default withAuth(AppliedJob);

@@ -21,10 +21,12 @@ import JobDeleted from './component/JobDeleted'
 import GetAllJobbyUsers from './Pages/GetAllJobbyUsers'
 import GetAllCompaniesbyUsers from './Pages/GetAllCompaniesbyUsers'
 import SaveJobs from './Pages/SaveJobs'
+import ThemeProvider from './store/theme.store'
 
 const App = () => {
   return (
     <BrowserRouter>
+    <ThemeProvider>
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/signup' element={<SignUp/>}/>
@@ -48,6 +50,7 @@ const App = () => {
       <Route path='/all_companies' element={<GetAllCompaniesbyUsers/>}/>
       <Route path='/save_jobs' element={<SaveJobs/>}/>
     </Routes>
+    </ThemeProvider>
     </BrowserRouter>
   )
 }

@@ -45,25 +45,25 @@ const GetAllJobs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 p-4 md:p-8">
+    <div className="min-h-screen bg-slate-100 dark:bg-gray-900 p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
 
-        <div className="bg-white rounded-3xl shadow-sm p-6 mb-6">
+        <div className="bg-white rounded-3xl shadow-sm p-6 dark:bg-gray-950 mb-6">
           <div className="flex flex-col md:flex-row justify-between gap-4">
 
             <div>
               <NavLink to="/dashboard-recruiters">
-                <h1 className="text-3xl font-bold text-slate-800">
+                <h1 className="text-3xl font-bold text-slate-800 dark:text-gray-300">
                 My Jobs
               </h1>
               </NavLink>
-              <p className="text-slate-500 mt-1">
+              <p className="text-slate-500 mt-1 dark:text-gray-400">
                 Manage and track all jobs you have posted.
               </p>
             </div>
 
-            <div className="bg-blue-50 px-6 py-4 rounded-2xl">
-              <p className="text-sm text-slate-500">
+            <div className="bg-blue-50 dark:bg-gray-900 px-6 py-4 rounded-2xl">
+              <p className="text-sm text-slate-500 dark:text-gray-200">
                 Total Jobs
               </p>
               <h2 className="text-3xl font-bold text-blue-600">
@@ -73,11 +73,11 @@ const GetAllJobs = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm p-4 mb-6">
+        <div className="bg-white rounded-2xl shadow-sm p-4 mb-6 dark:bg-gray-950">
           <input
             type="text"
             placeholder="Search jobs..."
-            className="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-blue-500"
+            className="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-blue-500 dark:placeholder-gray-200"
           />
         </div>
 
@@ -85,14 +85,14 @@ const GetAllJobs = () => {
           {jobs.map((job) => (
             <div
               key={job.id}
-              className="bg-white rounded-3xl shadow-sm p-6 hover:shadow-lg transition"
+              className="bg-white rounded-3xl shadow-sm p-6 dark:bg-gray-950 hover:shadow-lg transition"
             >
               <div className="flex flex-col lg:flex-row justify-between gap-6">
 
                 <div className="flex-1">
 
                   <div className="flex items-center gap-3 flex-wrap">
-                    <h2 className="text-2xl font-bold text-slate-800">
+                    <h2 className="text-2xl font-bold text-slate-800 dark:text-gray-200">
                       {job.job_name}
                     </h2>
 
@@ -101,23 +101,23 @@ const GetAllJobs = () => {
                     </span>
                   </div>
 
-                  <p className="text-slate-600 mt-3 leading-7">
+                  <p className="text-slate-600 mt-3 leading-7 dark:text-gray-300">
                     {job.description}
                   </p>
 
                   <div className="flex flex-wrap gap-4 mt-5">
 
-                    <div className="flex items-center gap-2 text-slate-600">
+                    <div className="flex items-center gap-2 text-slate-600 dark:text-gray-300">
                       <FaMoneyBillWave className="text-green-600" />
                       ₹{job.salary.toLocaleString()}
                     </div>
 
-                    <div className="flex items-center gap-2 text-slate-600">
+                    <div className="flex items-center gap-2 text-slate-600 dark:text-gray-300">
                       <FaMapMarkerAlt className="text-red-500" />
                       {job.location}
                     </div>
 
-                    <div className="flex items-center gap-2 text-slate-600">
+                    <div className="flex items-center gap-2 text-slate-600 dark:text-gray-300">
                       <FaBriefcase className="text-blue-600" />
                       {job.job_type}
                     </div>

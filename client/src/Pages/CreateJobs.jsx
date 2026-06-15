@@ -58,12 +58,12 @@ const CreateJobs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f4f7ff] p-3 md:p-6">
+    <div className="min-h-screen bg-[#f4f7ff] dark:bg-gray-950 p-3 md:p-6">
 
-      <div className="max-w-7xl mx-auto bg-white rounded-[35px] shadow-md overflow-hidden">
+      <div className="max-w-7xl mx-auto bg-white dark:bg-gray-900 rounded-[35px] shadow-md overflow-hidden">
 
 
-        <div className="border-b p-6 flex items-center justify-between  gap-4 ">
+        <div className="border-b p-6 flex items-center dark:border-white justify-between  gap-4 ">
 
           <div className="flex">
             <img
@@ -73,18 +73,18 @@ const CreateJobs = () => {
 
           <div>
 
-             <h1 className="font-bold text-3xl">
+             <h1 className="font-bold text-3xl dark:text-gray-200">
               Career Path
             </h1>
 
-            <p className="text-gray-500">
+            <p className="text-gray-500 dark:text-gray-400">
               Create New Job
             </p>
 
           </div>
           </div>
 
-            <NavLink to="/dashboard-recruiters"><div><FaHome size={20}/></div></NavLink>
+            <NavLink to="/dashboard-recruiters"><div className="dark:text-white"><FaHome size={20}/></div></NavLink>
 
         </div>
         
@@ -93,13 +93,13 @@ const CreateJobs = () => {
 
 
           <form onSubmit={handleSubmit}>
-          <div className="border rounded-[30px] p-6">
+          <div className="border rounded-[30px] p-6 dark:border-white">
 
-            <h1 className="text-3xl font-bold">
+            <h1 className="text-3xl font-bold dark:text-gray-100">
               Job Information
             </h1>
 
-            <p className="text-gray-500 mt-2">
+            <p className="text-gray-500 mt-2 dark:text-gray-400">
               Fill all details to create a job
             </p>
 
@@ -110,11 +110,11 @@ const CreateJobs = () => {
 
               <div>
 
-                <label className="font-semibold">
+                <label className="font-semibold dark:text-gray-200">
                   Job Name
                 </label>
 
-                <div className="border rounded-xl p-4 mt-2 flex gap-3 items-center">
+                <div className="border rounded-xl p-4 mt-2 flex dark:border-white gap-3 items-center">
 
                   <FaBriefcase className="text-blue-600"/>
 
@@ -124,7 +124,7 @@ const CreateJobs = () => {
                     value={jobData.job_name}
                     onChange={handleChange}
                     placeholder="Enter job name"
-                    className="w-full outline-none"
+                    className="w-full outline-none dark:placeholder-gray-200 dark:text-white"
                   />
 
                 </div>
@@ -135,11 +135,11 @@ const CreateJobs = () => {
 
               <div>
 
-                <label className="font-semibold">
+                <label className="font-semibold dark:text-gray-200">
                   Description
                 </label>
 
-                <div className="border rounded-xl p-4 mt-2 flex gap-3">
+                <div className="border rounded-xl p-4 mt-2 flex gap-3 dark:border-white">
 
                   <FaClipboardList
                     className="text-blue-600 mt-1"
@@ -151,7 +151,7 @@ const CreateJobs = () => {
                     value={jobData.description}
                     onChange={handleChange}
                     placeholder="Write job details..."
-                    className="w-full outline-none"
+                    className="w-full outline-none dark:placeholder-gray-200 dark:text-white"
                   />
 
                 </div>
@@ -163,11 +163,11 @@ const CreateJobs = () => {
 
               <div>
 
-                <label className="font-semibold">
+                <label className="font-semibold dark:text-gray-200">
                   Salary
                 </label>
 
-                <div className="border rounded-xl p-4 mt-2 flex gap-3 items-center">
+                <div className="border rounded-xl p-4 mt-2 flex gap-3 dark:border-white items-center">
 
                   <FaMoneyBillWave className="text-green-600"/>
 
@@ -177,7 +177,7 @@ const CreateJobs = () => {
                     value={jobData.salary}
                     onChange={handleChange}
                     placeholder="Enter Salary"
-                    className="w-full outline-none"
+                    className="w-full outline-none dark:placeholder-gray-200 dark:text-white"
                   />
 
                 </div>
@@ -188,11 +188,11 @@ const CreateJobs = () => {
 
               <div>
 
-                <label className="font-semibold">
+                <label className="font-semibold dark:text-gray-200">
                   Location
                 </label>
 
-                <div className="border rounded-xl p-4 mt-2 flex gap-3 items-center">
+                <div className="border rounded-xl p-4 mt-2 flex dark:border-white gap-3 items-center">
 
                   <FaMapMarkerAlt className="text-red-500"/>
 
@@ -202,7 +202,7 @@ const CreateJobs = () => {
                     value={jobData.location}
                     onChange={handleChange}
                     placeholder="Enter location"
-                    className="w-full outline-none"
+                    className="w-full outline-none dark:placeholder-gray-200 dark:text-white"
                   />
 
                 </div>
@@ -214,11 +214,11 @@ const CreateJobs = () => {
 
               <div>
 
-                <label className="font-semibold">
+                <label className="font-semibold dark:text-gray-200">
                   Job Type
                 </label>
 
-                <div className="border rounded-xl p-4 mt-2 flex gap-3 items-center">
+                <div className="border rounded-xl p-4 mt-2 dark:border-white flex gap-3 items-center">
 
                   <FaLaptopCode className="text-purple-600"/>
 
@@ -226,7 +226,7 @@ const CreateJobs = () => {
                     name="job_type"
                     value={jobData.job_type}
                     onChange={handleChange}
-                    className="w-full outline-none"
+                    className="w-full outline-none dark:bg-gray-900 dark:text-white"
                   >
 
                     <option>
@@ -258,11 +258,11 @@ const CreateJobs = () => {
 
             <div>
 
-                <label className="font-semibold">
+                <label className="font-semibold dark:text-gray-200">
                   Category
                 </label>
 
-                <div className="border rounded-xl p-4 mt-2 flex gap-3 items-center">
+                <div className="border rounded-xl p-4 mt-2 flex dark:border-white gap-3 items-center">
 
                   <FaLayerGroup className="text-orange-500"/>
 
@@ -272,7 +272,7 @@ const CreateJobs = () => {
                     value={jobData.category}
                     onChange={handleChange}
                     placeholder="Creater"
-                    className="w-full outline-none"
+                    className="w-full outline-none dark:placeholder-gray-200 dark:text-white"
                   />
 
                 </div>
@@ -295,9 +295,9 @@ const CreateJobs = () => {
 
 
 
-          <div className="bg-[#edf4ff] rounded-[30px] p-8 h-fit">
+          <div className="bg-[#edf4ff] dark:bg-gray-950 rounded-[30px] p-8 h-fit">
 
-            <div className="bg-white rounded-[30px] p-8 shadow">
+            <div className="bg-white rounded-[30px] p-8 dark:bg-gray-900 shadow">
 
               <div className="w-20 h-20 rounded-full bg-blue-600 text-white flex items-center justify-center text-3xl mx-auto">
 
@@ -305,13 +305,13 @@ const CreateJobs = () => {
 
               </div>
 
-              <h1 className="text-center text-3xl font-bold mt-6">
+              <h1 className="text-center text-3xl font-bold mt-6 dark:text-gray-200">
 
                 {jobData.job_name || "Job Title"}
 
               </h1>
 
-              <p className="text-center text-gray-500 mt-2">
+              <p className="text-center text-gray-500 mt-2 dark:text-gray-400">
 
                 {jobData.location || "Location"}
 
@@ -321,7 +321,7 @@ const CreateJobs = () => {
               <div className="space-y-5 mt-8">
 
                 <div>
-                  <h2 className="font-bold">
+                  <h2 className="font-bold dark:text-gray-200">
                     Description
                   </h2>
 
@@ -333,11 +333,11 @@ const CreateJobs = () => {
 
                 <div className="flex justify-between">
 
-                  <span className="font-bold">
+                  <span className="font-bold dark:text-gray-200">
                     Salary
                   </span>
 
-                  <span>
+                  <span className="dark:text-gray-300">
                     ₹ {jobData.salary || "0"}
                   </span>
 
@@ -346,11 +346,11 @@ const CreateJobs = () => {
 
                 <div className="flex justify-between">
 
-                  <span className="font-bold">
+                  <span className="font-bold dark:text-gray-200">
                     Type
                   </span>
 
-                  <span>
+                  <span className="dark:text-gray-300">
                     {jobData.job_type || "--"}
                   </span>
 
@@ -359,11 +359,11 @@ const CreateJobs = () => {
 
                 <div className="flex justify-between">
 
-                  <span className="font-bold">
+                  <span className="font-bold dark:text-gray-200">
                     Category
                   </span>
 
-                  <span>
+                  <span className="dark:text-gray-300">
                     {jobData.category || "--"}
                   </span>
 

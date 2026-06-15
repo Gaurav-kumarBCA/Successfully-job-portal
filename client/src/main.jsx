@@ -3,9 +3,11 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import RecruiterProvider from "./store/recruiter.store.jsx"
+import AuthProvider from "./store/auth.store.jsx"
 
 createRoot(document.getElementById('root')).render(
-  <RecruiterProvider>
+  <AuthProvider>
+  <RecruiterProvider>  
     <App />
     <ToastContainer
   position="top-center"
@@ -27,5 +29,7 @@ createRoot(document.getElementById('root')).render(
     maxWidth: "400px"
   }}
 /> 
+
 </RecruiterProvider>
+</AuthProvider>
 )

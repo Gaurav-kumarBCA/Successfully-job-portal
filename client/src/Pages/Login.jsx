@@ -49,9 +49,9 @@ const Login = () => {
     }
   }
   return (
-    <main className="min-h-screen bg-[#eef4ff] py-5 px-3">
+    <main className="min-h-screen bg-[#eef4ff] dark:bg-gray-900  py-5 px-3">
 
-      <div className="max-w-7xl mx-auto bg-white rounded-[35px] overflow-hidden shadow-2xl">
+      <div className="max-w-7xl mx-auto  dark:bg-gray-950 bg-white rounded-[35px] overflow-hidden shadow-2xl">
 
 
         <div className="flex justify-between items-center px-5 md:px-10 py-5">
@@ -66,11 +66,11 @@ const Login = () => {
 
             <div>
 
-              <h1 className="font-bold text-xl md:text-2xl">
+              <h1 className="font-bold text-xl md:text-2xl  dark:text-white">
                 Career Path
               </h1>
 
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-500 dark:text-gray-300 text-sm">
                 Find Your Perfect Job
               </p>
 
@@ -78,7 +78,7 @@ const Login = () => {
 
           </div>
 
-          <p className="hidden md:block text-gray-500">
+          <p className="text-gray-500 dark:text-gray-300 text-[10px] md:text-sm md:text-base">
 
             New Here?
 
@@ -141,7 +141,7 @@ const Login = () => {
 
                 </p>
 
-                <h1 className="text-5xl font-bold mt-3 leading-tight">
+                <h1 className="text-5xl dark:text-white font-bold mt-3 leading-tight">
 
                   Unlock Your
                   <br/>
@@ -150,7 +150,7 @@ const Login = () => {
 
                 </h1>
 
-                <p className="text-gray-500 mt-5 leading-7">
+                <p className="text-gray-500 mt-5 leading-7  dark:text-gray-300">
 
                   Sign in and discover opportunities from top companies.
 
@@ -159,17 +159,17 @@ const Login = () => {
               </div>
 
               <form onSubmit={handleForm}>
-              <div className="bg-white shadow-xl rounded-[30px] p-7 mt-8 border">
+              <div className="bg-white dark:bg-gray-900  dark:border-gray-700 shadow-xl rounded-[30px] p-7 mt-8 border">
 
                 <div>
 
-                  <label className="font-semibold">
+                  <label className="font-semibold dark:text-white">
                     Email Address
                   </label>
 
-                  <div className="border rounded-2xl flex items-center px-4 py-4 mt-3">
+                  <div className="border dark:border-gray-600 rounded-2xl flex items-center px-4 py-4 mt-3">
 
-                    <FaEnvelope className="text-gray-400"/>
+                    <FaEnvelope className="text-gray-400  dark:text-gray-300"/>
 
                     <input
                     onChange={onChange}
@@ -178,7 +178,7 @@ const Login = () => {
                     autoComplete="off"
                       type="email"
                       placeholder="Enter your email"
-                      className="ml-3 outline-none w-full"
+                      className="ml-3 outline-none w-full bg-transparent text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-300"
                     />
 
                   </div>
@@ -188,13 +188,13 @@ const Login = () => {
 
                 <div className="mt-6">
 
-                  <label className="font-semibold">
+                  <label className="font-semibold dark:text-white">
                     Password
                   </label>
 
-                  <div className="border rounded-2xl flex items-center px-4 py-4 mt-3">
+                  <div className="border dark:border-gray-600 rounded-2xl flex items-center px-4 py-4 mt-3">
 
-                    <FaLock className="text-gray-400"/>
+                    <FaLock className="text-gray-400 dark:text-gray-300"/>
 
                     <input
                      onChange={onChange}
@@ -203,7 +203,7 @@ const Login = () => {
                       autoComplete="new-password"
                       type="password"
                       placeholder="Enter password"
-                      className="ml-3 outline-none w-full"
+                      className="ml-3 outline-none w-full bg-transparent text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-300"
                     />
 
 
@@ -214,7 +214,7 @@ const Login = () => {
 
                 <div className="flex justify-between mt-5 text-sm">
 
-                  <label className="flex gap-2">
+                  <label className="flex gap-2  dark:text-white">
 
                     <input type="checkbox"/>
 
@@ -242,7 +242,7 @@ const Login = () => {
 
                   <div className="h-[1px] bg-gray-300 flex-1"></div>
 
-                  <span className="text-gray-400 text-sm">
+                  <span className="text-gray-400 text-sm dark:text-gray-300">
                     continue with
                   </span>
 
@@ -253,7 +253,7 @@ const Login = () => {
 
                 <div className="grid grid-cols-2 gap-4">
 
-                  <button className="border rounded-2xl py-4 flex justify-center items-center gap-2">
+                  <button className="border dark:border-gray-600 dark:text-white rounded-2xl py-4 flex justify-center items-center gap-2">
 
                     <FaGoogle className="text-red-500"/>
 
@@ -261,7 +261,7 @@ const Login = () => {
 
                   </button>
 
-                  <button className="border rounded-2xl py-4 flex justify-center items-center gap-2">
+                  <button className="border dark:border-gray-600 dark:text-white rounded-2xl py-4 flex justify-center items-center gap-2">
 
                     <FaLinkedin className="text-blue-600"/>
 
@@ -281,9 +281,9 @@ const Login = () => {
 
 
 
-          <div className="hidden lg:flex bg-[#f8faff] relative items-center justify-center overflow-hidden">
+          <div className="hidden lg:flex bg-[#f8faff]  dark:bg-gray-900 relative items-center justify-center overflow-hidden">
 
-            <div className="absolute w-[700px] h-[700px] bg-blue-100 rounded-full -bottom-52 -right-56"></div>
+            <div className="absolute w-[700px] h-[700px]  dark:bg-gray-900 bg-blue-100 rounded-full -bottom-52 -right-56"></div>
 
             <div className="relative z-10 text-center px-10">
 
@@ -291,7 +291,7 @@ const Login = () => {
                 FIND YOUR CAREER
               </p>
 
-              <h1 className="text-6xl font-bold mt-4">
+              <h1 className="text-6xl font-bold mt-4 dark:text-white">
 
                 Start Your
                 <span className="text-blue-600">
@@ -302,7 +302,7 @@ const Login = () => {
 
               </h1>
 
-              <p className="mt-5 text-gray-500 text-lg leading-8">
+              <p className="mt-5 text-gray-500 text-lg leading-8 dark:text-gray-300">
 
                 Discover opportunities from top companies and build your future.
 

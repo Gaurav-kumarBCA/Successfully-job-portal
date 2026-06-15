@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaTrash, FaMapMarkerAlt, FaMoneyBillWave, FaBuilding } from "react-icons/fa";
 import { toast } from "react-toastify";
+import withAuth from "../component/withAuth";
 
 const SaveJobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -54,22 +55,23 @@ const SaveJobs = () => {
 
   if (loading) {
     return (
-      <div className="h-screen flex items-center justify-center text-gray-500">
+      <div className="h-screen flex items-center justify-center text-gray-500 dark:
+      text-gray-200">
         Loading saved jobs...
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-10 px-4">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 py-10 px-4">
       <div className="max-w-6xl mx-auto">
 
-        <h1 className="text-3xl font-bold text-gray-800 mb-8 text-center">
+        <h1 className="text-3xl font-bold text-gray-800 mb-8 dark:text-gray-200 text-center">
           ❤️ Saved Jobs
         </h1>
 
         {jobs.length === 0 ? (
-          <div className="text-center text-gray-500 mt-20">
+          <div className="text-center text-gray-500 mt-20 dark:text-gray-300">
             No saved jobs found 😔
           </div>
         ) : (
@@ -77,7 +79,7 @@ const SaveJobs = () => {
             {jobs.map((job) => (
               <div
                 key={job.id}
-                className="bg-white rounded-2xl shadow-md p-5 border hover:shadow-xl transition relative"
+                className="bg-white dark:bg-gray-900 dark:border-white rounded-2xl shadow-md p-5 border hover:shadow-xl transition relative"
               >
 
                 <div className="absolute top-3 right-3 bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-semibold">
@@ -90,22 +92,22 @@ const SaveJobs = () => {
                   </div>
 
                   <div>
-                    <h2 className="font-semibold text-gray-800">
+                    <h2 className="font-semibold text-gray-800 dark:text-gray-200">
                       {job.company?.company_name}
                     </h2>
-                    <p className="text-xs text-gray-500">Company</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-300">Company</p>
                   </div>
                 </div>
 
-                <h2 className="text-xl font-bold text-gray-800">
+                <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">
                   {job.job_name}
                 </h2>
 
-                <p className="text-sm text-gray-500 mt-2 line-clamp-3">
+                <p className="text-sm text-gray-500 mt-2 line-clamp-3 dark:text-gray-400">
                   {job.description}
                 </p>
 
-                <div className="mt-4 space-y-2 text-sm text-gray-600">
+                <div className="mt-4 space-y-2 text-sm text-gray-600 dark:text-gray-100">
                   <div className="flex items-center gap-2">
                     <FaMapMarkerAlt className="text-red-500" />
                     {job.location}
@@ -139,4 +141,4 @@ const SaveJobs = () => {
   );
 };
 
-export default SaveJobs;
+export default withAuth(SaveJobs) ;

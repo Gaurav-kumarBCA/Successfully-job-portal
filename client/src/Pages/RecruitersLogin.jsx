@@ -49,9 +49,9 @@ const RecruitersLogin = () => {
       }
     }
   return (
-    <div className="min-h-screen bg-[#edf3ff] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#edf3ff] dark:bg-gray-900 flex items-center justify-center p-4">
 
-      <div className="w-full max-w-7xl bg-white rounded-[35px] overflow-hidden shadow-2xl">
+      <div className="w-full max-w-7xl bg-white rounded-[35px] dark:bg-gray-950 overflow-hidden shadow-2xl">
 
         <div className="flex flex-col lg:flex-row">
 
@@ -167,13 +167,13 @@ const RecruitersLogin = () => {
                 </div>
 
 
-                <div className="bg-white text-black rounded-3xl p-6 mt-6">
+                <div className="bg-white text-black rounded-3xl p-6 mt-6 dark:bg-gray-900">
 
-                  <h1 className="font-bold text-xl">
+                  <h1 className="font-bold text-xl dark:text-gray-200">
                     Secure Platform
                   </h1>
 
-                  <p className="text-gray-500 mt-2">
+                  <p className="text-gray-500 mt-2 dark:text-gray-400">
                     Your data is secure with us.
                   </p>
 
@@ -213,7 +213,7 @@ const RecruitersLogin = () => {
 
                 </div>
 
-                <h1 className="text-3xl font-bold mt-4">
+                <h1 className="text-3xl font-bold mt-4 dark:text-white">
                   Recruiter Login
                 </h1>
 
@@ -246,7 +246,7 @@ const RecruitersLogin = () => {
                 className="w-20 mx-auto"
               />
 
-              <h1 className="text-5xl font-bold mt-5">
+              <h1 className="text-5xl font-bold mt-5 dark:text-white">
                 Recruiter Login
               </h1>
 
@@ -262,13 +262,13 @@ const RecruitersLogin = () => {
 
               <div>
 
-                <label className="font-semibold">
+                <label className="font-semibold dark:text-gray-200">
                   Email Address
                 </label>
 
-                <div className="h-16 border rounded-xl mt-2 flex items-center px-5">
+                <div className="h-16 border rounded-xl dark:border-white mt-2 flex items-center px-5">
 
-                  <FaEnvelope className="text-gray-400"/>
+                  <FaEnvelope className="text-gray-400 dark:text-gray-300"/>
 
                   <input
                   autoComplete="off"
@@ -276,7 +276,7 @@ const RecruitersLogin = () => {
                   value={form.email}
                   onChange={onChange}
                   placeholder="Enter email"
-                  className="ml-4 w-full outline-none"
+                  className="ml-4 w-full outline-none placeholder-gray-400 dark:placeholder-gray-300 dark:text-white"
                   />
 
                 </div>
@@ -286,13 +286,13 @@ const RecruitersLogin = () => {
 
               <div>
 
-                <label className="font-semibold">
+                <label className="font-semibold dark:text-gray-200">
                   Password
                 </label>
 
-                <div className="h-16 border rounded-xl mt-2 flex items-center px-5">
+                <div className="h-16 border rounded-xl mt-2 flex dark:border-white items-center px-5">
 
-                  <FaLock className="text-gray-400"/>
+                  <FaLock className="text-gray-400 dark:text-gray-300"/>
 
                   <input
                   autoComplete="new-password"
@@ -301,7 +301,7 @@ const RecruitersLogin = () => {
                   onChange={onChange}
                   type="password"
                   placeholder="Password"
-                  className="ml-4 w-full outline-none"
+                  className="ml-4 w-full outline-none placeholder-gray-400 dark:placeholder-gray-300 dark:text-white"
                   />
 
 
@@ -312,7 +312,7 @@ const RecruitersLogin = () => {
 
               <div className="flex justify-between">
 
-                <label className="flex gap-2">
+                <label className="flex gap-2 dark:text-gray-200">
                   <input type="checkbox"/>
                   Remember me
                 </label>
@@ -331,7 +331,7 @@ const RecruitersLogin = () => {
               </button>
 
 
-              <button className="w-full border h-16 rounded-xl flex items-center justify-center gap-4">
+              <button className="w-full border h-16 rounded-xl dark:border-white flex items-center justify-center gap-4 dark:text-gray-200">
 
                 <FaGoogle className="text-red-500"/>
 
@@ -340,7 +340,7 @@ const RecruitersLogin = () => {
               </button>
 
 
-              <button className="w-full border h-16 rounded-xl flex items-center justify-center gap-4">
+              <button className="w-full border h-16 rounded-xl flex items-center justify-center gap-4 dark:border-white dark:text-gray-200">
 
                 <FaLinkedin className="text-blue-600"/>
 
@@ -349,7 +349,7 @@ const RecruitersLogin = () => {
               </button>
 
 
-              <div className="bg-[#f4f8ff] p-6 rounded-3xl">
+              <div className="bg-[#f4f8ff] dark:bg-gray-900 p-6 rounded-3xl">
 
                 <div className="flex gap-4">
 
@@ -357,7 +357,7 @@ const RecruitersLogin = () => {
 
                   <div>
 
-                    <h1 className="font-bold">
+                    <h1 className="font-bold dark:text-gray-200" >
                       Need Help?
                     </h1>
 
@@ -367,7 +367,7 @@ const RecruitersLogin = () => {
 
                   </div>
                   <NavLink to="/Check-status-recruiters">
-                    <span className="hidden md:block ml-50 text-blue-700 font-bold">Check-Status
+                    <span className="md:text-sm text-[10px] md:ml-50 text-blue-700 font-bold">Check-Status
                   </span>
                   </NavLink>
                   

@@ -10,12 +10,14 @@ import {
   FaEnvelope,
   FaCog,
   FaMoon,
+  FaSun,
   FaBell,
   FaSearch,
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import {toast} from "react-toastify"
 import {useRecruiter} from "../store/recruiter.store"
+import { useTheme } from "../hooks/useTheme";
 const RecruitersHome = () => {
   const menuItems = [
     { name: "Dashboard", icon: <FaHome />, path: "/dashboard-recruiters" },
@@ -24,12 +26,15 @@ const RecruitersHome = () => {
     { name: "Jobs", icon: <FaBriefcase />, path: "/create-all-job" },
     { name: "Applicants", icon: <FaUsers />, path: "/applicants" },
     { name: "Analytics", icon: <FaChartBar />, path: "/analytics" },
-    { name: "Messages", icon: <FaEnvelope />, path: "/messages" },
-    { name: "Settings", icon: <FaCog />, path: "/settings" },
+    // { name: "Messages", icon: <FaEnvelope />, path: "/messages" },
+    // { name: "Settings", icon: <FaCog />, path: "/settings" },
   ];
   const {recruiter} = useRecruiter();
   const [open, setOpen] = useState(false);
   const [data,setData] = useState();
+  const { darkMode, setDarkMode } = useTheme();
+  
+  
   console.log(data);
   useEffect(()=>{
     const handledata = async() =>{
@@ -52,11 +57,11 @@ const RecruitersHome = () => {
   },[])
 
   return (
-    <div className="min-h-screen bg-[#f5f7fb] flex">
+    <div className="min-h-screen bg-[#f5f7fb] dark:bg-gray-900 flex">
 
 
       <div
-        className={`fixed lg:relative z-50 min-h-screen bg-white shadow-lg transition-all duration-300
+        className={`fixed lg:relative z-50 min-h-screen bg-white dark:bg-gray-950 shadow-lg transition-all duration-300
         ${open ? "w-[260px]" : "w-0 lg:w-[85px] overflow-hidden"}
         `}
       >
@@ -71,11 +76,11 @@ const RecruitersHome = () => {
 
             {open && (
               <div>
-                <h1 className="font-bold text-2xl">
+                <h1 className="font-bold text-2xl dark:text-gray-200">
                   Career Path
                 </h1>
 
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-500 text-sm dark:text-gray-300">
                   Recruiter Portal
                 </p>
               </div>
@@ -93,8 +98,8 @@ const RecruitersHome = () => {
         `flex items-center gap-4 p-4 rounded-xl cursor-pointer transition-all
         ${
           isActive
-            ? "bg-blue-100 text-blue-600"
-            : "hover:bg-blue-50"
+            ? "bg-blue-100 dark:bg-gray-800 text-blue-600 dark:text-white"
+            : "hover:bg-blue-50 dark:hover:bg-gray-700"
         }`
       }
     >
@@ -103,7 +108,7 @@ const RecruitersHome = () => {
       </div>
 
       {open && (
-        <p className="font-medium">
+        <p className="font-medium dark:text-white">
           {item.name}
         </p>
       )}
@@ -112,14 +117,14 @@ const RecruitersHome = () => {
 </div>
 
 
-          <div className="mt-10 p-4 border rounded-xl flex items-center justify-between">
+          <div  onClick={() => setDarkMode(prev => !prev)} className=" p-3  rounded-xl flex items-center justify-between gap-3">
 
-            <FaMoon />
-
-            {open && (
-              <span>
-                Dark
-              </span>
+            {darkMode ? (<>
+            <FaMoon className="text-blue-950 text-2xl "/> 
+            </>): (
+              <>
+              <FaSun className="text-yellow-950 text-2xl" />
+              </>
             )}
 
           </div>
@@ -134,22 +139,22 @@ const RecruitersHome = () => {
       <div className="flex-1">
 
 
-        <div className="bg-white h-[80px] shadow-sm px-5 flex items-center justify-between">
+        <div className="bg-white dark:bg-gray-950 h-[80px] shadow-sm px-5 flex items-center justify-between">
 
           <div className="flex items-center gap-5">
 
             <FaBars
               onClick={() => setOpen(!open)}
-              className="text-2xl cursor-pointer"
+              className="text-2xl cursor-pointer dark:text-white"
             />
 
-            <div className="hidden md:flex items-center bg-[#f1f5f9] rounded-xl px-4 py-3 w-[350px]">
+            <div className="hidden md:flex items-center bg-[#f1f5f9] dark:bg-gray-900 rounded-xl px-4 py-3 w-[350px]">
 
-              <FaSearch className="text-gray-500"/>
+              <FaSearch className="text-gray-500 dark:text-gray-300"/>
 
               <input
                 placeholder="Search..."
-                className="bg-transparent outline-none px-3 w-full"
+                className="bg-transparent outline-none px-3 w-full dark:placeholder-gray-200 dark:text-white"
               />
 
             </div>
@@ -162,7 +167,7 @@ const RecruitersHome = () => {
 
             <div className="relative">
 
-              <FaBell className="text-xl"/>
+              <FaBell className="text-xl dark:text-white"/>
 
               <div className="absolute -top-2 -right-2 bg-red-500 text-white w-5 h-5 rounded-full text-[10px] flex justify-center items-center">
                 5
@@ -173,17 +178,17 @@ const RecruitersHome = () => {
 
             <div className="flex gap-3 items-center">
 
-           <NavLink to="/recruiter/profile"> <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">
+           <NavLink to="/recruiter/profile"> <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white  font-bold">
   {recruiter?.name?.charAt(0)?.toUpperCase() }
 </div></NavLink>
 
               <div className="hidden md:block">
 
-                <h1 className="font-bold">
+                <h1 className="font-bold dark:text-white">
                 {recruiter?.name }
                 </h1>
 
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-500 text-sm dark:text-gray-400">
                   Recruiter
                 </p>
 
@@ -201,19 +206,19 @@ const RecruitersHome = () => {
         <div className="p-5">
 
 
-          <div className="bg-[#edf4ff] rounded-[30px] p-8 flex flex-col lg:flex-row justify-between items-center">
+          <div className="bg-[#edf4ff] dark:bg-gray-800 rounded-[30px] p-8 flex flex-col lg:flex-row justify-between items-center">
 
             <div>
 
-              <h2 className="text-xl">
+              <h2 className="text-xl dark:text-gray-100">
                 Welcome Back,
               </h2>
 
-              <h1 className="text-5xl font-bold mt-2">
+              <h1 className="text-5xl font-bold mt-2 dark:text-white">
                 {recruiter?.name} 👋
               </h1>
 
-              <p className="text-gray-500 mt-4">
+              <p className="text-gray-500 mt-4 dark:text-gray-300">
 
                 Manage companies, jobs and applicants
                 all in one place.
@@ -256,18 +261,15 @@ const RecruitersHome = () => {
   [data?.appliedUsers?.length ?? 0, "Applied Users"],
   [data?.uniqueApplicants ?? 0, "Unique Applicants"]
 ].map((card, i) => (
-  <div key={i} className="bg-white rounded-3xl p-6 shadow-sm">
-    <h1 className="text-4xl font-bold">{card[0]}</h1>
-    <p className="text-gray-500 mt-2">{card[1]}</p>
+  <div key={i} className="bg-white dark:bg-gray-950 rounded-3xl p-6 shadow-sm">
+    <h1 className="text-4xl font-bold dark:text-gray-100">{card[0]}</h1>
+    <p className="text-gray-500 dark:text-gray-200 mt-2">{card[1]}</p>
   </div>
 ))}
 
           </div>
 
-
-
-
-          <h1 className="font-bold text-2xl mt-8">
+          <h1 className="font-bold text-2xl mt-8 dark:text-white">
 
             Quick Actions
 
@@ -285,16 +287,16 @@ const RecruitersHome = () => {
 
               <div
                 key={i}
-                className="bg-white rounded-3xl p-6 shadow-sm"
+                className="bg-white dark:bg-gray-950 rounded-3xl p-6 shadow-sm"
               >
 
-                <h1 className="font-bold">
+                <h1 className="font-bold dark:text-gray-200">
 
                   {item}
 
                 </h1>
 
-                <p className="text-gray-500 mt-3">
+                <p className="text-gray-500 mt-3 dark:text-gray-400">
 
                   Manage quickly
 
@@ -311,9 +313,9 @@ const RecruitersHome = () => {
 
           <div className="grid lg:grid-cols-2 gap-5 mt-8">
 
-            <div className="bg-white rounded-3xl p-6">
+            <div className="bg-white dark:bg-gray-950 rounded-3xl p-6">
 
-              <h1 className="font-bold text-xl">
+              <h1 className="font-bold text-xl dark:text-gray-200">
                 Recent Job Posting
               </h1>
 
@@ -322,8 +324,8 @@ const RecruitersHome = () => {
                 {data?.recentJobs?.map((job) => (
   <div key={job.id} className="flex justify-between border-b pb-4">
     <div>
-      <h1 className="font-semibold">{job.job_name}</h1>
-      <p className="text-gray-500">
+      <h1 className="font-semibold dark:text-gray-200">{job.job_name}</h1>
+      <p className="text-gray-500 dark:text-gray-400">
         {job.location}
       </p>
     </div>
@@ -340,9 +342,9 @@ const RecruitersHome = () => {
 
 
 
-            <div className="bg-white rounded-3xl p-6">
+            <div className="bg-white rounded-3xl p-6 dark:bg-gray-950">
 
-              <h1 className="font-bold text-xl">
+              <h1 className="font-bold text-xl dark:text-gray-200">
                 Recent Applicants
               </h1>
 
@@ -357,8 +359,8 @@ const RecruitersHome = () => {
 </div>
 
       <div>
-        <h1>{user.name}</h1>
-        <p className="text-gray-500">
+        <h1 className="dark:text-gray-100">{user.name}</h1>
+        <p className="text-gray-500 dark:text-gray-400">
           {user.job_name}
         </p>
       </div>

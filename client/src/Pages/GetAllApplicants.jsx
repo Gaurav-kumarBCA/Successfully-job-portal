@@ -46,10 +46,10 @@ const GetAllApplicants = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 p-6">
+    <div className="min-h-screen bg-slate-100 p-6 dark:bg-gray-950">
 
-      <div className="bg-white rounded-3xl shadow-sm p-8 mb-6">
-        <h1 className="text-4xl font-bold">
+      <div className="bg-white rounded-3xl shadow-sm p-8 mb-6 dark:bg-gray-900">
+        <h1 className="text-4xl font-bold dark:text-gray-300">
           Applicants Management
         </h1>
 
@@ -60,35 +60,35 @@ const GetAllApplicants = () => {
 
       <div className="grid md:grid-cols-3 gap-5 mb-8">
 
-        <div className="bg-white rounded-3xl p-6 shadow-sm">
-          <FaUsers className="text-4xl text-blue-600 mb-3" />
-          <h1 className="text-3xl font-bold">
+        <div className="bg-white rounded-3xl p-6 shadow-sm dark:bg-gray-900">
+          <FaUsers className="text-4xl text-blue-600 mb-3 dark:text-blue-500" />
+          <h1 className="text-3xl font-bold dark:text-gray-100">
             {applicants.length}
           </h1>
-          <p className="text-gray-500">
+          <p className="text-gray-500 dark:text-gray-300">
             Total Applicants
           </p>
         </div>
 
-        <div className="bg-white rounded-3xl p-6 shadow-sm">
+        <div className="bg-white rounded-3xl p-6 shadow-sm dark:bg-gray-900">
           <FaBriefcase className="text-4xl text-green-600 mb-3" />
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-3xl font-bold dark:text-gray-100">
             {
               [...new Set(applicants.map((a) => a.job_id))]
                 .length
             }
           </h1>
-          <p className="text-gray-500">
+          <p className="text-gray-500 dark:text-gray-300">
             Active Job Applications
           </p>
         </div>
 
-        <div className="bg-white rounded-3xl p-6 shadow-sm">
+        <div className="bg-white rounded-3xl p-6 shadow-sm dark:bg-gray-900">
           <FaFilePdf className="text-4xl text-red-500 mb-3" />
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-3xl font-bold dark:text-gray-100">
             {applicants.length}
           </h1>
-          <p className="text-gray-500">
+          <p className="text-gray-500 dark:text-gray-300">
             Uploaded Resumes
           </p>
         </div>
@@ -96,13 +96,13 @@ const GetAllApplicants = () => {
       </div>
 
 
-      <div className="hidden lg:block bg-white rounded-3xl shadow-sm overflow-hidden">
+      <div className="hidden lg:block bg-white rounded-3xl shadow-sm overflow-hidden dark:bg-gray-900 ">
 
         <div className="overflow-x-auto">
 
           <table className="w-full">
 
-            <thead className="bg-slate-50">
+            <thead className="bg-slate-50 dark:bg-gray-700 dark:text-gray-300">
 
               <tr>
                 <th className="text-left p-5">Candidate</th>
@@ -120,23 +120,23 @@ const GetAllApplicants = () => {
 
                 <tr
                   key={applicant.id}
-                  className="border-b hover:bg-slate-50"
+                  className="border-b hover:bg-slate-50 dark:hover:bg-slate-800"
                 >
                   <td className="p-5">
                     <div className="flex items-center gap-3">
 
-                      <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">
+                      <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold ">
                         {applicant.name
                           ?.charAt(0)
                           ?.toUpperCase()}
                       </div>
 
                       <div>
-                        <h1 className="font-semibold">
+                        <h1 className="font-semibold dark:text-gray-200">
                           {applicant.name}
                         </h1>
 
-                        <p className="text-gray-500 text-sm">
+                        <p className="text-gray-500 text-sm dark:text-gray-400">
                           Applicant ID #{applicant.id}
                         </p>
                       </div>
@@ -144,21 +144,21 @@ const GetAllApplicants = () => {
                     </div>
                   </td>
 
-                  <td className="p-5">
+                  <td className="p-5 dark:text-gray-200">
                     {applicant.email}
                   </td>
 
-                  <td className="p-5">
+                  <td className="p-5 dark:text-gray-200">
                     {applicant.job_name}
                   </td>
 
-                  <td className="p-5">
+                  <td className="p-5 dark:text-gray-200">
                     {new Date(
                       applicant.created_at
                     ).toLocaleDateString()}
                   </td>
 
-                  <td className="p-5">
+                  <td className="p-5 dark:text-gray-200">
 
                     <a
                       href={`${import.meta.env.VITE_SERVER_URL}${applicant.resume}`}
@@ -189,7 +189,7 @@ const GetAllApplicants = () => {
 
           <div
             key={applicant.id}
-            className="bg-white rounded-3xl p-5 shadow-sm"
+            className="bg-white dark:bg-gray-900  rounded-3xl p-5 shadow-sm"
           >
             <div className="flex items-center gap-4">
 
@@ -200,11 +200,11 @@ const GetAllApplicants = () => {
               </div>
 
               <div>
-                <h1 className="font-bold text-lg">
+                <h1 className="font-bold text-lg dark:text-gray-200">
                   {applicant.name}
                 </h1>
 
-                <p className="text-gray-500">
+                <p className="text-gray-500 dark:text-gray-400">
                   {applicant.job_name}
                 </p>
               </div>
@@ -213,12 +213,12 @@ const GetAllApplicants = () => {
 
             <div className="mt-5 space-y-3">
 
-              <div className="flex gap-2 items-center">
+              <div className="flex gap-2 items-center dark:text-gray-200">
                 <FaEnvelope />
                 {applicant.email}
               </div>
 
-              <div className="flex gap-2 items-center">
+              <div className="flex gap-2 items-center dark:text-gray-200">
                 <FaCalendarAlt />
                 {new Date(
                   applicant.created_at

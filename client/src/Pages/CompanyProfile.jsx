@@ -35,7 +35,7 @@ const CompanyProfile = () => {
 
 
   return (
-    <div className="min-h-screen bg-slate-100 py-8 px-4">
+    <div className="min-h-screen bg-slate-100 dark:bg-gray-950 py-8 px-4">
       <div className="max-w-6xl mx-auto">
 
         <div className="relative overflow-hidden rounded-3xl shadow-xl">
@@ -68,17 +68,17 @@ const CompanyProfile = () => {
         </div>
 
         <div className="-mt-16 relative z-10">
-          <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8">
+          <div className="bg-white rounded-3xl dark:bg-gray-900 shadow-xl p-6 md:p-8">
 
             <div className="flex flex-col lg:flex-row justify-between gap-6">
 
               <div className="flex items-center gap-5">
-                <div className="h-24 w-24 rounded-2xl bg-blue-100 flex items-center justify-center">
+                <div className="h-24 w-24 rounded-2xl bg-blue-100 dark:bg-gray-950 flex items-center justify-center">
                   <FaBuilding className="text-4xl text-blue-600" />
                 </div>
 
                 <div>
-                  <h2 className="text-3xl font-bold text-slate-800">
+                  <h2 className="text-3xl font-bold text-slate-800 dark:text-gray-300">
                     {company.company_name}
                   </h2>
 
@@ -86,7 +86,7 @@ const CompanyProfile = () => {
                     Company Profile
                   </span>
 
-                  <p className="mt-3 text-slate-600">
+                  <p className="mt-3 text-slate-600 dark:text-gray-400">
                     {company.description}
                   </p>
                 </div>
@@ -104,12 +104,12 @@ const CompanyProfile = () => {
 
         <div className="grid md:grid-cols-3 gap-5 mt-8">
 
-          <div className="bg-white rounded-2xl p-6 shadow-sm">
+          <div className="bg-white rounded-2xl p-6 shadow-sm dark:bg-gray-900">
             <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
               <FaGlobe className="text-blue-600" />
             </div>
 
-            <h3 className="font-semibold text-slate-800">
+            <h3 className="font-semibold text-slate-800 dark:text-gray-200">
               Website
             </h3>
 
@@ -123,48 +123,48 @@ const CompanyProfile = () => {
             </a>
           </div>
 
-          <div className="bg-white rounded-2xl p-6 shadow-sm">
+          <div className="bg-white rounded-2xl p-6 shadow-sm dark:bg-gray-900">
             <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
               <FaMapMarkerAlt className="text-green-600" />
             </div>
 
-            <h3 className="font-semibold text-slate-800">
+            <h3 className="font-semibold text-slate-800 dark:text-gray-200">
               Location
             </h3>
 
-            <p className="text-slate-600 mt-2">
+            <p className="text-slate-600 mt-2 dark:text-gray-100">
               {company.location}
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl p-6 shadow-sm">
+          <div className="bg-white rounded-2xl p-6 shadow-sm dark:bg-gray-900">
             <div className="h-12 w-12 rounded-full bg-orange-100 flex items-center justify-center mb-4">
               <FaCalendarAlt className="text-orange-600" />
             </div>
 
-            <h3 className="font-semibold text-slate-800">
+            <h3 className="font-semibold text-slate-800 dark:text-gray-200">
               Created Date
             </h3>
 
-            <p className="text-slate-600 mt-2">
+            <p className="text-slate-600 mt-2 dark:text-gray-200">
               {new Date(company.created_at).toLocaleDateString()}
             </p>
           </div>
 
         </div>
 
-        <div className="bg-white rounded-3xl shadow-sm mt-8 p-8">
-          <h2 className="text-2xl font-bold text-slate-800 mb-4">
+        <div className="bg-white rounded-3xl shadow-sm mt-8 p-8 dark:bg-gray-900">
+          <h2 className="text-2xl font-bold text-slate-800 mb-4 dark:text-gray-200">
             About Our Company
           </h2>
 
           <div className="w-20 h-1 bg-blue-600 rounded-full mb-6"></div>
 
-          <p className="text-slate-600 leading-8">
+          <p className="text-slate-600 leading-8 dark:text-gray-300">
             {company.description}
           </p>
 
-          <p className="text-slate-600 leading-8 mt-4">
+          <p className="text-slate-600 leading-8 mt-4 dark:text-gray-200">
             Our company focuses on delivering quality services,
             innovation, and long-term business growth. We believe
             in creating value through technology, teamwork, and

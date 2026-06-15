@@ -19,9 +19,9 @@ const RecruiterProfile = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 md:p-10">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 p-4 md:p-10">
 
-      <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-lg overflow-hidden">
+      <div className="max-w-4xl mx-auto bg-white rounded-3xl dark:bg-gray-900 shadow-lg overflow-hidden">
 
         <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 md:p-10 text-white flex flex-col md:flex-row items-center gap-6">
 
@@ -44,19 +44,19 @@ const RecruiterProfile = () => {
 
           <div className="space-y-4">
 
-            <h2 className="text-xl font-bold text-gray-700">Personal Info</h2>
+            <h2 className="text-xl font-bold text-gray-700 dark:text-gray-200">Personal Info</h2>
 
-            <div className="bg-gray-50 p-4 rounded-xl flex items-center gap-3">
+            <div className="bg-gray-50 dark:bg-gray-700 dark:text-gray-200 p-4 rounded-xl flex items-center gap-3">
               <FaEnvelope className="text-blue-600" />
               <p>{recruiter?.email}</p>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-xl flex items-center gap-3">
+            <div className="bg-gray-50 p-4 rounded-xl flex items-center dark:bg-gray-700 dark:text-gray-200 gap-3">
               <FaBuilding className="text-blue-600" />
               <p>{recruiter?.company_name}</p>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-xl flex items-center gap-3">
+            <div className="bg-gray-50 dark:bg-gray-700 dark:text-gray-200 p-4 rounded-xl flex items-center gap-3">
               <FaGlobe className="text-blue-600" />
               <p>{recruiter?.company_website}</p>
             </div>
@@ -65,25 +65,25 @@ const RecruiterProfile = () => {
 
           <div className="space-y-4">
 
-            <h2 className="text-xl font-bold text-gray-700">Company Insights</h2>
+            <h2 className="text-xl font-bold text-gray-700 dark:text-gray-200">Company Insights</h2>
 
-            <div className="bg-blue-50 p-4 rounded-xl">
-              <p className="text-sm text-gray-600">Industry</p>
+            <div className="bg-blue-50 p-4 rounded-xl dark:bg-gray-700 dark:text-gray-200">
+              <p className="text-sm text-gray-600 dark:text-gray-300">Industry</p>
               <p className="font-bold">Information Technology</p>
             </div>
 
-            <div className="bg-blue-50 p-4 rounded-xl">
-              <p className="text-sm text-gray-600">Recruiter Level</p>
+            <div className="bg-blue-50 p-4 rounded-xl dark:bg-gray-700 dark:text-gray-200">
+              <p className="text-sm text-gray-600 dark:text-gray-300">Recruiter Level</p>
               <p className="font-bold">Senior Hiring Manager</p>
             </div>
 
-            <div className="bg-blue-50 p-4 rounded-xl">
-              <p className="text-sm text-gray-600">Location</p>
+            <div className="bg-blue-50 p-4 rounded-xl dark:bg-gray-700 dark:text-gray-200">
+              <p className="text-sm text-gray-600 dark:text-gray-300">Location</p>
               <p className="font-bold">India (Remote Hiring)</p>
             </div>
 
-            <div className="bg-blue-50 p-4 rounded-xl">
-              <p className="text-sm text-gray-600">Active Status</p>
+            <div className="bg-blue-50 p-4 rounded-xl dark:bg-gray-700 ">
+              <p className="text-sm text-gray-600 dark:text-gray-300">Active Status</p>
               <p className="font-bold text-green-600">Active Hiring</p>
             </div>
 

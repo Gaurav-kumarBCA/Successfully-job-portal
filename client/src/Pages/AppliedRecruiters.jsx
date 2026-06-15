@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
+import withAuth from "../component/withAuth";
 
 const AppliedRecruiters = () => {
   const [showPopup,setShowPopup]=useState(false);
@@ -55,11 +56,11 @@ const AppliedRecruiters = () => {
     }
   }
   return (
-    <div className="min-h-screen bg-[#eef4ff] p-3 md:p-8">
+    <div className="min-h-screen bg-[#eef4ff] dark:bg-gray-900 p-3 md:p-8">
 
-      <div className="max-w-7xl mx-auto bg-white rounded-[35px] overflow-hidden shadow-lg">
+      <div className="max-w-7xl mx-auto bg-white dark:bg-gray-950 rounded-[35px] overflow-hidden shadow-lg">
 
-        <div className="flex justify-between items-center p-6 border-b">
+        <div className="flex justify-between items-center p-6 border-b dark:border-b-white">
 
           <div className="flex items-center gap-3">
 
@@ -68,14 +69,14 @@ const AppliedRecruiters = () => {
               className="w-12 h-12 object-cover rounded-xl"
             />
 
-            <h1 className="text-3xl font-bold">
+            <h1 className="md:text-3xl text-xl font-bold dark:text-white">
               Career Path
             </h1>
 
           </div>
 
-          <p className="hidden md:block text-gray-500">
-            Already have account?
+          <p className="text-gray-500 dark:text-gray-300  text-[10px] md:text-sm md:text-base">
+            Already account?
             <NavLink to="/login-recruiters">
               <span className="text-blue-600 font-bold cursor-pointer ml-2">
               Login
@@ -91,7 +92,7 @@ const AppliedRecruiters = () => {
 
           <div>
 
-            <h1 className="text-4xl font-bold leading-[55px]">
+            <h1 className="text-4xl font-bold leading-[55px] dark:text-gray-300">
 
               Apply to Become a
               <span className="text-blue-600">
@@ -100,7 +101,7 @@ const AppliedRecruiters = () => {
 
             </h1>
 
-            <p className="text-gray-500 mt-4">
+            <p className="text-gray-500 mt-4 dark:text-gray-200">
               Fill out the form below to apply as a recruiter.
               Our team will review your application.
             </p>
@@ -139,9 +140,9 @@ const AppliedRecruiters = () => {
             </div>
 
             <form onSubmit={handleForm}>
-            <div className="bg-white border rounded-[30px] p-6 mt-8">
+            <div className="bg-white border dark:bg-gray-900 dark:border-white rounded-[30px] p-6 mt-8">
 
-              <h1 className="font-bold text-2xl mb-8">
+              <h1 className="font-bold text-2xl mb-8 dark:text-white">
                 Company Information
               </h1>
 
@@ -149,13 +150,13 @@ const AppliedRecruiters = () => {
 
                 <div>
 
-                  <label className="font-semibold">
+                  <label className="font-semibold dark:text-gray-200">
                     Full Name
                   </label>
 
-                  <div className="border rounded-xl mt-2 p-4 flex items-center gap-3">
+                  <div className="border rounded-xl mt-2 p-4 flex dark:border-white items-center gap-3">
 
-                    <FaUser className="text-gray-400" />
+                    <FaUser className="text-gray-400 dark:text-gray-300" />
 
                     <input
                     onChange={onChange}
@@ -163,7 +164,7 @@ const AppliedRecruiters = () => {
                       value={form.name}
                       type="text"
                       placeholder="Enter your full name"
-                      className="w-full outline-none"
+                      className="ml-3 w-full outline-none bg-transparent text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-300"
                     />
 
                   </div>
@@ -173,13 +174,13 @@ const AppliedRecruiters = () => {
 
                 <div>
 
-                  <label className="font-semibold">
+                  <label className="font-semibold dark:text-gray-200">
                     Company Name
                   </label>
 
-                  <div className="border rounded-xl mt-2 p-4 flex items-center gap-3">
+                  <div className="border rounded-xl mt-2 p-4 flex dark:border-white items-center gap-3">
 
-                    <FaBuilding className="text-gray-400" />
+                    <FaBuilding className="text-gray-400 dark:text-gray-300" />
 
                     <input
                     onChange={onChange}
@@ -187,7 +188,7 @@ const AppliedRecruiters = () => {
                     value={form.company_name}
                       type="text"
                       placeholder="Enter company name"
-                      className="w-full outline-none"
+                      className="ml-3 w-full outline-none bg-transparent text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-300"
                     />
 
                   </div>
@@ -197,13 +198,13 @@ const AppliedRecruiters = () => {
 
                 <div>
 
-                  <label className="font-semibold">
+                  <label className="font-semibold dark:text-gray-200">
                     Company Email
                   </label>
 
-                  <div className="border rounded-xl mt-2 p-4 flex items-center gap-3">
+                  <div className="border rounded-xl mt-2 p-4 dark:border-white flex  items-center gap-3">
 
-                    <FaEnvelope className="text-gray-400"/>
+                    <FaEnvelope className="text-gray-400 dark:text-gray-300"/>
 
                     <input
                     onChange={onChange}
@@ -211,7 +212,7 @@ const AppliedRecruiters = () => {
                     value={form.company_email}
                       type="email"
                       placeholder="Enter email"
-                      className="w-full outline-none"
+                      className="ml-3 w-full outline-none bg-transparent text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-300"
                     />
 
                   </div>
@@ -221,7 +222,7 @@ const AppliedRecruiters = () => {
 
                 <div>
 
-                  <label className="font-semibold">
+                  <label className="font-semibold dark:text-white">
                     Company Description
                   </label>
 
@@ -231,7 +232,7 @@ const AppliedRecruiters = () => {
                   value={form.company_description}
                     rows="5"
                     placeholder="Describe your company..."
-                    className="w-full border rounded-xl p-4 mt-2 outline-none"
+                    className="w-full border rounded-xl p-4 mt-2 outline-none dark:border-white dark:text-white dark:placeholder-gray-300 placeholder-gray-400"
                   />
 
                 </div>
@@ -239,13 +240,13 @@ const AppliedRecruiters = () => {
 
                 <div>
 
-                  <label className="font-semibold">
+                  <label className="font-semibold dark:text-gray-200">
                     Phone Number
                   </label>
 
-                  <div className="border rounded-xl mt-2 p-4 flex items-center gap-3">
+                  <div className="border rounded-xl mt-2 p-4 flex dark:border-white items-center gap-3">
 
-                    <FaPhone className="text-gray-400"/>
+                    <FaPhone className="text-gray-400 dark:text-gray-300"/>
 
                     <input
                     onChange={onChange}
@@ -253,7 +254,7 @@ const AppliedRecruiters = () => {
                     value={form.phone}
                       type="text"
                       placeholder="Enter phone number"
-                      className="w-full outline-none"
+                      className="ml-3 w-full outline-none bg-transparent text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-300"
                     />
 
                   </div>
@@ -263,20 +264,20 @@ const AppliedRecruiters = () => {
 
                 <div>
 
-                  <label className="font-semibold">
+                  <label className="font-semibold dark:text-gray-200">
                     Company Website
                   </label>
 
-                  <div className="border rounded-xl mt-2 p-4 flex items-center gap-3">
+                  <div className="border rounded-xl mt-2 p-4 dark:border-white flex items-center gap-3">
 
-                    <FaGlobe className="text-gray-400"/>
+                    <FaGlobe className="text-gray-400 dark:text-gray-300"/>
 
                     <input
                     onChange={onChange}
                     name="company_website"
                     value={form.company_website}
                       type="text"
-                      className="w-full outline-none"
+                      className="w-full outline-none dark:placeholder-gray-300 placeholder-gray-400 "
                       placeholder="www.company.com"
                     />
 
@@ -287,15 +288,15 @@ const AppliedRecruiters = () => {
 
                 <div>
 
-                  <label className="font-semibold">
+                  <label className="font-semibold dark:text-gray-200">
                     Company Type
                   </label>
 
-                  <div className="border rounded-xl mt-2 p-4 flex items-center gap-3">
+                  <div className="border rounded-xl mt-2 p-4 flex dark:border-white items-center gap-3">
 
-                    <FaLayerGroup className="text-gray-400"/>
+                    <FaLayerGroup className="text-gray-400 dark:text-gray-300 "/>
 
-                    <select onChange={onChange} name="industry_type" value={form.industry_type} className="w-full outline-none">
+                    <select onChange={onChange} name="industry_type" value={form.industry_type} className="w-full outline-none dark:bg-gray-900 dark:text-white">
 
                       <option>Select company type</option>
                       <option>IT Company</option>
@@ -329,14 +330,14 @@ const AppliedRecruiters = () => {
 
           <div className="hidden lg:flex flex-col gap-6">
 
-            <div className="bg-white border rounded-[30px] p-6">
+            <div className="bg-white dark:bg-gray-900 border rounded-[30px] p-6">
 
               <img
                 src="/recruiters.jpeg"
                 className="w-full h-[220px] object-contain"
               />
 
-              <h1 className="text-3xl font-bold mt-6">
+              <h1 className="text-3xl font-bold mt-6 dark:text-white">
                 Why Become Recruiter?
               </h1>
 
@@ -350,11 +351,11 @@ const AppliedRecruiters = () => {
 
                   <div>
 
-                    <h1 className="font-bold">
+                    <h1 className="font-bold dark:text-gray-200">
                       Access Quality Talent
                     </h1>
 
-                    <p className="text-gray-500 text-sm">
+                    <p className="text-gray-500 text-sm ">
                       Connect with skilled professionals.
                     </p>
 
@@ -365,13 +366,13 @@ const AppliedRecruiters = () => {
 
                 <div className="flex gap-4">
 
-                  <div className="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-full bg-blue-100 flex  items-center justify-center">
                     💼
                   </div>
 
                   <div>
 
-                    <h1 className="font-bold">
+                    <h1 className="font-bold dark:text-gray-200">
                       Post Unlimited Jobs
                     </h1>
 
@@ -384,13 +385,13 @@ const AppliedRecruiters = () => {
             </div>
 
 
-            <div className="bg-white rounded-[30px] p-6 border">
+            <div className="bg-white dark:bg-gray-900 rounded-[30px] p-6 border">
 
-              <h1 className="font-bold text-2xl mb-6">
+              <h1 className="font-bold text-2xl mb-6 dark:text-white">
                 Review Process
               </h1>
 
-              <div className="space-y-8">
+              <div className="space-y-8 dark:text-gray-200">
 
                 {[
                   {
@@ -442,9 +443,9 @@ const AppliedRecruiters = () => {
             </div>
 
 
-            <div className="bg-[#f5f9ff] p-6 rounded-[30px]">
+            <div className="bg-[#f5f9ff] dark:bg-gray-900 p-6 rounded-[30px]">
 
-              <h1 className="font-bold text-xl">
+              <h1 className="font-bold text-xl dark:text-white">
                 Need Help?
               </h1>
 
@@ -501,4 +502,4 @@ const AppliedRecruiters = () => {
   );
 };
 
-export default AppliedRecruiters;
+export default withAuth(AppliedRecruiters);

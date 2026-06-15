@@ -52,12 +52,12 @@ const CheckRecruitersStatus = () => {
     }
   }
   return (
-    <div className="min-h-screen bg-[#f5f7fb] p-3 md:p-6">
+    <div className="min-h-screen bg-[#f5f7fb] dark:bg-gray-950 p-3 md:p-6">
 
-      <div className="max-w-7xl mx-auto bg-white rounded-[30px] shadow-md overflow-hidden border">
+      <div className="max-w-7xl mx-auto bg-white rounded-[30px] dark:bg-gray-900 shadow-md overflow-hidden border">
 
 
-        <div className="border-b px-5 md:px-8 py-5 flex items-center justify-between">
+        <div className="border-b px-5 md:px-8 py-5 flex dark:border-white items-center justify-between">
 
           <div className="flex items-center gap-4">
 
@@ -69,13 +69,13 @@ const CheckRecruitersStatus = () => {
 
             <div className="flex items-center gap-4">
 
-              <h1 className="text-2xl font-bold">
+              <h1 className="text-2xl font-bold dark:text-white">
                 Career Path
               </h1>
 
-              <div className="hidden md:block w-[1px] h-7 bg-gray-300"></div>
+              <div className="hidden md:block w-[1px] h-7 bg-gray-300 dark:bg-gray-400"></div>
 
-              <p className="hidden md:block text-gray-500">
+              <p className="hidden md:block text-gray-500 dark:text-gray-300">
                 Recruiter Verification Status
               </p>
 
@@ -87,15 +87,15 @@ const CheckRecruitersStatus = () => {
           <div className="flex gap-7">
 
             <div className="flex items-center gap-2 text-gray-600 cursor-pointer">
-              <FaHome />
-              <span className="hidden md:block">
+              <FaHome className="dark:text-white" />
+              <span className="hidden md:block dark:text-gray-200">
                 Home
               </span>
             </div>
 
             <FaUser
               size={22}
-              className="text-gray-600 cursor-pointer"
+              className="text-gray-600 cursor-pointer dark:text-gray-300"
             />
 
           </div>
@@ -104,13 +104,13 @@ const CheckRecruitersStatus = () => {
 
 
 
-        <div className="m-4 md:m-8 rounded-[30px] bg-[#edf3ff] p-6 md:p-10">
+        <div className="m-4 md:m-8 rounded-[30px] bg-[#edf3ff] dark:bg-gray-950 p-6 md:p-10">
 
           <div className="grid lg:grid-cols-2 items-center gap-10">
 
             <div>
 
-              <h1 className="text-3xl md:text-5xl font-bold leading-tight">
+              <h1 className="text-3xl md:text-5xl font-bold leading-tight dark:text-gray-300">
 
                 Check Your Recruiter
                 <br />
@@ -122,7 +122,7 @@ const CheckRecruitersStatus = () => {
 
               </h1>
 
-              <p className="text-gray-600 mt-6 text-lg">
+              <p className="text-gray-600 mt-6 text-lg dark:text-gray-500">
 
                 Enter your registered company email
                 to check your recruiter account
@@ -150,7 +150,7 @@ const CheckRecruitersStatus = () => {
 
 
         <form onSubmit={handleForm}>
-        <div className="mx-4 md:mx-8 rounded-[30px] border p-5 md:p-8 shadow-sm">
+        <div className="mx-4 md:mx-8 rounded-[30px] border p-5 md:p-8 shadow-sm dark:border-white">
 
           <div className="flex flex-col lg:flex-row gap-5 items-center">
 
@@ -166,7 +166,7 @@ const CheckRecruitersStatus = () => {
 
             <div className="flex-1 w-full">
 
-              <h1 className="font-bold text-xl mb-3">
+              <h1 className="font-bold text-xl mb-3 dark:text-gray-200">
                 Registered Company Email
               </h1>
 
@@ -178,14 +178,14 @@ const CheckRecruitersStatus = () => {
               }}
                 type="email"
                 placeholder="Enter your company email"
-                className="border w-full p-4 rounded-xl outline-none"
+                className="border w-full p-4 rounded-xl outline-none dark:border-white dark:placeholder-gray-200 dark:text-gray-100"
               />
 
               <div className="flex gap-2 mt-3 text-gray-500 text-sm">
 
-                <FaInfoCircle />
+                <FaInfoCircle className="text-gray-300"/>
 
-                <p>
+                <p className="dark:text-gray-300">
                   Use same email used while applying.
                 </p>
 
@@ -210,13 +210,13 @@ const CheckRecruitersStatus = () => {
 
 
 
-        <div className="mx-4 md:mx-8 mt-6 border rounded-[30px] p-6">
+        <div className="mx-4 md:mx-8 mt-6 border dark:border-white rounded-[30px] p-6">
 
           <div className="flex items-center gap-3">
 
             <FaBuilding className="text-blue-600" />
 
-            <h1 className="text-2xl font-bold">
+            <h1 className="text-2xl font-bold dark:text-gray-300">
               Verification Details
             </h1>
 
@@ -227,7 +227,7 @@ const CheckRecruitersStatus = () => {
 
             <div className="min-w-[900px]">
 
-              <div className="grid grid-cols-5 font-semibold text-gray-500 border-b pb-5">
+              <div className="grid grid-cols-5 font-semibold dark:text-gray-300 text-gray-500 border-b pb-5">
 
                 <p>Owner Name</p>
                 <p>Company Name</p>
@@ -240,7 +240,7 @@ const CheckRecruitersStatus = () => {
 
               <div className="grid grid-cols-5 py-6 items-center">
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 dark:text-gray-100">
 
                   <FaUser className="text-blue-600" />
 
@@ -249,7 +249,7 @@ const CheckRecruitersStatus = () => {
                 </div>
 
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 dark:text-gray-100">
 
                   <FaBuilding className="text-blue-600" />
 
@@ -258,7 +258,7 @@ const CheckRecruitersStatus = () => {
                 </div>
 
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 dark:text-gray-100">
 
                   <FaEnvelope className="text-blue-600" />
 
@@ -280,9 +280,9 @@ const CheckRecruitersStatus = () => {
                 </div>
 
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 dark:text-gray-200">
 
-                  <FaCalendarAlt />
+                  <FaCalendarAlt className="dark:text-gray-100"/>
 
                  {new Date(data.created_at).toLocaleString("en-IN") }
 
@@ -299,7 +299,7 @@ const CheckRecruitersStatus = () => {
 
 
 
-        <div className="m-4 md:m-8 bg-[#f7f8fc] rounded-[30px] p-6">
+        <div className="m-4 md:m-8 bg-[#f7f8fc] dark:bg-gray-950  rounded-[30px] p-6">
 
           <div className="grid md:grid-cols-3 gap-8">
 
@@ -312,11 +312,11 @@ const CheckRecruitersStatus = () => {
 
               <div>
 
-                <h1 className="font-bold">
+                <h1 className="font-bold dark:text-gray-200">
                   Pending
                 </h1>
 
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   Application under review.
                 </p>
 
@@ -334,11 +334,11 @@ const CheckRecruitersStatus = () => {
 
               <div>
 
-                <h1 className="font-bold">
+                <h1 className="font-bold dark:text-gray-200">
                   Approved
                 </h1>
 
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   Account verified and active.
                 </p>
 
@@ -357,11 +357,11 @@ const CheckRecruitersStatus = () => {
 
               <div>
 
-                <h1 className="font-bold">
+                <h1 className="font-bold dark:text-gray-200">
                   Rejected
                 </h1>
 
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   Application not approved.
                 </p>
 
@@ -375,11 +375,11 @@ const CheckRecruitersStatus = () => {
 
 
 
-        <div className="mx-4 md:mx-8 mb-8 bg-[#edf3ff] rounded-xl p-5 flex gap-3">
+        <div className="mx-4 md:mx-8 mb-8 bg-[#edf3ff] dark:bg-gray-950 rounded-xl p-5 flex gap-3">
 
           <FaShieldAlt className="text-blue-600 mt-1" />
 
-          <p className="text-gray-600">
+          <p className="text-gray-600 dark:text-gray-400">
 
             If you face any issue contact:
             <span className="font-bold text-blue-600 ml-2">
