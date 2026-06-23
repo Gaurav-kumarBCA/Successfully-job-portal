@@ -10,16 +10,14 @@ try {
         });
     }
     const payload= verifyToken(token);
-
-    if(payload.is_blocked){
-        return res.json({success:false,message:"Blocked"})
-    }
-
     if(!payload){
         return res.status(400).json({
             success:false,
             message:"Invalid token"
         });
+    }
+     if(payload.is_blocked){
+        return res.json({success:false,message:"Blocked"})
     }
      req.loginUser= payload;        
         next();
