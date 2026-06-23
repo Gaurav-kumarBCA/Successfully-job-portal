@@ -21,7 +21,7 @@ import JobDeleted from './component/JobDeleted'
 import GetAllJobbyUsers from './Pages/GetAllJobbyUsers'
 import GetAllCompaniesbyUsers from './Pages/GetAllCompaniesbyUsers'
 import SaveJobs from './Pages/SaveJobs'
-import ThemeProvider from './store/themp.store'
+import ThemeProvider from './store/theme.store'
 
 const App = () => {
   return (
