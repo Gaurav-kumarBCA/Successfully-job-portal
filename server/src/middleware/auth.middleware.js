@@ -2,6 +2,7 @@ const { verifyToken } = require("../utility");
 
 module.exports=(req,res,next)=>{
 try {
+    console.log("receive cookies", req.cookies)
     const token= req.cookies.token;
     if(!token){
         return res.status(401).json({
