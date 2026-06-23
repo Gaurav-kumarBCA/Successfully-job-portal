@@ -13,9 +13,22 @@ const ininDB = async () => {
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
             `);
-
-    await pool.query(`
-            CREATE TABLE IF NOT EXISTS companiesdata
+            await pool.query(`
+              CREATE TABLE IF NOT EXISTS create_recruiter (
+              id SERIAL PRIMARY KEY,
+              name VARCHAR (100) NOT NULL,
+              company_name VARCHAR (200) NOT NULL,
+              email VARCHAR(100) UNIQUE NOT NULL,
+              password TEXT NOT NULL,
+              role VARCHAR (100) NOT NULL,
+              phone VARCHAR (100) NOT NULL,
+              company_description VARCHAR (100) NOT NULL,
+              company_website  VARCHAR (100),
+              industry_type  VARCHAR (100) NOT NULL
+              );
+            `);
+             await pool.query(`
+      CREATE TABLE IF NOT EXISTS companiesdata
             (
             id SERIAL PRIMARY KEY ,
             company_name VARCHAR(150) NOT NULL,
@@ -25,7 +38,7 @@ const ininDB = async () => {
             recruiter_id INTEGER REFERENCES create_recruiter(id),
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
-            `);
+             `);
 
     await pool.query(`
                 CREATE TABLE IF NOT EXISTS jobcreate
@@ -63,21 +76,6 @@ const ininDB = async () => {
                UNIQUE(user_id, job_id)               
                ) ;
               `);
-    await pool.query(`
-              CREATE TABLE IF NOT EXISTS create_recruiter (
-              id SERIAL PRIMARY KEY,
-              name VARCHAR (100) NOT NULL,
-              company_name VARCHAR (200) NOT NULL,
-              email VARCHAR(100) UNIQUE NOT NULL,
-              password TEXT NOT NULL,
-              role VARCHAR (100) NOT NULL,
-              phone VARCHAR (100) NOT NULL,
-              company_description VARCHAR (100) NOT NULL,
-              company_website  VARCHAR (100),
-              industry_type  VARCHAR (100) NOT NULL
-              );
-             `);
-
     await pool.query(`
              CREATE TABLE IF NOT EXISTS appliedform_recruiter (
              id SERIAL PRIMARY KEY,
