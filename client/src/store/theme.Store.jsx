@@ -21,7 +21,7 @@ const ThemeProvider = ({ children }) => {
     } else {
 
       document.documentElement.classList.remove(
-        "dark"
+        "dark" 
       );
 
       localStorage.setItem(
