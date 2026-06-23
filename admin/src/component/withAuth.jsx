@@ -13,8 +13,14 @@ const withAuth = (WrappedComponent) => {
         navigate("/login", { replace: true });
       }
     }, [user, loading, navigate]);
+    if(loading){
+      return <div>loading...</div>
+    }
+    if(!user){
+      return null;
+    }
 
-    return user ? <WrappedComponent {...props} /> : null;
+    return  <WrappedComponent {...props} /> ;
   };
 };
 
