@@ -134,7 +134,7 @@ return ()=>clearTimeout(timer);
 useEffect(()=>{
 
 const socket=
-io("http://localhost:5000");
+io("https://successfully-job-portal-backend.onrender.com");
 
 socket.on(
 "newRecruiterApply",
