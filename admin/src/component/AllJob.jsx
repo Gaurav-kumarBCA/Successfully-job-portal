@@ -22,6 +22,9 @@ const AllJob = () => {
           credentials: "include",
         });
         const data = await res.json();
+        console.log("Full Response:", data);
+console.log("Jobs:", data.data);
+console.log("Is Array:", Array.isArray(data.data));
         setData(data.data);
       } catch (error) {
         console.log(error);
@@ -31,7 +34,9 @@ const AllJob = () => {
     };
     AllUsersDashboard();
   }, []);
-  const latestJobs = [...data].reverse().slice(0, 9);
+ const latestJobs = Array.isArray(data)
+  ? [...data].reverse().slice(0, 9)
+  : [];
   return (
     <div className="w-full  min-h-screen  flex flex-col items-center  justify-center pb-35">
       <div
