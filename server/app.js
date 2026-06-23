@@ -24,7 +24,8 @@ const server=http.createServer(app);
 const io = new Server(server,{
   cors:{
     origin:[
-      "https://successfully-job-portal-admin.onrender.com"
+      "https://successfully-job-portal-admin.onrender.com",
+      "https://successfully-job-portal-user.onrender.com"
     ],
     methods:["GET","POST"]
   }
@@ -44,7 +45,8 @@ const port = process.env.PORT ||  5000;
 app.use(cors(
   {
    origin: [
-    "https://successfully-job-portal-admin.onrender.com"
+    "https://successfully-job-portal-admin.onrender.com",
+    "https://successfully-job-portal-user.onrender.com"
    ],
    credentials: true
 }
