@@ -73,7 +73,7 @@ const logout = async(req,res)=>{
         res.clearCookie("token",{
             httpOnly:true,
             secure:true,
-            sameSite:"lax"
+            sameSite:"none"
         });
 
         res.status(200).json({
