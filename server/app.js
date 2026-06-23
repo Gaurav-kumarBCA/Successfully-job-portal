@@ -41,7 +41,9 @@ const port = 5000;
 
 app.use(cors(
   {
-   origin: "http://localhost:5173",
+   origin: [
+    "https://successfully-job-portal-admin.onrender.com"
+   ],
    credentials: true
 }
 ));
