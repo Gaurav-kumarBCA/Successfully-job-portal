@@ -1,14 +1,54 @@
 import React, { useEffect, useState } from "react";
-import { FaBuilding, FaMapMarkerAlt, FaMoneyBillWave, FaBriefcase } from "react-icons/fa";
+import { FaBuilding, FaMapMarkerAlt, FaMoneyBillWave, FaBriefcase, FaLaptopCode,
+  FaBullhorn,
+  FaChartLine,
+  FaHospital,
+  FaGraduationCap,
+  FaTools,
+  FaPaintBrush,
+  FaHeadset,
+  FaUsers,
+  FaHome, } from "react-icons/fa";
+  import { MdCategory } from "react-icons/md"
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useAuth} from "../hooks/useAuth"
+import JobFilter from "../component/JobFilter";
+
 const GetAllJobbyUsers = () => {
 const {user} = useAuth();
 const navigate = useNavigate();
-  const [jobs, setJobs] = useState([]);
+const [jobs, setJobs] = useState([]);
+const [search, setSearch] = useState("");
+const [category, setCategory] = useState("");
+const getCategoryIcon = (category) => {
+  switch (category?.toLowerCase()) {
+    case "it":
+    case "software":
+      return <FaLaptopCode className="text-blue-600" />;
 
-  useEffect(() => {
+    case "business":
+      return <FaBriefcase className="text-gray-700" />;
+
+    case "marketing":
+      return <FaBullhorn className="text-orange-500" />;
+
+    case "healthcare":
+      return <FaHospital className="text-red-500" />;
+
+    case "education":
+      return <FaGraduationCap className="text-green-600" />;
+
+    case "finance":
+      return <FaMoneyBillWave className="text-emerald-600" />;
+
+    case "engineering":
+      return <FaTools className="text-yellow-600" />;
+
+    default:
+      return <MdCategory className="text-purple-600" />;
+  }
+};  useEffect(() => {
     const fetchJobs = async () => {
       try {
         const url = import.meta.env.VITE_SERVER_URL;
@@ -77,6 +117,13 @@ const navigate = useNavigate();
             Find your dream job from top companies and start your career journey today.
           </p>
         </div>
+        <JobFilter
+    search={search}
+    setSearch={setSearch}
+    category={category}
+    setCategory={setCategory}
+    setJobs={setJobs}
+/>
 
         {jobs.length === 0 ? (
           <div className="text-center text-slate-500 mt-20 dark:text-gray-300 ">
@@ -93,12 +140,12 @@ const navigate = useNavigate();
                 <div className="flex items-center gap-3 mb-4">
 
                   <div className="w-12 h-12 rounded-xl  bg-blue-600 text-white flex items-center justify-center font-bold text-lg uppercase">
-                    {job.company?.company_name?.charAt(0)}
+                    {job.company_name?.charAt(0)}
                   </div>
 
                   <div>
                     <h2 className="font-bold text-slate-800  dark:text-white">
-                      {job.company?.company_name}
+                      {job.company_name}
                     </h2>
                     <p className="text-xs text-slate-500 dark:text-gray-400">
                       Hiring Now
@@ -122,6 +169,11 @@ const navigate = useNavigate();
                     {job.location}
                   </div>
 
+                    <div className="flex items-center gap-2">
+                    {getCategoryIcon(job.category)}
+                    <span>{job.category}</span>
+                    </div>
+
                   <div className="flex items-center gap-2">
                     <FaMoneyBillWave className="text-green-600" />
                     ₹{job.salary}
@@ -137,12 +189,12 @@ const navigate = useNavigate();
                 <div className="mt-4 bg-slate-50 p-3  dark:bg-gray-800  dark:text-gray-300 rounded-xl text-xs text-slate-600">
                   <p>
                     <span className="font-semibold">Company:</span>{" "}
-                    {job.company?.company_name}
+                    {job.company_name}
                   </p>
 
                   <p>
                     <span className="font-semibold">Website:</span>{" "}
-                    {job.company?.website_url}
+                    {job.website_url}
                   </p>
                 </div>
 

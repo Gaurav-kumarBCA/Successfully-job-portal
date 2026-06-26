@@ -111,6 +111,38 @@ const ininDB = async () => {
                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
               )  ;
       `)
+
+    await pool.query(`
+             CREATE TABLE IF NOT EXISTS profiles(
+             id SERIAL PRIMARY KEY,
+             user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+             name VARCHAR(100) NOT NULL,
+         
+             email VARCHAR(100) UNIQUE NOT NULL,
+         
+             phone VARCHAR(15),
+         
+             location VARCHAR(100),
+         
+             role VARCHAR(100),
+         
+             education VARCHAR(200),
+         
+             experience VARCHAR(100),
+         
+             about TEXT,
+         
+             github VARCHAR(255),
+         
+             linkedin VARCHAR(255),
+         
+             portfolio VARCHAR(255),
+         
+             resume VARCHAR(255),
+         
+             skills TEXT[]
+      )
+      `)  
                 
     console.log("tables ready");
   } catch (error) {

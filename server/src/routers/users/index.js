@@ -8,6 +8,7 @@ router.use("/follow",require("./followCompany.routers"));
 router.use("/notification",require("./notification.routers"));
 router.use("/category",require("./category.route"))
 router.get("/me",profiile);
+router.use("/mainProfile",require("./mainUserprofile"))
 
 
 module.exports=router;

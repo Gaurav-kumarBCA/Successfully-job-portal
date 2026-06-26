@@ -110,7 +110,7 @@ Discover thousands of opportunities from top companies and build your dream care
 </p>
 
 
-<div className="bg-white dark:bg-gray-600 shadow-xl rounded-2xl mt-8 p-4 flex flex-col gap-4">
+{/* <div className="bg-white dark:bg-gray-600 shadow-xl rounded-2xl mt-8 p-4 flex flex-col gap-4">
 
   <div className="flex items-center border dark:border-gray-500 rounded-xl p-3">
 
@@ -140,7 +140,7 @@ Discover thousands of opportunities from top companies and build your dream care
 
   </button>
 
-</div>
+</div> */}
 </div>
 
 

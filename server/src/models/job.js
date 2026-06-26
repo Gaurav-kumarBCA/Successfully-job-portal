@@ -71,6 +71,7 @@ const getAllJobById = async (id) => {
             j.location,
             j.job_type,
             j.posted_by,
+            
 
             json_build_object(
                 'id', c.id,
@@ -121,6 +122,8 @@ const getAllApprovedJobs = async () => {
             j.location,
             j.job_type,
             j.posted_by,
+            j.category,
+            
 
             json_build_object(
                 'id', c.id,

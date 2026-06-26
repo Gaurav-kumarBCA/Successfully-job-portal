@@ -205,7 +205,7 @@ const Navbar = () => {
 
 </div>
 
-            <a className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300 dark:text-white">
+            <a href="/profile" className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300 dark:text-white">
               <FaUserCircle className="text-blue-600" />
               Profile
             </a>

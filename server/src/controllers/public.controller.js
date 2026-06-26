@@ -1,4 +1,5 @@
-const { publicJobDB, fetAllCompaniesDB } = require("../services/public.service")
+const { searchJobs } = require("../models/job");
+const { publicJobDB, fetAllCompaniesDB, SearchJobsDB } = require("../services/public.service")
 
 const publicJob=async(req,res)=>{
 try {
@@ -31,4 +32,36 @@ try {
    }) 
 }
 }
-module.exports={publicJob,fetAllCompanies}
+
+
+const SearchJobs = async (req, res) => {
+  try {
+
+    const {
+      search,
+      category,
+      job_type
+    } = req.query;
+
+    const jobs = await SearchJobsDB(
+      search,
+      category,
+      job_type
+    );
+
+    res.status(200).json({
+      success: true,
+      message: "Jobs Found",
+      data: jobs.rows,
+    });
+
+  } catch (error) {
+
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+
+  }
+};
+module.exports={publicJob,fetAllCompanies,SearchJobs}

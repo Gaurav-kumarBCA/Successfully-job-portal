@@ -22,6 +22,9 @@ import GetAllJobbyUsers from './Pages/GetAllJobbyUsers'
 import GetAllCompaniesbyUsers from './Pages/GetAllCompaniesbyUsers'
 import SaveJobs from './Pages/SaveJobs'
 import ThemeProvider from './store/theme.store'
+import ProfileUser from './Pages/ProfileUser'
+import GetProfileUser from './component/GetProfileUser'
+import EditProfile from './component/EditProfile'
 
 const App = () => {
   return (
@@ -49,6 +52,9 @@ const App = () => {
       <Route path='/all_jobs/applied' element={<GetAllJobbyUsers/>} />
       <Route path='/all_companies' element={<GetAllCompaniesbyUsers/>}/>
       <Route path='/save_jobs' element={<SaveJobs/>}/>
+      <Route path='/profile' element={<ProfileUser/>}/>
+      <Route path='/get_profile' element={<GetProfileUser/>}/>
+      <Route path='/edit_profile' element={<EditProfile/>}/>
     </Routes>
     </ThemeProvider>
     </BrowserRouter>
