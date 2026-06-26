@@ -24,10 +24,10 @@ const server=http.createServer(app);
 const io = new Server(server,{
   cors:{
     origin:[
-      // "https://successfully-job-portal-admin.onrender.com",
-      // "https://successfully-job-portal-user.onrender.com"
-      "http://localhost:5173",
-      "http://localhost:5174"
+      "https://successfully-job-portal-admin.onrender.com",
+      "https://successfully-job-portal-user.onrender.com"
+      // "http://localhost:5173",
+      // "http://localhost:5174"
     ],
     methods:["GET","POST"]
   }
@@ -47,10 +47,10 @@ const port = process.env.PORT ||  5000;
 app.use(cors(
   {
    origin: [
-    // "https://successfully-job-portal-admin.onrender.com",
-    // "https://successfully-job-portal-user.onrender.com"
-    "http://localhost:5173",
-    "http://localhost:5174"
+    "https://successfully-job-portal-admin.onrender.com",
+    "https://successfully-job-portal-user.onrender.com"
+    // "http://localhost:5173",
+    // "http://localhost:5174"
    ],
    credentials: true
 }
