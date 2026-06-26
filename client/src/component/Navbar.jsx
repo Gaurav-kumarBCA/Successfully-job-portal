@@ -151,25 +151,25 @@ const Navbar = () => {
 
           <div className="flex flex-col gap-3 mt-5">
 
-            <a href="/" className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300 dark:text-white">
+            <NavLink to="/" className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300 dark:text-white">
               <FaHome className="text-blue-600 " />
               Home
-            </a>
+            </NavLink>
 
-            <a href="/all_jobs/applied" className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300 dark:text-white">
+            <NavLink to="/all_jobs/applied" className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300 dark:text-white">
               <FaBriefcase className="text-blue-600" />
               Jobs
-            </a>
+            </NavLink>
 
-            <a href="/all_companies" className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300 dark:text-white">
+            <NavLink to="/all_companies" className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300 dark:text-white">
               <FaBuilding className="text-blue-600" />
               Companies
-            </a>
+            </NavLink>
 
-            <a href="/applied-recruiters" className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300 dark:text-white">
+            <NavLink to="/applied-recruiters" className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300 dark:text-white">
               <FaUser className="text-blue-600" />
              + Add Recruiter
-            </a>
+            </NavLink>
 
             <div>
 
@@ -187,9 +187,9 @@ const Navbar = () => {
     <div className="ml-6 mt-2 flex flex-col gap-2">
 
       {/* SAVE JOB */}
-      <a href="/save_jobs" className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-100 dark:text-white">
+      <NavLink to="/save_jobs" className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-100 dark:text-white">
         💾 Save Jobs
-      </a>
+      </NavLink>
 
       {/* THEME */}
       <div
@@ -205,10 +205,10 @@ const Navbar = () => {
 
 </div>
 
-            <a href="/profile" className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300 dark:text-white">
+            <NavLink to="/profile" className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 duration-300 dark:text-white">
               <FaUserCircle className="text-blue-600" />
               Profile
-            </a>
+            </NavLink>
             <div className="flex items-center justify-around">
               <NavLink to="/login"><button className="bg-blue-950 dark:bg-blue-500 px-5 py-3 text-white rounded-[10px] ">Login</button></NavLink>
               <NavLink to="/signup">
